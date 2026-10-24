@@ -3,353 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbosas Prime | Desenvolvimento e Estratégia Imobiliária</title>
-    <!-- Fontes e Ícones -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Barbosas Prime | Desenvolvimento Imobiliário</title>
     <link rel="stylesheet" href="https://cloudflare.com">
-    
     <style>
-        :root {
-            --verde-garrafa: #0B3C26;
-            --verde-escuro: #062618;
-            --dourado-base: #D4AF37;
-            --dourado-linear: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-            --texto-escuro: #2C3E35;
-            --fundo-claro: #F4F7F5;
-            --branco: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--fundo-claro);
-            color: var(--texto-escuro);
-            line-height: 1.6;
-        }
-
-        /* Cabeçalho Premium */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-        }
-
-        .logo img {
-            height: 65px;
-            width: auto;
-            display: block;
-            transition: transform 0.3s;
-        }
-
-        .logo img:hover {
-            transform: scale(1.03);
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: var(--verde-garrafa);
-            font-weight: 600;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--dourado-base);
-            transition: width 0.3s ease;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
-        }
-
-        .nav-menu a:hover {
-            color: var(--dourado-base);
-        }
-
-        /* Hero Section (Foco em Ideação e Conceito) */
-        .hero {
-            background: linear-gradient(rgba(6, 38, 24, 0.75), rgba(11, 60, 38, 0.85)), url('https://unsplash.com') no-repeat center center/cover;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--branco);
-            padding: 0 20px;
-        }
-
-        .hero-content {
-            max-width: 850px;
-            padding-top: 60px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 700;
-            margin-bottom: 25px;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-
-        .hero-content h1 span {
-            background: var(--dourado-linear);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
-            opacity: 0.95;
-        }
-
-        .btn-prime {
-            display: inline-block;
-            padding: 16px 40px;
-            background: var(--dourado-linear);
-            color: var(--verde-escuro);
-            text-decoration: none;
-            font-weight: 700;
-            border-radius: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(186, 135, 40, 0.4);
-            border: none;
-        }
-
-        .btn-prime:hover {
-            background: var(--branco);
-            color: var(--verde-garrafa);
-            transform: translateY(-3px);
-        }
-
-        /* Secções */
-        section {
-            padding: 120px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.4rem;
-            color: var(--verde-garrafa);
-            margin-bottom: 60px;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background: var(--dourado-linear);
-            margin: 20px auto 0;
-        }
-
-        /* Pilares de Valor da Barbosas Prime */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
-            background: var(--branco);
-            padding: 50px 35px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(11, 60, 38, 0.03);
-            border: 1px solid rgba(11, 60, 38, 0.05);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--dourado-linear);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(11, 60, 38, 0.08);
-        }
-
-        .service-card:hover::before {
-            opacity: 1;
-        }
-
-        .service-card i {
-            font-size: 2.8rem;
-            color: var(--dourado-base);
-            margin-bottom: 25px;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--verde-garrafa);
-            font-weight: 600;
-        }
-
-        /* Sobre Nós */
-        .about-section {
-            background-color: var(--branco);
-            border-radius: 12px;
-            padding: 80px 40px;
-            box-shadow: 0 10px 30px rgba(11, 60, 38, 0.02);
-            border: 1px solid rgba(11, 60, 38, 0.03);
-        }
-
-        .about-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about-content p {
-            font-size: 1.2rem;
-            color: var(--texto-escuro);
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-
-        /* Contactos */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
-        }
-
-        .contact-info {
-            background-color: var(--verde-garrafa);
-            color: var(--branco);
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(6, 38, 24, 0.15);
-        }
-
-        .contact-info h3 {
-            color: var(--dourado-base);
-            margin-bottom: 35px;
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 25px;
-            font-size: 1.05rem;
-        }
-
-        .info-item i {
-            color: var(--dourado-base);
-            font-size: 1.4rem;
-            width: 30px;
-            text-align: center;
-        }
-
-        .btn-whatsapp {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: #25D366;
-            color: white;
-            padding: 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 700;
-            margin-top: 40px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-
-        .btn-whatsapp:hover {
-            background-color: #128C7E;
-            transform: translateY(-2px);
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: var(--verde-escuro);
-            color: rgba(255,255,255,0.6);
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 0.85rem;
-            border-top: 3px solid var(--dourado-base);
-        }
-
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content p { font-size: 1.1rem; }
-            section { padding: 80px 20px; }
-            .contact-info { padding: 30px; }
-        }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:sans-serif; }
+        body { background:#F4F7F5; color:#2C3E35; }
+        header { background:#fff; padding:15px 20px; box-shadow:0 2px 10px rgba(0,0,0,0.05); position:fixed; width:100%; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; }
+        .logo img { height:50px; }
+        nav a { color:#0B3C26; text-decoration:none; margin-left:20px; font-weight:bold; }
+        .hero { background:linear-gradient(rgba(6,38,24,0.8), rgba(11,60,38,0.85)), url('https://unsplash.com') no-repeat center center/cover; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 20px; }
+        .hero h1 { font-size:2.5rem; margin-bottom:20px; }
+        .hero h1 span { color:#D4AF37; }
+        .hero p { font-size:1.2rem; margin-bottom:30px; max-width:700px; }
+        .btn { display:inline-block; padding:15px 30px; background:#D4AF37; color:#062618; text-decoration:none; font-weight:bold; border-radius:4px; text-transform:uppercase; }
+        .btn:hover { background:#fff; color:#0B3C26; }
+        section { padding:80px 20px; max-width:1200px; margin:0 auto; text-align:center; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px; margin-top:40px; }
+        .card { background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.02); }
+        .card i { font-size:2.5rem; color:#D4AF37; margin-bottom:15px; }
+        .card h3 { margin-bottom:10px; color:#0B3C26; }
+        footer { background:#062618; color:#fff; text-align:center; padding:30px; font-size:0.9rem; border-top:3px solid #D4AF37; }
     </style>
 </head>
 <body>
-
     <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="logo.png" alt="Barbosas Prime">
-            </div>
-            <ul class="nav-menu">
+        <div class="logo"><img src="logo.png" alt="Barbosas Prime"></div>
+        <nav><a href="#inicio">Início</a><a href="#modelo">O Modelo</a><a href="#contactos">Contactos</a></nav>
+    </header>
+    <div id="inicio" class="hero">
+        <h1>Idealizamos o Futuro do Espaço <span>Urbano</span></h1>
+        <p>Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.</p>
+        <a href="#contactos" class="btn">Apresentar Oportunidade</a>
+    </div>
+    <section id="modelo">
+        <h2>O Nosso Modelo</h2>
+        <div class="grid">
+            <div class="card"><i class="fa-solid fa-lightbulb"></i><h3>Ideação do Produto</h3><p>Análise cirúrgica do mercado para conceber e desenhar conceitos residenciais e comerciais de alto padrão.</p></div>
+            <div class="card"><i class="fa-solid fa-users-gear"></i><h3>Articulação e Parcerias</h3><p>Coordenação com os melhores gabinetes de arquitetura e engenharia para materializar fielmente o produto idealizado.</p></div>
+            <div class="card"><i class="fa-solid fa-arrow-up-right-dots"></i><h3>Supervisão Estratégica</h3><p>Garantia de fidelidade ao conceito original durante a fase de construção e ativação de canais de mediação premium.</p></div>
+        </div>
+    </section>
+    <footer id="contactos">
+        <p><strong>Barbosas Prime Promotora Imobiliária Lda</strong></p>
+        <p style="margin:10px 0;">geral@barbosasprime.com | Portugal</p>
+        <p>&copy; 2026 Barbosas Prime. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
