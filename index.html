@@ -3,47 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbosas Prime | Desenvolvimento Imobiliário</title>
+    <title>Barbosas Prime | Desenvolvimento e Estratégia Imobiliária</title>
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        * { margin:0; padding:0; box-sizing:border-box; font-family:sans-serif; }
-        body { background:#F4F7F5; color:#2C3E35; }
-        header { background:#062618; padding:15px 20px; box-shadow:0 4px 15px rgba(0,0,0,0.15); position:fixed; width:100%; top:0; z-index:100; display:flex; justify-content:space-between; align-items:center; }
-        .logo img { width: 250px; height: auto; display: block; }
-        nav a { color:#ffffff !important; text-decoration:none; margin-left:25px; font-weight:600; font-size:1rem; text-transform:uppercase; letter-spacing:1px; transition:color 0.3s ease; } nav a:hover { color:#D4AF37 !important; }
-        .hero { background:linear-gradient(rgba(6,38,24,0.8), rgba(11,60,38,0.85)), url('https://unsplash.com') no-repeat center center/cover; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:#fff; padding:0 20px; margin-top: 180px; }
-        .hero h1 { font-size:2.5rem; margin-top: 150px; }
-        .hero h1 span { color:#D4AF37; }
-        .hero p { font-size:1.2rem; margin-bottom:30px; max-width:700px; }
-        .btn { display:inline-block; padding:15px 30px; background:#D4AF37; color:#062618; text-decoration:none; font-weight:bold; border-radius:4px; text-transform:uppercase; }
-        .btn:hover { background:#fff; color:#0B3C26; }
-        section { padding:80px 20px; max-width:1200px; margin:0 auto; text-align:center; }
-        .grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:30px; margin-top:40px; }
-        .card { background:#fff; padding:30px; border-radius:8px; box-shadow:0 4px 15px rgba(0,0,0,0.02); }
-        .card i { font-size:2.5rem; color:#D4AF37; margin-bottom:15px; }
-        .card h3 { margin-bottom:10px; color:#0B3C26; }
-        footer { background:#062618; color:#fff; text-align:center; padding:30px; font-size:0.9rem; border-top:3px solid #D4AF37; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        body { background: #F4F7F5; color: #2C3E35; scroll-behavior: smooth; }
+        
+        /* Cabeçalho Ajustado e Fluido */
+        header { 
+            background: #062618; 
+            padding: 10px 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            z-index: 1000; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .logo img { width: 230px; height: auto; display: block; }
+        nav a { 
+            color: #ffffff !important; 
+            text-decoration: none; 
+            margin-left: 25px; 
+            font-weight: 600; 
+            font-size: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: color 0.3s ease; 
+        }
+        nav a:hover { color: #D4AF37 !important; }
+
+        /* Ajuste do Ponto de Ancoragem (Evita que o cabeçalho tape as secções) */
+        section { scroll-margin-top: 140px; }
+
+        /* Secção Hero Corrigida (Sem 100vh rígido para não empurrar o grid) */
+        .hero { 
+            background: linear-gradient(rgba(6, 38, 24, 0.82), rgba(11, 60, 38, 0.88)), url('https://unsplash.com') no-repeat center center/cover; 
+            min-height: 80vh; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: #fff; 
+            padding: 40px 20px; 
+            margin-top: 110px; 
+        }
+        .hero h1 { font-size: 2.8rem; margin-bottom: 20px; font-weight: 700; line-height: 1.2; }
+        .hero h1 span { color: #D4AF37; }
+        .hero p { font-size: 1.25rem; margin-bottom: 35px; max-width: 750px; font-weight: 300; }
+        
+        .btn { 
+            display: inline-block; 
+            padding: 16px 35px; 
+            background: #D4AF37; 
+            color: #062618; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #fff; color: #0B3C26; transform: translateY(-2px); }
+
+        /* Grelha do Modelo */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+            margin-top: 40px; 
+        }
+        .card { 
+            background: #fff; 
+            padding: 40px 30px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 20px rgba(11, 60, 38, 0.03); 
+            border-top: 4px solid #0B3C26;
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); border-top-color: #D4AF37; }
+        .card i { font-size: 2.5rem; color: #D4AF37; margin-bottom: 20px; }
+        .card h3 { margin-bottom: 15px; color: #0B3C26; font-size: 1.3rem; }
+        .card p { font-weight: 300; font-size: 1rem; line-height: 1.5; }
+
+        footer { background: #062618; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-size: 0.85rem; border-top: 3px solid #D4AF37; }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo"><img src="https://raw.githubusercontent.com/pflsbarbosa/site_barbosasprime/refs/heads/main/logo.png" alt="Barbosas Prime"></div>
-        <nav><a href="#inicio">Início</a><a href="#modelo">O Modelo</a><a href="#contactos">Contactos</a></nav>
+        <div class="logo"><img src="https://githubusercontent.com" alt="Barbosas Prime"></div>
+        <nav>
+            <a href="#inicio">Início</a>
+            <a href="#modelo">O Modelo</a>
+            <a href="#contactos">Contactos</a>
+        </nav>
     </header>
+
     <div id="inicio" class="hero">
         <h1>Idealizamos o Futuro do Espaço <span>Urbano</span></h1>
         <p>Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.</p>
         <a href="#contactos" class="btn">Apresentar Oportunidade</a>
     </div>
-   <section id="modelo" style="padding: 120px 20px; max-width: 1200px; margin: 0 auto; text-align: center;">
-        <h2 style="font-size: 2.2rem; color: #0B3C26; margin-bottom: 40px; text-transform: uppercase; font-weight: 700;">O Nosso Modelo</h2>
+
+    <!-- SECÇÃO MODELO CORRIGIDA -->
+    <section id="modelo" style="padding: 100px 20px; max-width: 1200px; margin: 0 auto; text-align: center;">
+        <h2 style="font-size: 2.4rem; color: #0B3C26; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">O Nosso Modelo</h2>
         <div class="grid">
             <div class="card"><i class="fa-solid fa-lightbulb"></i><h3>Ideação do Produto</h3><p>Análise cirúrgica do mercado para conceber e desenhar conceitos residenciais e comerciais de alto padrão.</p></div>
             <div class="card"><i class="fa-solid fa-users-gear"></i><h3>Articulação e Parcerias</h3><p>Coordenação com os melhores gabinetes de arquitetura e engenharia para materializar fielmente o produto idealizado.</p></div>
             <div class="card"><i class="fa-solid fa-arrow-up-right-dots"></i><h3>Supervisão Estratégica</h3><p>Garantia de fidelidade ao conceito original durante a fase de construção e ativação de canais de mediação premium.</p></div>
         </div>
     </section>
-     <section id="contactos" style="background: #fff; max-width: 100%; width: 100%; padding: 120px 20px 160px 20px; border-top: 1px solid rgba(11,60,38,0.05);">
+
+    <!-- SECÇÃO CONTACTOS CORRIGIDA -->
+    <section id="contactos" style="background: #fff; max-width: 100%; width: 100%; padding: 100px 20px 140px 20px; border-top: 1px solid rgba(11,60,38,0.05);">
         <div style="max-width: 600px; margin: 0 auto; background: #062618; color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(6,38,24,0.15);">
             <h2 style="color: #D4AF37; margin-bottom: 30px; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: center;">Parcerias Estratégicas</h2>
             <p style="margin-bottom: 25px; opacity: 0.9; font-size: 1.05rem;"><i class="fa-solid fa-phone" style="color: #D4AF37; margin-right: 15px;"></i> +351 900 000 000</p>
@@ -54,8 +131,10 @@
             </a>
         </div>
     </section>
-    <footer style="background: #062618; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-size: 0.85rem; border-top: 3px solid #D4AF37;">
+
+    <footer>
         <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
     </footer>
+
 </body>
 </html>
