@@ -45,15 +45,14 @@
             -webkit-text-fill-color: #ffffff; 
             color: #ffffff;
         }
-        main { flex: 1 0 auto; display: flex; flex-direction: column; }
         
-        #inicio { scroll-margin-top: 180px; }
-        #modelo { scroll-margin-top: 150px; }
-        #contactos { scroll-margin-top: 150px; }
+        main { flex: 1 0 auto; display: flex; flex-direction: column; margin-top: 100px; }
+        
+        section { scroll-margin-top: 140px; }
 
         .hero-container {
             background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), url('https://unsplash.com') no-repeat center center/cover;
-            padding: 180px 20px 100px 20px;
+            padding: 80px 20px;
             text-align: center;
             width: 100%;
         }
@@ -62,12 +61,13 @@
             margin-bottom: 25px; 
             font-weight: 700; 
             line-height: 1.2; 
-            color: #ffffff;
+            color: #ffffff !important;
         }
         .gold-gradient {
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
         }
         .hero-container p { 
             font-size: 1.3rem; 
@@ -75,7 +75,7 @@
             max-width: 800px; 
             font-weight: 300; 
             line-height: 1.6; 
-            color: rgba(255, 255, 255, 0.95);
+            color: #ffffff !important;
             margin-left: auto;
             margin-right: auto;
         }
@@ -102,7 +102,7 @@
         }
         
         .grid-container { padding: 60px 20px 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; width: 100%; }
-        .grid-container h2 { font-size: 2.4rem; color: #0B3C26; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 50px; }
+        .grid-container h2 { font-size: 2.4rem; color: #0B3C26 !important; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 50px; }
         
         .grid { 
             display: grid; 
@@ -131,10 +131,8 @@
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; text-align: center; }
             nav { justify-content: center; gap: 15px; }
-            #inicio { scroll-margin-top: 240px; }
-            #modelo { scroll-margin-top: 220px; }
-            #contactos { scroll-margin-top: 220px; }
-            .hero-container { padding-top: 220px; padding-bottom: 60px; }
+            main { margin-top: 140px; }
+            section { scroll-margin-top: 180px; }
             .hero-container h1 { font-size: 2.2rem; }
             .hero-container p { font-size: 1.1rem; }
             .grid-container h2 { font-size: 1.8rem; }
@@ -201,3 +199,11 @@
                     <span style="color: #ffffff;">Portugal</span>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
