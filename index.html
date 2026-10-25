@@ -9,7 +9,12 @@
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        
+        html { 
+            scroll-behavior: smooth; 
+            scroll-padding-top: 85px;
+        }
+        
         body { 
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background: #F4F7F5; 
@@ -18,6 +23,7 @@
             flex-direction: column; 
             min-height: 100vh; 
         }
+        
         header { 
             background: #062618; 
             padding: 20px; 
@@ -27,8 +33,10 @@
             top: 0; 
             z-index: 1000; 
         }
+        
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
         .logo img { width: 100%; max-width: 240px; height: auto; display: block; }
+        
         nav { display: flex; flex-wrap: wrap; gap: 25px; }
         nav a { 
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%); 
@@ -46,39 +54,41 @@
             color: #ffffff;
         }
         
-        main { flex: 1 0 auto; display: flex; flex-direction: column; margin-top: 100px; }
-        
-        section { scroll-margin-top: 140px; }
+        main { flex: 1 0 auto; display: flex; flex-direction: column; padding-top: 85px; }
 
         .hero-container {
             background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), url('https://unsplash.com') no-repeat center center/cover;
-            padding: 80px 20px;
+            padding: 140px 20px 120px 20px;
             text-align: center;
             width: 100%;
         }
+        
         .hero-container h1 { 
             font-size: 3rem; 
             margin-bottom: 25px; 
             font-weight: 700; 
             line-height: 1.2; 
-            color: #ffffff !important;
+            color: #ffffff;
         }
+        
         .gold-gradient {
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
+        
         .hero-container p { 
             font-size: 1.3rem; 
             margin-bottom: 40px; 
             max-width: 800px; 
             font-weight: 300; 
             line-height: 1.6; 
-            color: #ffffff !important;
+            color: rgba(255, 255, 255, 0.95);
             margin-left: auto;
             margin-right: auto;
         }
+        
         .btn { 
             display: inline-block; 
             padding: 16px 35px; 
@@ -101,8 +111,8 @@
             box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2); 
         }
         
-        .grid-container { padding: 60px 20px 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; width: 100%; }
-        .grid-container h2 { font-size: 2.4rem; color: #0B3C26 !important; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 50px; }
+        .grid-container { padding: 80px 20px; max-width: 1200px; margin: 0 auto; text-align: center; width: 100%; }
+        .grid-container h2 { font-size: 2.4rem; color: #0B3C26; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 50px; }
         
         .grid { 
             display: grid; 
@@ -110,6 +120,7 @@
             gap: 30px; 
             width: 100%;
         }
+        
         .card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(11, 60, 38, 0.03); border-top: 4px solid #0B3C26; transition: transform 0.3s; text-align: center; }
         .card:hover { transform: translateY(-5px); border-top-color: #B38728; }
         .card i { font-size: 2.5rem; color: #B38728; margin-bottom: 20px; display: inline-block; }
@@ -123,16 +134,19 @@
         .info-item i { color: #B38728; font-size: 1.3rem; }
         .info-item a { color: #ffffff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
         .info-item a:hover { color: #FCF6BA; text-decoration: underline; }
+        
         footer { background: #062618; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-size: 0.85rem; border-top: 3px solid #B38728; width: 100%; }
         
         @media (max-width: 992px) {
             .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
         }
+        
         @media (max-width: 768px) {
+            html { scroll-padding-top: 140px; }
             .nav-container { flex-direction: column; text-align: center; }
             nav { justify-content: center; gap: 15px; }
-            main { margin-top: 140px; }
-            section { scroll-margin-top: 180px; }
+            main { padding-top: 140px; }
+            .hero-container { padding-top: 60px; }
             .hero-container h1 { font-size: 2.2rem; }
             .hero-container p { font-size: 1.1rem; }
             .grid-container h2 { font-size: 1.8rem; }
@@ -181,7 +195,7 @@
                     <div class="card">
                         <i class="fa-solid fa-arrow-up-right-dots"></i>
                         <h3>Supervisão Estratégica</h3>
-                        <p>Garantia de fidelidade ao conceito original durante a fase de construção e ativação de canais de mediação premium.</p>
+                        <p>Garantia de fidelidade ao conceito original durante a fase de construção e activação de canais de mediação premium.</p>
                     </div>
                 </div>
             </div>
@@ -200,10 +214,3 @@
                 </div>
             </div>
         </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
-    </footer>
-
-</body>
