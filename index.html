@@ -46,14 +46,19 @@
             color: #ffffff;
         }
         main { flex: 1 0 auto; display: flex; flex-direction: column; }
-        .hero-section { scroll-margin-top: 0px; }
-        section { scroll-margin-top: 160px; }
+        
+        .header-spacer {
+            height: 120px;
+            width: 100%;
+            background: #062618;
+        }
+
+        .hero-section { scroll-margin-top: 120px; }
+        section { scroll-margin-top: 150px; }
+        
         .hero { 
             background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), url('https://unsplash.com') no-repeat center center/cover; 
-            padding-top: 220px;
-            padding-bottom: 110px;
-            padding-left: 20px;
-            padding-right: 20px;
+            padding: 80px 20px 80px 20px; 
             text-align: center; 
             color: #ffffff; 
             display: flex; 
@@ -69,8 +74,6 @@
             line-height: 1.2; 
             max-width: 900px;
             color: #ffffff;
-            display: block !important;
-            visibility: visible !important;
         }
         .gold-text { 
             background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%); 
@@ -126,8 +129,10 @@
         @media (max-width: 768px) {
             .nav-container { flex-direction: column; text-align: center; }
             nav { justify-content: center; gap: 15px; }
-            section { scroll-margin-top: 200px; }
-            .hero { padding-top: 240px; padding-bottom: 70px; }
+            .header-spacer { height: 160px; }
+            .hero-section { scroll-margin-top: 160px; }
+            section { scroll-margin-top: 190px; }
+            .hero { padding: 60px 20px; }
             .hero h1 { font-size: 2.2rem; }
             .hero p { font-size: 1.1rem; }
             .grid-container h2 { font-size: 1.8rem; }
@@ -151,6 +156,8 @@
     </header>
 
     <main>
+        <div class="header-spacer"></div>
+
         <div id="inicio" class="hero-section">
             <div class="hero">
                 <h1>Idealizamos o Futuro do Espaço <span class="gold-text">Urbano</span></h1>
@@ -196,8 +203,3 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
-    </footer>
-
-</body>
-</html>
