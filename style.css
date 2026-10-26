@@ -5,8 +5,8 @@
 }
 
 html, body {
-    height: 100vh;
-    overflow: hidden;
+    height: 100vh !important;
+    overflow: hidden !important;
 }
 
 body {
@@ -72,9 +72,10 @@ main {
     flex: 1;
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 100vh;
 }
 
+/* Camadas de Ecrã Inteiro Absolutas com Alinhamento Flex Superior Controlado */
 .page-section {
     position: absolute;
     top: 0;
@@ -86,14 +87,14 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 260px; /* Proteção total contra a altura do teu cabeçalho */
+    padding-top: 240px; /* Margem de segurança robusta para descolar o texto do cabeçalho */
     padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
     
     opacity: 0;
     visibility: hidden;
-    pointer-events: none; /* Impede que cartões invisíveis capturem cliques */
+    pointer-events: none;
     z-index: 1;
     transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
@@ -101,10 +102,11 @@ main {
 .page-section.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; /* Permite cliques apenas na secção ativa */
+    pointer-events: auto;
     z-index: 10;
 }
 
+/* Exceção Hero: Como funde com o header escuro, preserva o alinhamento central */
 #inicio.page-section {
     justify-content: center;
     padding-top: 60px;
@@ -148,6 +150,8 @@ main {
     font-weight: 300;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-hero {
@@ -176,6 +180,7 @@ main {
 .grid-container {
     max-width: 1200px;
     width: 100%;
+    margin: 0 auto;
     text-align: center;
 }
 
@@ -234,6 +239,7 @@ main {
 .contactos-container {
     width: 100%;
     max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
 }
@@ -299,6 +305,12 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1050;
+}
+
+@media (max-width: 992px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
