@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navigationLinks = document.querySelectorAll('nav a, .btn-hero');
     let currentIndex = 0;
     let isTransitioning = false;
-    const transitionDelay = 800; // Tempo em milissegundos (deve bater certo com o transition do CSS)
+    const transitionDelay = 800; // Tempo em milissegundos (sincronizado com o transition do CSS)
 
     // Sincroniza o estado inicial caso haja um hash na URL ao carregar a página
     if (window.location.hash) {
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = targetIndex;
         }
     } else {
-        // Fallback de segurança para garantir a primeira secção ativa
+        // Fallback de segurança corrigido: valida o primeiro elemento da NodeList de forma isolada
         if (sections.length > 0 && !sections[0].classList.contains('active')) {
             sections[0].classList.add('active');
         }
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Event Listener opcional para navegação através das setas do teclado (Melhoria de Acessibilidade)
+    // Event Listener para navegação através das setas do teclado (Acessibilidade)
     window.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowDown' || event.key === 'PageDown') {
             event.preventDefault();
