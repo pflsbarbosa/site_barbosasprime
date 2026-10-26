@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: #F4F7F5;
@@ -66,16 +70,18 @@ nav a.nav-link:hover {
 
 main {
     flex: 1 0 auto;
+    padding-top: 125px;
 }
 
 .fullscreen-section {
-    min-height: 100vh;
+    height: calc(100vh - 125px);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 120px 20px 60px 20px;
+    padding: 20px;
+    overflow: hidden;
 }
 
 .white-bg {
@@ -263,7 +269,7 @@ footer {
     background: #062618;
     color: rgba(255,255,255,0.6);
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 20px;
     font-size: 0.85rem;
     border-top: 3px solid #B38728;
     width: 100%;
@@ -272,6 +278,11 @@ footer {
 @media (max-width: 992px) {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .fullscreen-section {
+        height: auto;
+        min-height: calc(100vh - 125px);
+        padding: 60px 20px;
     }
 }
 
@@ -284,8 +295,13 @@ footer {
         justify-content: center;
         gap: 15px;
     }
+    main {
+        padding-top: 140px;
+    }
     .fullscreen-section {
-        padding-top: 160px;
+        height: auto;
+        min-height: calc(100vh - 140px);
+        padding: 40px 20px;
     }
     .hero-container h1 {
         font-size: 2rem;
