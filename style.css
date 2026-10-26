@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* Força o ecrã a ficar fixo para gerir as camadas via JavaScript */
+/* Garante o bloqueio correto do scroll nativo do sistema */
 html, body {
     height: 100vh;
     overflow: hidden;
@@ -25,7 +25,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000; /* Mantém o cabeçalho sempre acima das secções que transitam */
+    z-index: 1000;
 }
 
 .nav-container {
@@ -70,64 +70,57 @@ nav a.nav-link:hover {
 }
 
 main {
-    flex: 1 0 auto;
-    position: relative; /* Contexto de posicionamento para as secções absolutizadas */
+    flex: 1;
+    position: relative;
     width: 100%;
-    height: 100vh;
+    height: 100%;
 }
 
-/* Transforma as secções em camadas sobrepostas e prepara a animação de opacidade */
+/* CORREÇÃO DO LAYOUT: Flexbox centralizado individual por camada para evitar cortes */
 .page-section {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     box-sizing: border-box;
-    padding-top: 160px;
-    padding-bottom: 60px;
-    padding-left: 20px;
-    padding-right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px 20px; /* Padding ajustado para dar margem ao header e ao footer */
     
-    /* Estado inicial: Escondido e incapaz de capturar cliques */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     z-index: 1;
-    
-    /* Transição de fade suave e controlada */
     transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
 
-/* Ativado dinamicamente pelo JavaScript */
 .page-section.active {
     opacity: 1;
     visibility: visible;
-    pointer-events: auto; /* Reativa os cliques e interações apenas na secção visível */
-    z-index: 10; /* Traz para a frente do plano */
+    pointer-events: auto;
+    z-index: 10;
 }
 
+/* Removemos a imagem genérica do Unsplash para dar consistência à cor institucional */
 .hero-bg {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 125px;
+    background: linear-gradient(rgba(6, 38, 24, 0.95), rgba(11, 60, 38, 0.98));
 }
 
 .white-bg {
     background: #ffffff;
-    border-top: 1px solid rgba(11,60,38,0.05);
 }
 
 .hero-container {
     text-align: center;
     width: 100%;
+    max-width: 900px;
 }
 
 .hero-container h1 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     margin-bottom: 25px;
     font-weight: 700;
     line-height: 1.3;
@@ -177,9 +170,9 @@ main {
 
 .grid-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     text-align: center;
-    width: 100%;
 }
 
 .grid-container h2 {
@@ -188,7 +181,7 @@ main {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .grid {
@@ -202,7 +195,7 @@ main {
     background: #fff;
     padding: 40px 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.03);
+    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.08);
     border-top: 4px solid #0B3C26;
     transition: transform 0.3s;
     text-align: center;
@@ -211,13 +204,6 @@ main {
 .card:hover {
     transform: translateY(-5px);
     border-top-color: #B38728;
-}
-
-.card i {
-    font-size: 2.5rem;
-    color: #B38728;
-    margin-bottom: 20px;
-    display: inline-block;
 }
 
 .card h3 {
@@ -238,11 +224,13 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 
 .contactos-box {
     max-width: 600px;
-    margin: 0 auto;
+    width: 100%;
     background: #062618;
     color: #fff;
     padding: 50px 40px;
@@ -250,7 +238,6 @@ main {
     box-shadow: 0 10px 30px rgba(6,38,24,0.15);
     text-align: center;
     border: 1px solid rgba(179, 135, 40, 0.2);
-    width: 100%;
 }
 
 .contactos-box h2 {
@@ -273,11 +260,6 @@ main {
     gap: 15px;
 }
 
-.info-item i {
-    color: #B38728;
-    font-size: 1.3rem;
-}
-
 .info-item a {
     color: #ffffff;
     text-decoration: none;
@@ -290,18 +272,19 @@ main {
     text-decoration: underline;
 }
 
+/* CORREÇÃO DO FOOTER: Forçado de forma absoluta na base do viewport fixo */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.6);
     text-align: center;
-    padding: 30px 20px;
+    padding: 20px;
     font-size: 0.85rem;
     border-top: 3px solid #B38728;
     width: 100%;
-    position: fixed; /* Prende o footer na base visto que deixámos de ter scroll real */
+    position: fixed;
     bottom: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1100; /* Fica acima do wrapper absoluto das secções */
 }
 
 @media (max-width: 992px) {
@@ -321,9 +304,7 @@ footer {
     }
     .page-section {
         padding-top: 180px;
-    }
-    .hero-bg {
-        padding-top: 140px;
+        padding-bottom: 100px;
     }
     .hero-container h1 {
         font-size: 2rem;
