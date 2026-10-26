@@ -72,24 +72,25 @@ main {
     flex: 1 0 auto;
 }
 
-section {
+/* Garante que cada secção ocupa o ecrã inteiro individualmente */
+.page-section {
     min-height: 100vh;
     width: 100%;
+    box-sizing: border-box;
+    display: block; 
+    padding-top: 160px; /* Margem generosa para o título respirar abaixo do cabeçalho fixo */
+    padding-bottom: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.hero-bg {
+    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
+                url('https://unsplash.com') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
-    scroll-margin-top: 125px;
-}
-
-.hero-section {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
-    scroll-margin-top: 0;
-}
-
-.content-section {
-    padding: 60px 20px;
+    padding-top: 125px; /* Alinhamento central para a introdução */
 }
 
 .white-bg {
@@ -100,11 +101,6 @@ section {
 .hero-container {
     text-align: center;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 125px;
 }
 
 .hero-container h1 {
@@ -129,6 +125,8 @@ section {
     font-weight: 300;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .btn-hero {
@@ -167,7 +165,7 @@ section {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .grid {
@@ -283,10 +281,6 @@ footer {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-    section {
-        min-height: auto;
-        scroll-margin-top: 140px;
-    }
 }
 
 @media (max-width: 768px) {
@@ -297,6 +291,12 @@ footer {
     nav {
         justify-content: center;
         gap: 15px;
+    }
+    .page-section {
+        padding-top: 180px;
+    }
+    .hero-bg {
+        padding-top: 140px;
     }
     .hero-container h1 {
         font-size: 2rem;
