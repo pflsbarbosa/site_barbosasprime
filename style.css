@@ -4,10 +4,10 @@
     box-sizing: border-box;
 }
 
-/* Removido o scroll-behavior smooth nativo para evitar conflito com as camadas */
+/* Força o ecrã a ficar fixo para gerir as camadas via JavaScript */
 html, body {
     height: 100vh;
-    overflow: hidden; /* Tranca a barra de scroll padrão do sistema */
+    overflow: hidden;
 }
 
 body {
@@ -25,7 +25,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000; /* Garante que o menu fica sempre acima das secções animadas */
+    z-index: 1000; /* Mantém o cabeçalho sempre acima das secções que transitam */
 }
 
 .nav-container {
@@ -71,12 +71,12 @@ nav a.nav-link:hover {
 
 main {
     flex: 1 0 auto;
-    position: relative; /* Define o contexto de posicionamento absoluto para as crianças (.page-section) */
+    position: relative; /* Contexto de posicionamento para as secções absolutizadas */
     width: 100%;
     height: 100vh;
 }
 
-/* Transforma as secções em camadas sobrepostas na mesma coordenada do ecrã */
+/* Transforma as secções em camadas sobrepostas e prepara a animação de opacidade */
 .page-section {
     position: absolute;
     top: 0;
@@ -89,20 +89,22 @@ main {
     padding-left: 20px;
     padding-right: 20px;
     
-    /* Estado inicial: Escondido */
+    /* Estado inicial: Escondido e incapaz de capturar cliques */
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
     z-index: 1;
     
-    /* Transição suave do efeito Fade */
+    /* Transição de fade suave e controlada */
     transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
 
-/* Estado Ativo: Injetado via JavaScript */
+/* Ativado dinamicamente pelo JavaScript */
 .page-section.active {
     opacity: 1;
     visibility: visible;
-    z-index: 10; /* Traz a camada ativa para o topo do plano visual */
+    pointer-events: auto; /* Reativa os cliques e interações apenas na secção visível */
+    z-index: 10; /* Traz para a frente do plano */
 }
 
 .hero-bg {
@@ -296,7 +298,7 @@ footer {
     font-size: 0.85rem;
     border-top: 3px solid #B38728;
     width: 100%;
-    position: fixed; /* Mantém o footer fixo na base já que o body não faz scroll vertical */
+    position: fixed; /* Prende o footer na base visto que deixámos de ter scroll real */
     bottom: 0;
     left: 0;
     z-index: 1000;
