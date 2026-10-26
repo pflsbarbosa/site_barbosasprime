@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navigationLinks = document.querySelectorAll('nav a, .btn-hero');
     let currentIndex = 0;
     let isTransitioning = false;
-    const transitionDelay = 800; // Sincronizado com os 0.8s do CSS
+    const transitionDelay = 800; 
 
-    // Sincroniza a hash ao carregar a página
+    // Limpa a herança errada da NodeList na validação de inicialização
     if (window.location.hash) {
         const targetId = window.location.hash;
         const targetIndex = Array.from(sections).findIndex(section => `#${section.id}` === targetId);
@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = targetIndex;
         }
     } else {
-        // CORREÇÃO: Adicionado o índice [0] para ler corretamente a primeira secção da NodeList
         if (sections.length > 0 && !sections[0].classList.contains('active')) {
             sections[0].classList.add('active');
         }
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, transitionDelay);
     }
 
-    // Scroll do Rato
     window.addEventListener('wheel', (event) => {
         if (event.deltaY > 0) {
             changeSection(currentIndex + 1);
@@ -48,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Cliques no Menu e Botões
     navigationLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             event.preventDefault();
@@ -64,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Setas do Teclado
     window.addEventListener('keydown', (event) => {
         if (event.key === 'ArrowDown' || event.key === 'PageDown') {
             event.preventDefault();
