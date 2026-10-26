@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentIndex = targetIndex;
         }
     } else {
-        // Fallback de segurança corrigido: valida o primeiro elemento da NodeList de forma isolada
+        // Correção do índice [0] para ler o primeiro elemento isolado da NodeList
         if (sections.length > 0 && !sections[0].classList.contains('active')) {
             sections[0].classList.add('active');
         }
@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event Listener para capturar e processar o Scroll do Rato (Wheel)
     window.addEventListener('wheel', (event) => {
-        // deltaY > 0 significa scroll para baixo (avançar), < 0 significa scroll para cima (recuar)
         if (event.deltaY > 0) {
             changeSection(currentIndex + 1);
         } else {
@@ -53,14 +52,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, { passive: true });
 
-    // Event Listener para capturar cliques no Menu de Navegação e Botões Hero
+    // Event Listener corrigido usando referências explícitas à variável 'link'
     navigationLinks.forEach(link => {
         link.addEventListener('click', function(event) {
-            const targetId = this.getAttribute('href');
+            event.preventDefault();
+            const targetId = link.getAttribute('href');
 
             if (targetId && targetId.startsWith('#')) {
-                event.preventDefault();
-                
                 const targetIndex = Array.from(sections).findIndex(section => `#${section.id}` === targetId);
                 
                 if (targetIndex !== -1 && targetIndex !== currentIndex) {
