@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-/* Bloqueio absoluto do scroll do sistema */
+/* Bloqueio absoluto do scroll nativo do sistema */
 html, body {
     height: 100vh;
     overflow: hidden;
@@ -76,7 +76,7 @@ main {
     height: 100%;
 }
 
-/* RESOLUÇÃO DO TEXTO ESCONDIDO: Alinhamento vertical com compensação do Header */
+/* REESTRUTURAÇÃO DO CONTAINER DAS SECÇÕES */
 .page-section {
     position: absolute;
     top: 0;
@@ -87,11 +87,9 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centra o conteúdo perfeitamente no espaço vertical */
-    
-    /* Compensação matemática: o padding-top empurra o texto para fora da zona do header */
-    padding-top: 140px; 
-    padding-bottom: 80px;
+    justify-content: flex-start; /* Alinha o conteúdo a partir do topo para controlar o espaço abaixo do header */
+    padding-top: 260px; /* Margem de segurança generosa para libertar os títulos do header */
+    padding-bottom: 100px;
     padding-left: 20px;
     padding-right: 20px;
     
@@ -107,6 +105,12 @@ main {
     visibility: visible;
     pointer-events: auto;
     z-index: 10;
+}
+
+/* EXCEÇÃO PARA A HERO (INÍCIO): Como o fundo funde com o header, mantém-se o alinhamento centralizado */
+#inicio.page-section {
+    justify-content: center;
+    padding-top: 60px;
 }
 
 .hero-bg {
@@ -187,7 +191,7 @@ main {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 40px; /* Reduzido ligeiramente para dar mais espaço vertical */
+    margin-bottom: 50px;
 }
 
 .grid {
@@ -319,10 +323,12 @@ footer {
         justify-content: center;
         gap: 15px;
     }
-    /* Aumenta o recuo no telemóvel porque o menu passa a ocupar duas linhas */
     .page-section {
-        padding-top: 200px; 
+        padding-top: 300px; /* Aumenta a proteção no telemóvel devido ao menu expandido */
         padding-bottom: 100px;
+    }
+    #inicio.page-section {
+        padding-top: 140px;
     }
     .hero-container h1 {
         font-size: 2rem;
