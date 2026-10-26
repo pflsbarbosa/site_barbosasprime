@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const alturaCabecalho = cabecalho ? cabecalho.offsetHeight : 0;
                     
                     const posicaoElemento = elementoAlvo.getBoundingClientRect().top + window.scrollY;
-                    const posicaoFinal = idAlvo === '#inicio' ? 0 : (posicaoElemento - alturaCabecalho - 15);
+                    const posicaoFinal = idAlvo === '#inicio' ? 0 : (posicaoElemento - alturaCabecalho);
 
                     window.scrollTo({
                         top: posicaoFinal,
