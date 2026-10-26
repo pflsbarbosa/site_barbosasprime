@@ -17,8 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const cabecalho = document.getElementById('site-header');
                     const alturaCabecalho = cabecalho ? cabecalho.offsetHeight : 0;
                     
-                    const posicaoElemento = elementoAlvo.getBoundingClientRect().top + window.scrollY;
-                    const posicaoFinal = idAlvo === '#inicio' ? 0 : (posicaoElemento - alturaCabecalho);
+                    const posicaoFinal = idAlvo === '#inicio' ? 0 : (elementoAlvo.offsetTop - alturaCabecalho);
 
                     window.scrollTo({
                         top: posicaoFinal,
