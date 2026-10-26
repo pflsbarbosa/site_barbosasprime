@@ -1,15 +1,12 @@
 * {
-    margin: 0 !important;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Força a limpeza das margens padrão do navegador */
 html, body {
-    height: 100vh !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
+    height: 100vh;
+    overflow: hidden;
 }
 
 body {
@@ -24,16 +21,15 @@ header {
     background: #062618;
     padding: 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    position: fixed !important;
-    width: 100% !important;
-    top: 0 !important;
-    left: 0 !important;
-    z-index: 1000 !important;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
 }
 
 .nav-container {
     max-width: 1200px;
-    margin: 0 auto !important;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -74,50 +70,44 @@ nav a.nav-link:hover {
 
 main {
     flex: 1;
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-/* FORÇA O COMPORTAMENTO DE CAMADA INDEPENDENTE */
 .page-section {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     box-sizing: border-box;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important; /* Move os textos para o topo útil */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 260px; /* Proteção total contra a altura do teu cabeçalho */
+    padding-bottom: 100px;
+    padding-left: 20px;
+    padding-right: 20px;
     
-    /* Pushes dinâmicos para libertar o conteúdo de baixo do header */
-    padding-top: 260px !important; 
-    padding-bottom: 100px !important;
-    padding-left: 20px !important;
-    padding-right: 20px !important;
-    
-    /* Estado inicial forçado: Totalmente invisível */
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-    z-index: 1 !important;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none; /* Impede que cartões invisíveis capturem cliques */
+    z-index: 1;
+    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
 }
 
-/* SOBREPÕE O ESTADO INICIAL APENAS NA CAMADA ATIVA */
 .page-section.active {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    z-index: 10 !important;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Permite cliques apenas na secção ativa */
+    z-index: 10;
 }
 
-/* AJUSTE EXCLUSIVO PARA O HERO (INÍCIO) */
 #inicio.page-section {
-    justify-content: center !important;
-    padding-top: 60px !important;
+    justify-content: center;
+    padding-top: 60px;
 }
 
 .hero-bg {
@@ -305,16 +295,10 @@ footer {
     font-size: 0.85rem;
     border-top: 3px solid #B38728;
     width: 100%;
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    z-index: 1050 !important;
-}
-
-@media (max-width: 992px) {
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    }
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
 }
 
 @media (max-width: 768px) {
@@ -327,11 +311,11 @@ footer {
         gap: 15px;
     }
     .page-section {
-        padding-top: 320px !important; 
-        padding-bottom: 100px !important;
+        padding-top: 320px;
+        padding-bottom: 100px;
     }
     #inicio.page-section {
-        padding-top: 140px !important;
+        padding-top: 140px;
     }
     .hero-container h1 {
         font-size: 2rem;
