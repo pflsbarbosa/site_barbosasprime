@@ -3,28 +3,29 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
     }
 
-    const linksDeNavegacao = document.querySelectorAll('nav a, .btn-hero');
+    const navigationLinks = document.querySelectorAll('nav a, .btn-hero');
 
-    linksDeNavegacao.forEach(link => {
-        link.addEventListener('click', function(evento) {
-            const idAlvo = this.getAttribute('href');
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            const targetId = this.getAttribute('href');
 
-            if (idAlvo && idAlvo.startsWith('#')) {
-                evento.preventDefault();
+            if (targetId && targetId.startsWith('#')) {
+                event.preventDefault();
                 
-                const elementoAlvo = document.querySelector(idAlvo);
-                if (elementoAlvo) {
-                    const cabecalho = document.getElementById('site-header');
-                    const alturaCabecalho = cabecalho ? cabecalho.offsetHeight : 0;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerElement = document.getElementById('site-header');
+                    const headerHeight = headerElement ? headerElement.offsetHeight : 0;
                     
-                    const posicaoFinal = idAlvo === '#inicio' ? 0 : (elementoAlvo.offsetTop - alturaCabecalho);
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                    const finalPosition = targetId === '#inicio' ? 0 : (elementPosition - headerHeight);
 
                     window.scrollTo({
-                        top: posicaoFinal,
+                        top: finalPosition,
                         behavior: 'smooth'
                     });
 
-                    history.pushState(null, null, idAlvo);
+                    history.pushState(null, null, targetId);
                 }
             }
         });
