@@ -13,7 +13,6 @@ body {
     min-height: 100vh;
 }
 
-/* --- Cabeçalho Fixo --- */
 header {
     background: #062618;
     padding: 20px;
@@ -48,7 +47,6 @@ nav {
     gap: 25px;
 }
 
-/* --- Links de Navegação --- */
 nav a.nav-link {
     background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
     -webkit-background-clip: text;
@@ -66,18 +64,27 @@ nav a.nav-link:hover {
     color: #ffffff;
 }
 
-/* --- Elementos Globais da Secção --- */
 main {
     flex: 1 0 auto;
+    padding-top: 85px; 
 }
 
-.fullscreen-section {
-    min-height: 100vh;
+.hero-section {
+    min-height: calc(100vh - 85px);
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
+    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
+                url('https://unsplash.com') no-repeat center center/cover;
+}
+
+.content-section {
+    width: 100%;
+    padding: 60px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .white-bg {
@@ -85,14 +92,8 @@ main {
     border-top: 1px solid rgba(11,60,38,0.05);
 }
 
-/* --- Secção Início (Hero) --- */
-#inicio {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
-}
-
 .hero-container {
-    padding: 120px 20px 40px 20px;
+    padding: 40px 20px;
     text-align: center;
     width: 100%;
 }
@@ -123,7 +124,6 @@ main {
     margin-right: auto;
 }
 
-/* --- Botões Dourados --- */
 .btn-hero, .btn-menu {
     display: inline-block;
     padding: 16px 35px;
@@ -152,9 +152,7 @@ main {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* --- Secção O Nosso Modelo --- */
 .grid-container {
-    padding: 120px 20px 60px 20px;
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
@@ -167,7 +165,7 @@ main {
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 }
 
 .grid {
@@ -213,7 +211,12 @@ main {
     color: #4A5550;
 }
 
-/* --- Secção Contactos --- */
+.contactos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .contactos-box {
     max-width: 600px;
     margin: 0 auto;
@@ -264,7 +267,6 @@ main {
     text-decoration: underline;
 }
 
-/* --- Rodapé --- */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.6);
@@ -275,7 +277,6 @@ footer {
     width: 100%;
 }
 
-/* --- Media Queries --- */
 @media (max-width: 992px) {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -291,14 +292,17 @@ footer {
         justify-content: center;
         gap: 15px;
     }
-    .hero-container {
-        padding-top: 160px;
+    main {
+        padding-top: 140px;
+    }
+    .hero-section {
+        min-height: calc(100vh - 140px);
     }
     .hero-container h1 {
         font-size: 2rem;
     }
-    .grid-container, .fullscreen-section {
-        padding-top: 140px;
+    .content-section {
+        padding: 40px 20px;
     }
     .grid-container h2 {
         font-size: 1.8rem;
