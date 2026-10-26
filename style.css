@@ -66,25 +66,16 @@ nav a.nav-link:hover {
 
 main {
     flex: 1 0 auto;
-    padding-top: 85px; 
 }
 
-.hero-section {
-    min-height: calc(100vh - 85px);
+.fullscreen-section {
+    min-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
-}
-
-.content-section {
-    width: 100%;
-    padding: 60px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    box-sizing: border-box;
+    padding: 120px 20px 60px 20px;
 }
 
 .white-bg {
@@ -92,10 +83,18 @@ main {
     border-top: 1px solid rgba(11,60,38,0.05);
 }
 
+#inicio {
+    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
+                url('https://unsplash.com') no-repeat center center/cover;
+}
+
 .hero-container {
-    padding: 40px 20px;
     text-align: center;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-container h1 {
@@ -120,11 +119,9 @@ main {
     font-weight: 300;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.btn-hero, .btn-menu {
+.btn-hero {
     display: inline-block;
     padding: 16px 35px;
     background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
@@ -140,12 +137,7 @@ main {
     transition: all 0.3s ease;
 }
 
-.btn-menu {
-    padding: 10px 20px;
-    font-size: 0.85rem;
-}
-
-.btn-hero:hover, .btn-menu:hover {
+.btn-hero:hover {
     background: #ffffff;
     color: #062618;
     transform: translateY(-2px);
@@ -292,17 +284,11 @@ footer {
         justify-content: center;
         gap: 15px;
     }
-    main {
-        padding-top: 140px;
-    }
-    .hero-section {
-        min-height: calc(100vh - 140px);
+    .fullscreen-section {
+        padding-top: 160px;
     }
     .hero-container h1 {
         font-size: 2rem;
-    }
-    .content-section {
-        padding: 40px 20px;
     }
     .grid-container h2 {
         font-size: 1.8rem;
