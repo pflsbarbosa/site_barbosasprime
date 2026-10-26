@@ -7,189 +7,33 @@
     <meta name="description" content="Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.">
     <link rel="icon" type="image/png" href="https://githubusercontent.com">
     <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        html { 
-            scroll-behavior: smooth; 
-            scroll-padding-top: 85px;
-        }
-        
-        body { 
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #F4F7F5; 
-            color: #2C3E35; 
-            display: flex; 
-            flex-direction: column; 
-            min-height: 100vh; 
-        }
-        
-        header { 
-            background: #062618; 
-            padding: 20px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
-            position: fixed; 
-            width: 100%; 
-            top: 0; 
-            z-index: 1000; 
-        }
-        
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
-        .logo img { width: 100%; max-width: 240px; height: auto; display: block; }
-        
-        nav { display: flex; flex-wrap: wrap; gap: 25px; }
-        nav a { 
-            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-            text-decoration: none; 
-            font-weight: 700; 
-            font-size: 0.95rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1.5px; 
-            transition: all 0.3s ease; 
-        }
-        nav a:hover { 
-            -webkit-text-fill-color: #ffffff; 
-            color: #ffffff;
-        }
-        
-        main { flex: 1 0 auto; display: flex; flex-direction: column; padding-top: 85px; }
-
-        section {
-            min-height: calc(100vh - 85px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-        }
-
-        #inicio {
-            background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), url('https://unsplash.com') no-repeat center center/cover;
-        }
-
-        .hero-container {
-            padding: 40px 20px;
-            text-align: center;
-            width: 100%;
-        }
-        
-        .hero-container h1 { 
-            font-size: 2.2rem; 
-            margin-bottom: 25px; 
-            font-weight: 700; 
-            line-height: 1.3; 
-            color: #ffffff;
-        }
-        
-        .gold-gradient {
-            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-        
-        .hero-container p { 
-            font-size: 1.2rem; 
-            margin-bottom: 40px; 
-            max-width: 800px; 
-            font-weight: 300; 
-            line-height: 1.6; 
-            color: rgba(255, 255, 255, 0.95);
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn { 
-            display: inline-block; 
-            padding: 16px 35px; 
-            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%); 
-            color: #062618; 
-            border: none; 
-            text-transform: uppercase; 
-            font-weight: 750; 
-            font-size: 0.9rem; 
-            letter-spacing: 1.5px; 
-            border-radius: 4px; 
-            text-decoration: none; 
-            box-shadow: 0 4px 15px rgba(179, 135, 40, 0.3); 
-            transition: all 0.3s ease; 
-        }
-        .btn:hover { 
-            background: #ffffff; 
-            color: #062618; 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2); 
-        }
-        
-        .grid-container { padding: 40px 20px; max-width: 1200px; margin: 0 auto; text-align: center; width: 100%; }
-        .grid-container h2 { font-size: 2.4rem; color: #0B3C26; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; margin-bottom: 50px; }
-        
-        .grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 30px; 
-            width: 100%;
-        }
-        
-        .card { background: #fff; padding: 40px 30px; border-radius: 8px; box-shadow: 0 4px 20px rgba(11, 60, 38, 0.03); border-top: 4px solid #0B3C26; transition: transform 0.3s; text-align: center; }
-        .card:hover { transform: translateY(-5px); border-top-color: #B38728; }
-        .card i { font-size: 2.5rem; color: #B38728; margin-bottom: 20px; display: inline-block; }
-        .card h3 { margin-bottom: 15px; color: #0B3C26; font-size: 1.3rem; font-weight: 600; }
-        .card p { font-weight: 300; font-size: 1rem; line-height: 1.6; color: #4A5550; }
-        
-        #contactos { background: #fff; border-top: 1px solid rgba(11,60,38,0.05); }
-        .contactos-box { max-width: 600px; margin: 0 auto; background: #062618; color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 10px 30px rgba(6,38,24,0.15); text-align: center; border: 1px solid rgba(179, 135, 40, 0.2); width: 100%; }
-        .contactos-box h2 { background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 30px; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
-        .info-item { display: flex; align-items: center; justify-content: center; margin-bottom: 25px; font-size: 1.15rem; gap: 15px; }
-        .info-item i { color: #B38728; font-size: 1.3rem; }
-        .info-item a { color: #ffffff; text-decoration: none; font-weight: 500; transition: color 0.3s; }
-        .info-item a:hover { color: #FCF6BA; text-decoration: underline; }
-        
-        footer { background: #062618; color: rgba(255,255,255,0.6); text-align: center; padding: 40px 20px; font-size: 0.85rem; border-top: 3px solid #B38728; width: 100%; }
-        
-        @media (max-width: 992px) {
-            .grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-        }
-        
-        @media (max-width: 768px) {
-            html { scroll-padding-top: 140px; }
-            section { min-height: calc(100vh - 140px); }
-            .nav-container { flex-direction: column; text-align: center; }
-            nav { justify-content: center; gap: 15px; }
-            main { padding-top: 140px; }
-            .hero-container h1 { font-size: 1.8rem; }
-            .hero-container p { font-size: 1.1rem; }
-            .grid-container h2 { font-size: 1.8rem; }
-            .contactos-box { padding: 30px 20px; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
+    <header id="site-header">
         <div class="nav-container">
             <div class="logo">
-                <img src="https://raw.githubusercontent.com/pflsbarbosa/site_barbosasprime/refs/heads/main/logo.png" alt="Barbosas Prime">
+                <img src="https://githubusercontent.com" alt="Barbosas Prime">
             </div>
             <nav>
-                <a href="#inicio">Início</a>
-                <a href="#modelo">O Modelo</a>
-                <a href="#contactos">Contactos</a>
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#modelo" class="nav-link">O Modelo</a>
+                <a href="#contactos" class="nav-link btn-menu">Apresentar Oportunidade</a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="inicio">
+        <section id="inicio" class="fullscreen-section">
             <div class="hero-container">
                 <h1>Idealizamos o Futuro do Espaço <span class="gold-gradient">Urbano</span></h1>
                 <p>Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.</p>
-                <a href="#contactos" class="btn">Apresentar Oportunidade</a>
+                <a href="#contactos" class="btn-hero">Apresentar Oportunidade</a>
             </div>
         </section>
 
-        <section id="modelo">
+        <section id="modelo" class="fullscreen-section">
             <div class="grid-container">
                 <h2>O Nosso Modelo</h2>
                 <div class="grid">
@@ -206,13 +50,13 @@
                     <div class="card">
                         <i class="fa-solid fa-arrow-up-right-dots"></i>
                         <h3>Supervisão Estratégica</h3>
-                        <p>Garantia de fidelidade ao conceito original durante a fase de construção e activação de canais de mediação premium.</p>
+                        <p>Garantia de fidelidade ao conceito original durante a fase de construção e ativação de canais de mediação premium.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contactos">
+        <section id="contactos" class="fullscreen-section white-bg">
             <div class="contactos-box">
                 <h2>Parcerias Estratégicas</h2>
                 <div class="info-item">
@@ -220,3 +64,17 @@
                     <a href="mailto:geral@barbosasprime.com">geral@barbosasprime.com</a>
                 </div>
                 <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Portugal</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
