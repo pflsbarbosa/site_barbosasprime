@@ -17,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const headerElement = document.getElementById('site-header');
                     const headerHeight = headerElement ? headerElement.offsetHeight : 0;
                     
+                    // Medição matemática limpa a partir do topo absoluto da página
                     const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
                     const finalPosition = targetId === '#inicio' ? 0 : (elementPosition - headerHeight);
 
