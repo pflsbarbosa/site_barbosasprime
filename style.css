@@ -70,28 +70,31 @@ nav a.nav-link:hover {
 
 main {
     flex: 1 0 auto;
-    padding-top: 125px;
 }
 
-.fullscreen-section {
-    height: calc(100vh - 125px);
+section {
+    min-height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 20px;
-    overflow: hidden;
+    scroll-margin-top: 125px;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
+                url('https://unsplash.com') no-repeat center center/cover;
+    scroll-margin-top: 0;
+}
+
+.content-section {
+    padding: 60px 20px;
 }
 
 .white-bg {
     background: #ffffff;
     border-top: 1px solid rgba(11,60,38,0.05);
-}
-
-#inicio {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
 }
 
 .hero-container {
@@ -101,6 +104,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 125px;
 }
 
 .hero-container h1 {
@@ -279,10 +283,9 @@ footer {
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
-    .fullscreen-section {
-        height: auto;
-        min-height: calc(100vh - 125px);
-        padding: 60px 20px;
+    section {
+        min-height: auto;
+        scroll-margin-top: 140px;
     }
 }
 
@@ -294,14 +297,6 @@ footer {
     nav {
         justify-content: center;
         gap: 15px;
-    }
-    main {
-        padding-top: 140px;
-    }
-    .fullscreen-section {
-        height: auto;
-        min-height: calc(100vh - 140px);
-        padding: 40px 20px;
     }
     .hero-container h1 {
         font-size: 2rem;
