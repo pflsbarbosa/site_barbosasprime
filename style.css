@@ -76,10 +76,10 @@ nav a.nav-link.active {
 main {
     flex: 1;
     width: 100%;
-    margin-top: 90px; /* Compensa exatamente a altura do header fixo */
+    margin-top: 90px; /* Compensa a altura do header fixo */
 }
 
-/* Secções geridas por clique */
+/* Oculta todas as secções por defeito */
 .page-section {
     display: none;
     width: 100%;
@@ -89,6 +89,7 @@ main {
     background: #F4F7F5;
 }
 
+/* Mostra apenas a secção ativa quando clicada */
 .page-section.active {
     display: flex;
     flex-direction: column;
@@ -96,12 +97,11 @@ main {
     justify-content: center;
 }
 
-/* Secção Hero perfeitamente esticada sem falhas no fundo */
+/* Secção Hero com fundo escuro e imagem bem esticada */
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
     background-size: cover !important;
-    min-height: calc(100vh - 90px);
 }
 
 .white-bg {
@@ -116,7 +116,7 @@ main {
 }
 
 .hero-container h1 {
-    font-size: 2.3rem; /* Tamanho seguro que evita cortes em ecrãs de 16'' */
+    font-size: 2.3rem; /* Tamanho seguro para portáteis de 16'' e ecrãs grandes */
     margin-bottom: 20px;
     font-weight: 700;
     line-height: 1.25;
@@ -280,7 +280,6 @@ main {
     text-decoration: underline;
 }
 
-/* Rodapé com a barra superior em dourado sólido bem visível em qualquer ecrã */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
@@ -291,7 +290,6 @@ footer {
     width: 100%;
 }
 
-/* Responsividade para ecrãs menores */
 @media (max-width: 992px) {
     .grid {
         grid-template-columns: 1fr;
