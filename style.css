@@ -74,21 +74,19 @@ header {
     animation: logoZoomPulse 3.5s infinite ease-in-out;
 }
 
-/* Efeito Hover: se o utilizador passar o rato no logo */
 .logo img:hover {
     transform: scale(1.12);
     filter: drop-shadow(0 0 14px rgba(253, 246, 186, 0.7));
 }
 
-/* Animação de Zoom Marcado e Brilho Dourado */
 @keyframes logoZoomPulse {
     0%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 0 0px transparent);
     }
     50% {
-        transform: scale(1.08); /* Zoom bem visível */
-        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6)); /* Brilho dourado ao expandir */
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
     }
 }
 
@@ -216,3 +214,213 @@ main {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    text-align: center;
+}
+
+.grid-container h2 {
+    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+    color: #0B3C26;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+.card {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
+    border-top: 4px solid #0B3C26;
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-top-color: #B38728;
+}
+
+.card i {
+    font-size: 1.8rem;
+    color: #B38728;
+    margin-bottom: 12px;
+    display: inline-block;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    color: #0B3C26;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card p {
+    font-weight: 300;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #4A5550;
+}
+
+/* SECÇÃO CONTACTOS */
+.white-bg {
+    background: #ffffff;
+}
+
+.contactos-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactos-box {
+    max-width: 550px;
+    width: 100%;
+    background: #062618;
+    color: #fff;
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(6,38,24,0.15);
+    text-align: center;
+    border: 1px solid rgba(179, 135, 40, 0.2);
+}
+
+.contactos-box h2 {
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    gap: 12px;
+}
+
+.info-item i {
+    color: #B38728;
+    font-size: 1.2rem;
+}
+
+.info-item a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.info-item a:hover {
+    color: #FCF6BA;
+    text-decoration: underline;
+}
+
+/* ==========================================
+   3. RODAPÉ FIXO COM BARRINHA DOURADA
+   ================================---------- */
+footer {
+    background: #062618;
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    height: var(--footer-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    border-top: none;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold-gradient);
+}
+
+/* ==========================================
+   RESPONSIVIDADE PARA TELEMÓVEL
+   ================================---------- */
+@media (max-width: 768px) {
+    html, body {
+        overflow: auto;
+    }
+
+    :root {
+        --header-height: 140px;
+        --footer-height: 50px;
+    }
+
+    header {
+        height: var(--header-height);
+        padding: 12px 15px;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        max-width: 165px;
+        max-height: 48px;
+        /* Mantém a mesma animação de pulso no telemóvel */
+        transform-origin: left center;
+        animation: logoZoomPulse 3.5s infinite ease-in-out;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    main {
+        margin-top: var(--header-height);
+        height: auto;
+        min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    }
+
+    .page-section {
+        position: relative;
+        height: auto;
+        min-height: 100%;
+        padding: 30px 15px 85px 15px;
+        justify-content: flex-start;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+}
