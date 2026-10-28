@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   1. HEADER FIXO E LOGÓTIPO COM BRILHO METÁLICO
+   1. HEADER FIXO E ANIMAÇÃO DO LOGÓTIPO
    ================================---------- */
 header {
     background: #062618;
@@ -60,7 +60,7 @@ header {
 .logo-wrapper {
     position: relative;
     display: inline-block;
-    overflow: hidden; /* Contém o brilho estritamente dentro da área do logo */
+    overflow: hidden;
 }
 
 .logo img {
@@ -72,40 +72,80 @@ header {
     object-fit: contain;
 }
 
-/* Efeito de brilho metálico (Shimmer) no logótipo */
+/* FEIXE DE LUZ METÁLICA (Focado no texto: da letra B à letra E) */
+.logo-wrapper::before {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: -30%;
+    width: 35%;
+    height: 55%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.65) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    pointer-events: none;
+    animation: sweepTextGold 4.5s infinite ease-in-out;
+}
+
+/* ESTRELA CINTILANTE (Surge na ponta da letra 'E' no final da luz) */
 .logo-wrapper::after {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -75%;
-    width: 50%;
-    height: 200%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.45),
-        transparent
-    );
-    transform: rotate(25deg);
+    bottom: 6px;
+    right: 4px;
+    width: 11px;
+    height: 11px;
+    background: radial-gradient(circle, #FCF6BA 30%, #BF953F 70%);
+    clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
     pointer-events: none;
-    animation: logoShimmer 4s infinite ease-in-out;
+    animation: starEndSparkle 4.5s infinite ease-in-out;
 }
 
-@keyframes logoShimmer {
-    0% {
-        left: -75%;
+@keyframes sweepTextGold {
+    0%, 10% {
+        left: -30%;
         opacity: 0;
     }
-    20% {
+    15% {
         opacity: 1;
     }
-    40% {
-        left: 125%;
+    45% {
+        left: 90%;
         opacity: 1;
+    }
+    50% {
+        left: 95%;
+        opacity: 0;
     }
     100% {
-        left: 125%;
+        left: 95%;
         opacity: 0;
+    }
+}
+
+@keyframes starEndSparkle {
+    0%, 43% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    48% {
+        opacity: 1;
+        transform: scale(1.3) rotate(45deg);
+        filter: drop-shadow(0 0 5px #FCF6BA);
+    }
+    56% {
+        opacity: 0;
+        transform: scale(0) rotate(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(90deg);
     }
 }
 
