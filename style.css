@@ -1,51 +1,55 @@
-/* Garante que o fundo verde escuro ocupa 100% e evita qualquer nesga de cor indesejada */
-.page-section {
-    display: none;
+header {
+    background: #062618;
+    padding: 15px 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    position: fixed;
     width: 100%;
-    min-height: calc(100vh - 90px); /* Ocupa exatamente o espaço abaixo do header */
-    padding: 40px 20px;
-    box-sizing: border-box;
-    background: #062618; 
+    top: 0;
+    z-index: 1000;
 }
 
-.page-section.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Secção Hero com imagem esticada a 100% cobrir perfeitamente o espaço */
-.hero-bg {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
-    background-size: cover !important;
-    min-height: calc(100vh - 90px);
-}
-
-.hero-container {
-    text-align: center;
-    width: 100%;
-    max-width: 1000px;
+.nav-container {
+    max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 15px;
 }
 
-/* Título ajustado com tamanho seguro para portáteis de 16'' e ecrãs grandes, evitando cortes */
-.hero-container h1 {
-    font-size: 2.3rem; /* Tamanho fixo equilibrado que não estica demais em 16'' */
-    margin-bottom: 20px;
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 100%;
+    max-width: 180px; /* Reduzido ligeiramente para garantir que nunca escapa do header */
+    height: auto;
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a.nav-link {
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
     font-weight: 700;
-    line-height: 1.25;
-    color: #ffffff;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
 }
 
-.hero-container p {
-    font-size: 1.15rem;
-    margin-bottom: 30px;
-    max-width: 800px;
-    font-weight: 300;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.95);
-    margin-left: auto;
-    margin-right: auto;
+nav a.nav-link:hover,
+nav a.nav-link.active {
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
 }
