@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   1. HEADER FIXO E ANIMAÇÃO ZOOM NO LOGÓTIPO
+   1. HEADER FIXO E ANIMAÇÃO ZOOM SUAVE NO LOGÓTIPO
    ================================---------- */
 header {
     background: #062618;
@@ -59,10 +59,10 @@ header {
 
 .logo-wrapper {
     display: inline-block;
-    overflow: visible; /* Permite que o logo cresça dinamicamente para fora dos limites sem cortar */
+    overflow: visible;
 }
 
-/* IMAGEM DO LOGÓTIPO COM ZOOM AMPLO E PRESENÇA VISUAL */
+/* IMAGEM DO LOGÓTIPO COM ZOOM SUAVE E MAJESTOSO */
 .logo img {
     width: 100%;
     max-width: clamp(200px, 18vw, 320px);
@@ -72,23 +72,24 @@ header {
     object-fit: contain;
     transform-origin: left center;
     transition: transform 0.4s ease, filter 0.4s ease;
-    animation: logoZoomPulse 3.5s infinite ease-in-out;
+    /* Ciclo mais longo (7 segundos) para um efeito relaxado e premium */
+    animation: logoZoomPulse 7s infinite ease-in-out;
 }
 
 .logo img:hover {
-    transform: scale(1.22);
+    transform: scale(1.18);
     filter: drop-shadow(0 0 16px rgba(253, 246, 186, 0.8));
 }
 
-/* Animação com um zoom mais forte e imponente */
+/* Animação com transição lenta, elegante e sem cansar a vista */
 @keyframes logoZoomPulse {
     0%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 0 0px transparent);
     }
     50% {
-        transform: scale(1.18); /* Zoom notório e elegante */
-        filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.7)); /* Brilho dourado ao expandir */
+        transform: scale(1.12); /* Crescimento moderado, imponente mas sem exageros */
+        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5)); /* Brilho dourado suave */
     }
 }
 
@@ -392,7 +393,7 @@ footer::before {
         max-width: 165px;
         max-height: 48px;
         transform-origin: left center;
-        animation: logoZoomPulse 3.5s infinite ease-in-out;
+        animation: logoZoomPulse 7s infinite ease-in-out;
     }
 
     nav {
