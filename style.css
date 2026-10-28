@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   1. HEADER FIXO E LOGÓTIPO COM BRILHO METÁLICO
+   1. HEADER FIXO E LOGÓTIPO COM BRILHO METÁLICO INTERNO
    ================================---------- */
 header {
     background: #062618;
@@ -55,13 +55,17 @@ header {
 .logo {
     display: flex;
     align-items: center;
+}
+
+/* Contentor do logótipo com máscara para o brilho passar SÓ na imagem */
+.logo-wrapper {
     position: relative;
-    overflow: hidden; /* Contém o efeito de brilho metálico */
+    display: inline-block;
+    overflow: hidden;
 }
 
 .logo img {
     width: 100%;
-    /* Logótipo horizontal com grande destaque e proporção imponente */
     max-width: clamp(200px, 18vw, 290px);
     height: auto;
     max-height: 58px;
@@ -69,8 +73,8 @@ header {
     object-fit: contain;
 }
 
-/* Animação subtil de brilho metálico (Shimmer) no logótipo */
-.logo::after {
+/* Efeito de brilho metálico restrito estritamente à silhueta do logótipo */
+.logo-wrapper::after {
     content: '';
     position: absolute;
     top: -50%;
@@ -79,18 +83,19 @@ header {
     height: 200%;
     background: linear-gradient(
         60deg,
-        transparent 30%,
-        rgba(255, 252, 186, 0.25) 50%,
-        transparent 70%
+        transparent 40%,
+        rgba(255, 255, 255, 0.6) 50%,
+        transparent 60%
     );
     transform: rotate(30deg) translateX(-100%);
-    animation: shimmer 6s infinite;
+    animation: shimmerLogo 4.5s infinite;
     pointer-events: none;
+    mix-blend-mode: overlay; /* Mistura o brilho com o dourado da imagem sem afetar o fundo verde */
 }
 
-@keyframes shimmer {
+@keyframes shimmerLogo {
     0% { transform: rotate(30deg) translateX(-100%); }
-    20% { transform: rotate(30deg) translateX(100%); }
+    25% { transform: rotate(30deg) translateX(100%); }
     100% { transform: rotate(30deg) translateX(100%); }
 }
 
@@ -353,11 +358,9 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1000;
-    border-top: none; /* Remove borda simples */
-    position: fixed;
+    border-top: none;
 }
 
-/* Cria a barrinha superior do footer com o gradiente dourado exato */
 footer::before {
     content: '';
     position: absolute;
@@ -373,11 +376,11 @@ footer::before {
    ================================---------- */
 @media (max-width: 768px) {
     html, body {
-        overflow: auto; /* Permite scroll natural completo no telemóvel sem prender cartões */
+        overflow: auto; /* Permite scroll livre no telemóvel */
     }
 
     :root {
-        --header-height: 130px;
+        --header-height: 140px;
         --footer-height: 50px;
     }
 
@@ -393,7 +396,7 @@ footer::before {
     }
 
     .logo img {
-        max-width: 180px;
+        max-width: 165px;
         max-height: 48px;
     }
 
@@ -408,12 +411,12 @@ footer::before {
         min-height: calc(100vh - var(--header-height) - var(--footer-height));
     }
 
-    /* Padding inferior largo no telemóvel para o 3º cartão nunca ficar tapado pelo footer fixo */
+    /* Padding superior extra (padding-top: 25px) garante que o título "O NOSSO MODELO" nunca fica tapado pelo cabeçalho no telemóvel */
     .page-section {
         position: relative;
         height: auto;
         min-height: 100%;
-        padding: 20px 15px 70px 15px;
+        padding: 30px 15px 85px 15px;
         justify-content: flex-start;
     }
 
