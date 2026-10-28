@@ -17,9 +17,7 @@ body {
     min-height: 100vh;
 }
 
-/* ==========================================
-   HEADER FIXO E ESTÁVEL EM QUALQUER ECRÃ
-   ================================---------- */
+/* HEADER FIXO ROBUSTO */
 header {
     background: #062618;
     padding: 15px 30px;
@@ -28,9 +26,6 @@ header {
     width: 100%;
     top: 0;
     z-index: 1000;
-    height: 85px; /* Altura fixa rigorosa para evitar sobreposições */
-    display: flex;
-    align-items: center;
 }
 
 .nav-container {
@@ -49,7 +44,7 @@ header {
 
 .logo img {
     width: 100%;
-    max-width: 190px; /* Tamanho consistente e elegante do logótipo */
+    max-width: 200px;
     height: auto;
     display: block;
 }
@@ -66,7 +61,7 @@ nav a.nav-link {
     -webkit-text-fill-color: transparent;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.9rem; /* Letras do menu uniformizadas e proporcionais */
+    font-size: 0.95rem;
     text-transform: uppercase;
     letter-spacing: 1.2px;
     transition: all 0.3s ease;
@@ -78,37 +73,35 @@ nav a.nav-link.active {
     color: #ffffff;
 }
 
-/* ==========================================
-   CONTEÚDO PRINCIPAL E SECÇÕES
-   ================================---------- */
+/* CONTEÚDO PRINCIPAL - Espaçamento de segurança para o header nunca invadir */
 main {
     flex: 1;
     width: 100%;
-    margin-top: 85px; /* Compensa exata e milimetricamente a altura do header */
+    margin-top: 105px; 
 }
 
 .page-section {
     display: none;
     width: 100%;
-    min-height: calc(100vh - 85px);
-    padding: 40px 20px;
+    min-height: calc(100vh - 105px);
+    padding: 30px 20px 50px 20px;
     box-sizing: border-box;
     background: #F4F7F5;
 }
 
-/* Garante que o conteúdo interior das secções fica perfeitamente centrado e visível */
 .page-section.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: flex-start;
 }
 
-/* Secção Início (Hero) */
+/* SECÇÃO INÍCIO (HERO) */
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
     background-size: cover !important;
+    justify-content: center !important;
 }
 
 .white-bg {
@@ -123,7 +116,7 @@ main {
 }
 
 .hero-container h1 {
-    font-size: 2.2rem;
+    font-size: 2.3rem;
     margin-bottom: 18px;
     font-weight: 700;
     line-height: 1.3;
@@ -138,7 +131,7 @@ main {
 }
 
 .hero-container p {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     margin-bottom: 30px;
     max-width: 750px;
     font-weight: 300;
@@ -156,7 +149,7 @@ main {
     border: none;
     text-transform: uppercase;
     font-weight: 750;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     letter-spacing: 1.5px;
     border-radius: 4px;
     text-decoration: none;
@@ -171,18 +164,16 @@ main {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* ==========================================
-   SECÇÃO O NOSSO MODELO
-   ================================---------- */
+/* SECÇÃO O NOSSO MODELO */
 .grid-container {
     max-width: 1100px;
     width: 100%;
-    margin: 0 auto;
+    margin: 10px auto 0 auto;
     text-align: center;
 }
 
 .grid-container h2 {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
     color: #0B3C26;
     text-transform: uppercase;
     font-weight: 700;
@@ -222,27 +213,24 @@ main {
 .card h3 {
     margin-bottom: 10px;
     color: #0B3C26;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
 }
 
 .card p {
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.5;
     color: #4A5550;
 }
 
-/* ==========================================
-   SECÇÃO CONTACTOS
-   ================================---------- */
+/* SECÇÃO CONTACTOS */
 .contactos-container {
     width: 100%;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 20px auto 0 auto;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .contactos-box {
@@ -262,7 +250,7 @@ main {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 25px;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
@@ -273,7 +261,7 @@ main {
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     gap: 12px;
 }
 
@@ -294,9 +282,7 @@ main {
     text-decoration: underline;
 }
 
-/* ==========================================
-   RODAPÉ
-   ================================---------- */
+/* RODAPÉ */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
@@ -307,12 +293,9 @@ footer {
     width: 100%;
 }
 
-/* ==========================================
-   RESPONSIVIDADE (TELEMÓVEIS)
-   ================================---------- */
+/* RESPONSIVIDADE PARA TELEMÓVEL */
 @media (max-width: 768px) {
     header {
-        height: auto;
         padding: 12px 15px;
     }
     .nav-container {
@@ -324,14 +307,12 @@ footer {
         justify-content: center;
         gap: 15px;
     }
-    /* No telemóvel compensamos a altura empilhada do menu para o título nunca ficar cortado */
     main {
-        margin-top: 130px; 
+        margin-top: 140px; /* Folga ampla para o menu empilhado no telemóvel */
     }
     .page-section {
-        min-height: calc(100vh - 130px);
-        padding-top: 25px;
-        justify-content: flex-start; /* Permite scroll natural em ecrãs pequenos caso necessário */
+        min-height: calc(100vh - 140px);
+        padding-top: 15px;
     }
     .grid {
         grid-template-columns: 1fr;
