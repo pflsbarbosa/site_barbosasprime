@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navItems = document.querySelectorAll('nav a.nav-link');
 
     function showSection(targetId) {
-        // Oculta todas as secções e remove a classe ativa dos links
+        // Oculta todas as secções e remove a classe ativa dos links do menu
         sections.forEach(section => section.classList.remove('active'));
         navItems.forEach(link => link.classList.remove('active'));
 
@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (targetSection) {
             targetSection.classList.add('active');
             
-            // Atualiza o histórico do URL
+            // Atualiza o histórico do URL sem recarregar a página
             history.pushState(null, null, targetId);
 
-            // Destaca o link correspondente no menu
+            // Destaca o link correspondente no menu superior
             navItems.forEach(link => {
                 if (link.getAttribute('href') === targetId) {
                     link.classList.add('active');
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Gerador de estado inicial com base no hash do URL ou por defeito na primeira secção
+    // Define o estado inicial com base no hash do URL (ex: #modelo, #contactos) ou inicia na primeira
     let initialHash = window.location.hash;
     if (!initialHash || !document.querySelector(initialHash)) {
         initialHash = `#${sections[0].id}`;
     }
     showSection(initialHash);
 
-    // Evento de clique nos links de navegação e botões
+    // Evento de clique nos links de navegação e botões do site
     navigationLinks.forEach(link => {
         link.addEventListener('click', (event) => {
             const targetId = link.getAttribute('href');
