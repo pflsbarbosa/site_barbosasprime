@@ -59,14 +59,15 @@ header {
 
 .logo-wrapper {
     display: inline-block;
+    overflow: visible; /* Permite que o logo cresça dinamicamente para fora dos limites sem cortar */
 }
 
-/* IMAGEM DO LOGÓTIPO COM EFEITO ZOOM / PULSO DE IMPACTO */
+/* IMAGEM DO LOGÓTIPO COM ZOOM AMPLO E PRESENÇA VISUAL */
 .logo img {
     width: 100%;
-    max-width: clamp(200px, 18vw, 290px);
+    max-width: clamp(200px, 18vw, 320px);
     height: auto;
-    max-height: 58px;
+    max-height: 65px;
     display: block;
     object-fit: contain;
     transform-origin: left center;
@@ -75,18 +76,19 @@ header {
 }
 
 .logo img:hover {
-    transform: scale(1.12);
-    filter: drop-shadow(0 0 14px rgba(253, 246, 186, 0.7));
+    transform: scale(1.22);
+    filter: drop-shadow(0 0 16px rgba(253, 246, 186, 0.8));
 }
 
+/* Animação com um zoom mais forte e imponente */
 @keyframes logoZoomPulse {
     0%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 0 0px transparent);
     }
     50% {
-        transform: scale(1.08);
-        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.6));
+        transform: scale(1.18); /* Zoom notório e elegante */
+        filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.7)); /* Brilho dourado ao expandir */
     }
 }
 
@@ -389,7 +391,6 @@ footer::before {
     .logo img {
         max-width: 165px;
         max-height: 48px;
-        /* Mantém a mesma animação de pulso no telemóvel */
         transform-origin: left center;
         animation: logoZoomPulse 3.5s infinite ease-in-out;
     }
