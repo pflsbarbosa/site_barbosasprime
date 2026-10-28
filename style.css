@@ -5,8 +5,8 @@
 }
 
 html, body {
-    height: 100vh !important;
-    overflow: hidden !important;
+    height: 100%;
+    overflow: hidden;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
 
 header {
     background: #062618;
-    padding: 20px;
+    padding: 15px 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     position: fixed;
     width: 100%;
@@ -39,7 +39,7 @@ header {
 
 .logo img {
     width: 100%;
-    max-width: 240px;
+    max-width: 220px;
     height: auto;
     display: block;
 }
@@ -75,7 +75,7 @@ main {
     height: 100vh;
 }
 
-/* Camadas de Ecrã Inteiro Absolutas com Alinhamento Flex Superior Controlado */
+/* Camadas de Ecrã Inteiro Absolutas com Scroll Interno para ecrãs pequenos */
 .page-section {
     position: absolute;
     top: 0;
@@ -86,17 +86,15 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 240px; /* Margem de segurança robusta para descolar o texto do cabeçalho */
-    padding-bottom: 100px;
-    padding-left: 20px;
-    padding-right: 20px;
+    justify-content: center;
+    padding: 110px 20px 80px 20px; /* Padding ajustado proporcionalmente */
+    overflow-y: auto; /* Permite scroll se o conteúdo for maior que a altura do ecrã */
     
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     z-index: 1;
-    transition: opacity 0.8s ease-in-out, visibility 0.8s ease-in-out;
+    transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
 }
 
 .page-section.active {
@@ -106,15 +104,9 @@ main {
     z-index: 10;
 }
 
-/* Exceção Hero: Como funde com o header escuro, preserva o alinhamento central */
-#inicio.page-section {
-    justify-content: center;
-    padding-top: 60px;
-}
-
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://unsplash.com') no-repeat center center/cover;
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
 }
 
 .white-bg {
@@ -126,11 +118,12 @@ main {
     text-align: center;
     width: 100%;
     max-width: 900px;
+    margin: auto 0;
 }
 
 .hero-container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 25px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 20px;
     font-weight: 700;
     line-height: 1.3;
     color: #ffffff;
@@ -144,8 +137,8 @@ main {
 }
 
 .hero-container p {
-    font-size: 1.25rem;
-    margin-bottom: 40px;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 35px;
     max-width: 800px;
     font-weight: 300;
     line-height: 1.6;
@@ -180,31 +173,31 @@ main {
 .grid-container {
     max-width: 1200px;
     width: 100%;
-    margin: 0 auto;
+    margin: auto 0;
     text-align: center;
 }
 
 .grid-container h2 {
-    font-size: 2.4rem;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
     color: #0B3C26;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 50px;
+    margin-bottom: 35px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    gap: 25px;
     width: 100%;
 }
 
 .card {
     background: #fff;
-    padding: 40px 30px;
+    padding: 30px 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.03);
+    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
     border-top: 4px solid #0B3C26;
     transition: transform 0.3s;
     text-align: center;
@@ -216,30 +209,30 @@ main {
 }
 
 .card i {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #B38728;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     display: inline-block;
 }
 
 .card h3 {
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     color: #0B3C26;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .card p {
     font-weight: 300;
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 0.95rem;
+    line-height: 1.5;
     color: #4A5550;
 }
 
 .contactos-container {
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: auto 0;
     display: flex;
     justify-content: center;
 }
@@ -249,7 +242,7 @@ main {
     width: 100%;
     background: #062618;
     color: #fff;
-    padding: 50px 40px;
+    padding: 45px 30px;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(6,38,24,0.15);
     text-align: center;
@@ -260,8 +253,8 @@ main {
     background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 35px;
-    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-size: 1.6rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
@@ -271,8 +264,8 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 25px;
-    font-size: 1.15rem;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
     gap: 15px;
 }
 
@@ -293,13 +286,15 @@ main {
     text-decoration: underline;
 }
 
+/* Rodapé com linha dourada em gradiente */
 footer {
     background: #062618;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.7);
     text-align: center;
-    padding: 20px 20px;
+    padding: 15px 20px;
     font-size: 0.85rem;
     border-top: 3px solid #B38728;
+    border-image: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%) 1;
     width: 100%;
     position: fixed;
     bottom: 0;
@@ -307,9 +302,17 @@ footer {
     z-index: 1050;
 }
 
+/* Regras Responsivas para Monitores Intermédios e Dispositivos Móveis */
 @media (max-width: 992px) {
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .page-section {
+        justify-content: flex-start;
+        padding-top: 140px;
+        padding-bottom: 80px;
     }
 }
 
@@ -318,24 +321,13 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+    
     nav {
         justify-content: center;
         gap: 15px;
     }
+    
     .page-section {
-        padding-top: 320px;
-        padding-bottom: 100px;
-    }
-    #inicio.page-section {
-        padding-top: 140px;
-    }
-    .hero-container h1 {
-        font-size: 2rem;
-    }
-    .grid-container h2 {
-        font-size: 1.8rem;
-    }
-    .contactos-box {
-        padding: 35px 20px;
+        padding-top: 180px;
     }
 }
