@@ -1,11 +1,21 @@
+/* ==========================================
+   RESET E VARIÁVEIS GLOBAIS
+   ================================---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --header-height: 85px; /* Altura padrão para Desktop */
+    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+}
+
 html {
     scroll-behavior: smooth;
+    /* Impede que o scroll sob o header tape o topo das secções em qualquer ecrã */
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -17,19 +27,25 @@ body {
     min-height: 100vh;
 }
 
-/* HEADER FIXO ROBUSTO */
+/* ==========================================
+   HEADER FIXO E FLUIDO
+   ================================---------- */
 header {
     background: #062618;
-    padding: 15px 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    padding: 0 30px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     position: fixed;
     width: 100%;
     top: 0;
+    left: 0;
     z-index: 1000;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1300px;
     width: 100%;
     margin: 0 auto;
     display: flex;
@@ -44,7 +60,8 @@ header {
 
 .logo img {
     width: 100%;
-    max-width: 200px;
+    /* O logótipo escala de forma proporcional entre 160px (16'') e 210px (ecrã grande) */
+    max-width: clamp(160px, 12vw, 210px);
     height: auto;
     display: block;
 }
@@ -52,18 +69,19 @@ header {
 nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: clamp(15px, 2vw, 30px);
 }
 
 nav a.nav-link {
-    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    /* Tamanho do texto do menu escala de forma proporcional */
+    font-size: clamp(0.8rem, 1vw, 0.95rem);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 1.5px;
     transition: all 0.3s ease;
 }
 
@@ -73,67 +91,69 @@ nav a.nav-link.active {
     color: #ffffff;
 }
 
-/* CONTEÚDO PRINCIPAL - Espaçamento de segurança para o header nunca invadir */
+/* ==========================================
+   ESTRUTURA DO MAIN E SECÇÕES
+   ================================---------- */
 main {
     flex: 1;
     width: 100%;
-    margin-top: 105px; 
+    /* O main afasta-se exatamente a altura real do header */
+    margin-top: var(--header-height); 
 }
 
 .page-section {
     display: none;
     width: 100%;
-    min-height: calc(100vh - 105px);
-    padding: 30px 20px 50px 20px;
+    min-height: calc(100vh - var(--header-height));
+    padding: clamp(30px, 5vh, 60px) 20px;
     box-sizing: border-box;
     background: #F4F7F5;
 }
 
+/* Alinhamento fluído e centragem perfeita */
 .page-section.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
-/* SECÇÃO INÍCIO (HERO) */
+/* ==========================================
+   1. SECÇÃO INÍCIO (HERO)
+   ================================---------- */
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
     background-size: cover !important;
-    justify-content: center !important;
-}
-
-.white-bg {
-    background: #ffffff;
 }
 
 .hero-container {
     text-align: center;
     width: 100%;
-    max-width: 850px;
+    max-width: 950px;
     margin: 0 auto;
 }
 
+/* Título Início: Escala fluida proporcional (min 1.8rem em 16'', max 3rem em ecrãs gigantes) */
 .hero-container h1 {
-    font-size: 2.3rem;
-    margin-bottom: 18px;
+    font-size: clamp(1.8rem, 3.2vw, 3rem);
+    margin-bottom: clamp(15px, 2vh, 25px);
     font-weight: 700;
-    line-height: 1.3;
+    line-height: 1.25;
     color: #ffffff;
 }
 
 .gold-gradient {
-    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
 
 .hero-container p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    max-width: 750px;
+    font-size: clamp(0.95rem, 1.4vw, 1.2rem);
+    margin-bottom: clamp(25px, 3vh, 40px);
+    max-width: 800px;
     font-weight: 300;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
@@ -143,13 +163,13 @@ main {
 
 .btn-hero {
     display: inline-block;
-    padding: 14px 30px;
-    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    padding: clamp(12px, 1.5vh, 16px) clamp(25px, 2.5vw, 35px);
+    background: var(--gold-gradient);
     color: #062618;
     border: none;
     text-transform: uppercase;
     font-weight: 750;
-    font-size: 0.9rem;
+    font-size: clamp(0.8rem, 0.9vw, 0.95rem);
     letter-spacing: 1.5px;
     border-radius: 4px;
     text-decoration: none;
@@ -164,33 +184,35 @@ main {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
-/* SECÇÃO O NOSSO MODELO */
+/* ==========================================
+   2. SECÇÃO O NOSSO MODELO
+   ================================---------- */
 .grid-container {
-    max-width: 1100px;
+    max-width: 1200px;
     width: 100%;
-    margin: 10px auto 0 auto;
+    margin: 0 auto;
     text-align: center;
 }
 
 .grid-container h2 {
-    font-size: 1.9rem;
+    font-size: clamp(1.6rem, 2.3vw, 2.4rem);
     color: #0B3C26;
     text-transform: uppercase;
     font-weight: 700;
     letter-spacing: 1.5px;
-    margin-bottom: 30px;
+    margin-bottom: clamp(20px, 3vh, 40px);
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: clamp(15px, 2vw, 30px);
     width: 100%;
 }
 
 .card {
     background: #fff;
-    padding: 25px 20px;
+    padding: clamp(20px, 3vh, 35px) clamp(15px, 1.8vw, 25px);
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
     border-top: 4px solid #0B3C26;
@@ -204,7 +226,7 @@ main {
 }
 
 .card i {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 2vw, 2.2rem);
     color: #B38728;
     margin-bottom: 12px;
     display: inline-block;
@@ -213,32 +235,39 @@ main {
 .card h3 {
     margin-bottom: 10px;
     color: #0B3C26;
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
     font-weight: 600;
 }
 
 .card p {
     font-weight: 300;
-    font-size: 0.95rem;
+    font-size: clamp(0.85rem, 0.95vw, 1rem);
     line-height: 1.5;
     color: #4A5550;
 }
 
-/* SECÇÃO CONTACTOS */
+/* ==========================================
+   3. SECÇÃO CONTACTOS
+   ================================---------- */
+.white-bg {
+    background: #ffffff;
+}
+
 .contactos-container {
     width: 100%;
-    max-width: 1100px;
-    margin: 20px auto 0 auto;
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .contactos-box {
-    max-width: 550px;
+    max-width: 600px;
     width: 100%;
     background: #062618;
     color: #fff;
-    padding: 40px 30px;
+    padding: clamp(30px, 4vh, 50px) clamp(20px, 3vw, 40px);
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(6,38,24,0.15);
     text-align: center;
@@ -246,11 +275,11 @@ main {
 }
 
 .contactos-box h2 {
-    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 25px;
-    font-size: 1.6rem;
+    margin-bottom: clamp(20px, 3vh, 30px);
+    font-size: clamp(1.3rem, 1.8vw, 1.7rem);
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
@@ -261,13 +290,13 @@ main {
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 1.1vw, 1.15rem);
     gap: 12px;
 }
 
 .info-item i {
     color: #B38728;
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 1.3vw, 1.4rem);
 }
 
 .info-item a {
@@ -282,7 +311,9 @@ main {
     text-decoration: underline;
 }
 
-/* RODAPÉ */
+/* ==========================================
+   RODAPÉ
+   ================================---------- */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
@@ -293,29 +324,40 @@ footer {
     width: 100%;
 }
 
-/* RESPONSIVIDADE PARA TELEMÓVEL */
+/* ==========================================
+   RESPONSIVIDADE ESPECÍFICA (TELEMÓVEIS)
+   ================================---------- */
 @media (max-width: 768px) {
+    :root {
+        /* Aumenta a variável do header dinamicamente quando o menu empilha no telemóvel */
+        --header-height: 140px; 
+    }
+
     header {
+        height: auto;
         padding: 12px 15px;
     }
+
     .nav-container {
         flex-direction: column;
         text-align: center;
         gap: 10px;
     }
+
     nav {
         justify-content: center;
         gap: 15px;
     }
-    main {
-        margin-top: 140px; /* Folga ampla para o menu empilhado no telemóvel */
-    }
+
     .page-section {
-        min-height: calc(100vh - 140px);
-        padding-top: 15px;
+        min-height: calc(100vh - var(--header-height));
+        /* Alinhamento ao topo no telemóvel com padding generoso para nunca cortar títulos */
+        justify-content: flex-start;
+        padding-top: 35px;
     }
+
     .grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 20px;
     }
 }
