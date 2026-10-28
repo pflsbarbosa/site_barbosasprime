@@ -1,3 +1,6 @@
+/* ==========================================
+   RESET E VARIÁVEIS GLOBAIS
+   ================================---------- */
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +26,9 @@ body {
     flex-direction: column;
 }
 
+/* ==========================================
+   1. HEADER FIXO E LOGÓTIPO COM BRILHO METÁLICO
+   ================================---------- */
 header {
     background: #062618;
     padding: 0 30px;
@@ -51,6 +57,12 @@ header {
     align-items: center;
 }
 
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    overflow: hidden; /* Contém o brilho estritamente dentro da área do logo */
+}
+
 .logo img {
     width: 100%;
     max-width: clamp(200px, 18vw, 290px);
@@ -58,6 +70,43 @@ header {
     max-height: 58px;
     display: block;
     object-fit: contain;
+}
+
+/* Efeito de brilho metálico (Shimmer) no logótipo */
+.logo-wrapper::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -75%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.45),
+        transparent
+    );
+    transform: rotate(25deg);
+    pointer-events: none;
+    animation: logoShimmer 4s infinite ease-in-out;
+}
+
+@keyframes logoShimmer {
+    0% {
+        left: -75%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 1;
+    }
+    40% {
+        left: 125%;
+        opacity: 1;
+    }
+    100% {
+        left: 125%;
+        opacity: 0;
+    }
 }
 
 nav {
@@ -84,6 +133,9 @@ nav a.nav-link.active {
     color: #ffffff;
 }
 
+/* ==========================================
+   2. MAIN E CONTEÚDO CENTRAL
+   ================================---------- */
 main {
     flex: 1;
     width: 100%;
@@ -113,6 +165,7 @@ main {
     justify-content: center;
 }
 
+/* SECÇÃO INÍCIO */
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
@@ -175,6 +228,7 @@ main {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
+/* SECÇÃO O NOSSO MODELO */
 .grid-container {
     max-width: 1200px;
     width: 100%;
@@ -234,6 +288,7 @@ main {
     color: #4A5550;
 }
 
+/* SECÇÃO CONTACTOS */
 .white-bg {
     background: #ffffff;
 }
@@ -296,6 +351,9 @@ main {
     text-decoration: underline;
 }
 
+/* ==========================================
+   3. RODAPÉ FIXO COM BARRINHA DOURADA
+   ================================---------- */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
@@ -323,6 +381,9 @@ footer::before {
     background: var(--gold-gradient);
 }
 
+/* ==========================================
+   RESPONSIVIDADE PARA TELEMÓVEL
+   ================================---------- */
 @media (max-width: 768px) {
     html, body {
         overflow: auto;
