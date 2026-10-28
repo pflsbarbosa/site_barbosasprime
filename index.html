@@ -1,386 +1,131 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbosas Prime | Imobiliária</title>
+    <!-- FontAwesome para os ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- O teu folha de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-:root {
-    --header-height: 85px;
-    --footer-height: 45px;
-    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-}
+    <!-- CABEÇALHO FIXO -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-wrapper">
+                    <img src="https://raw.githubusercontent.com/pflsbarbosa/site_barbosasprime/refs/heads/main/logo.png" alt="Barbosas Prime">
+                </div>
+            </div>
+            <nav>
+                <a href="#inicio" class="nav-link active" onclick="showSection('inicio', event)">Início</a>
+                <a href="#modelo" class="nav-link" onclick="showSection('modelo', event)">O Modelo</a>
+                <a href="#contactos" class="nav-link" onclick="showSection('contactos', event)">Contactos</a>
+            </nav>
+        </div>
+    </header>
 
-html, body {
-    height: 100vh;
-    overflow: hidden;
-}
+    <!-- CONTEÚDO PRINCIPAL (MOLDURA CENTRAL) -->
+    <main>
+        <!-- SECÇÃO INÍCIO -->
+        <section id="inicio" class="page-section active hero-bg">
+            <div class="hero-container">
+                <h1>Idealizamos o Futuro do <span class="gold-gradient">Espaço Urbano</span></h1>
+                <p>Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.</p>
+                <a href="#contactos" class="btn-hero" onclick="showSection('contactos', event)">Apresentar Oportunidade</a>
+            </div>
+        </section>
 
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #062618;
-    color: #2C3E35;
-    display: flex;
-    flex-direction: column;
-}
+        <!-- SECÇÃO O NOSSO MODELO -->
+        <section id="modelo" class="page-section white-bg">
+            <div class="grid-container">
+                <h2>O Nosso Modelo</h2>
+                <div class="grid">
+                    <div class="card">
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <h3>Ideação do Produto</h3>
+                        <p>Análise cirúrgica do mercado para conceber e desenhar conceitos residenciais e comerciais de alto padrão.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-users-gear"></i>
+                        <h3>Articulação e Parcerias</h3>
+                        <p>Coordenação com os melhores gabinetes de arquitetura e engenharia para materializar fielmente o produto idealizado.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <h3>Supervisão Estratégica</h3>
+                        <p>Garantia de fidelidade ao conceito original durante a fase de construção e ativação de canais de mediação premium.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-header {
-    background: #062618;
-    padding: 0 30px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    height: var(--header-height);
-    display: flex;
-    align-items: center;
-}
+        <!-- SECÇÃO CONTACTOS -->
+        <section id="contactos" class="page-section white-bg">
+            <div class="contactos-container">
+                <div class="contactos-box">
+                    <h2>Parcerias Estratégicas</h2>
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <a href="mailto:geral@barbosasprime.com">geral@barbosasprime.com</a>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Portugal</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-.nav-container {
-    max-width: 1300px;
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    <!-- RODAPÉ FIXO -->
+    <footer>
+        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
+    </footer>
 
-.logo {
-    display: flex;
-    align-items: center;
-}
+    <!-- SCRIPT DE NAVEGAÇÃO ENTRE SECÇÕES (ESTILO APP) -->
+    <script>
+        function showSection(sectionId, event) {
+            if (event) event.preventDefault();
 
-.logo-wrapper {
-    position: relative;
-    display: inline-block;
-}
+            // Esconde todas as secções
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(sec => sec.classList.remove('active'));
 
-.logo img {
-    width: 100%;
-    max-width: clamp(200px, 18vw, 290px);
-    height: auto;
-    max-height: 58px;
-    display: block;
-    object-fit: contain;
-}
+            // Mostra a secção selecionada
+            const target = document.getElementById(sectionId);
+            if (target) {
+                target.classList.add('active');
+            }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: clamp(18px, 2.5vw, 35px);
-}
+            // Atualiza o estado ativo nos links do menu
+            const links = document.querySelectorAll('nav a.nav-link');
+            links.forEach(link => link.classList.remove('active'));
+            
+            if (event && event.currentTarget) {
+                event.currentTarget.classList.add('active');
+            } else {
+                // Caso seja acionado por hash ou redirecionamento
+                links.forEach(link => {
+                    if (link.getAttribute('href') === '#' + sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+            }
 
-nav a.nav-link {
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: clamp(0.85rem, 1vw, 0.95rem);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    transition: all 0.3s ease;
-}
+            // Atualiza o histórico do browser sem recarregar a página
+            history.pushState(null, null, '#' + sectionId);
+        }
 
-nav a.nav-link:hover,
-nav a.nav-link.active {
-    -webkit-text-fill-color: #ffffff;
-    color: #ffffff;
-}
-
-main {
-    flex: 1;
-    width: 100%;
-    margin-top: var(--header-height);
-    height: calc(100vh - var(--header-height) - var(--footer-height));
-    position: relative;
-    background: #F4F7F5;
-}
-
-.page-section {
-    display: none;
-    width: 100%;
-    height: 100%;
-    padding: 25px 20px;
-    box-sizing: border-box;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #F4F7F5;
-    overflow-y: auto;
-}
-
-.page-section.active {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.hero-bg {
-    background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
-    background-size: cover !important;
-}
-
-.hero-container {
-    text-align: center;
-    width: 100%;
-    max-width: 950px;
-    margin: 0 auto;
-}
-
-.hero-container h1 {
-    font-size: clamp(1.8rem, 3.2vw, 3rem);
-    margin-bottom: 20px;
-    font-weight: 700;
-    line-height: 1.25;
-    color: #ffffff;
-}
-
-.gold-gradient {
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-
-.hero-container p {
-    font-size: clamp(0.95rem, 1.3vw, 1.15rem);
-    margin-bottom: 30px;
-    max-width: 800px;
-    font-weight: 300;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.95);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn-hero {
-    display: inline-block;
-    padding: 14px 32px;
-    background: var(--gold-gradient);
-    color: #062618;
-    border: none;
-    text-transform: uppercase;
-    font-weight: 750;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    border-radius: 4px;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(179, 135, 40, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-hero:hover {
-    background: #ffffff;
-    color: #062618;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
-}
-
-.grid-container {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.grid-container h2 {
-    font-size: clamp(1.5rem, 2.2vw, 2.2rem);
-    color: #0B3C26;
-    text-transform: uppercase;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    margin-bottom: 25px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 100%;
-}
-
-.card {
-    background: #fff;
-    padding: 25px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
-    border-top: 4px solid #0B3C26;
-    transition: transform 0.3s;
-    text-align: center;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    border-top-color: #B38728;
-}
-
-.card i {
-    font-size: 1.8rem;
-    color: #B38728;
-    margin-bottom: 12px;
-    display: inline-block;
-}
-
-.card h3 {
-    margin-bottom: 10px;
-    color: #0B3C26;
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.card p {
-    font-weight: 300;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #4A5550;
-}
-
-.white-bg {
-    background: #ffffff;
-}
-
-.contactos-container {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.contactos-box {
-    max-width: 550px;
-    width: 100%;
-    background: #062618;
-    color: #fff;
-    padding: 40px 30px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(6,38,24,0.15);
-    text-align: center;
-    border: 1px solid rgba(179, 135, 40, 0.2);
-}
-
-.contactos-box h2 {
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 25px;
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    font-size: 1.05rem;
-    gap: 12px;
-}
-
-.info-item i {
-    color: #B38728;
-    font-size: 1.2rem;
-}
-
-.info-item a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
-}
-
-.info-item a:hover {
-    color: #FCF6BA;
-    text-decoration: underline;
-}
-
-footer {
-    background: #062618;
-    color: rgba(255,255,255,0.7);
-    text-align: center;
-    height: var(--footer-height);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.85rem;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    border-top: none;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--gold-gradient);
-}
-
-@media (max-width: 768px) {
-    html, body {
-        overflow: auto;
-    }
-
-    :root {
-        --header-height: 140px;
-        --footer-height: 50px;
-    }
-
-    header {
-        height: var(--header-height);
-        padding: 12px 15px;
-    }
-
-    .nav-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 10px;
-    }
-
-    .logo img {
-        max-width: 165px;
-        max-height: 48px;
-    }
-
-    nav {
-        justify-content: center;
-        gap: 15px;
-    }
-
-    main {
-        margin-top: var(--header-height);
-        height: auto;
-        min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    }
-
-    .page-section {
-        position: relative;
-        height: auto;
-        min-height: 100%;
-        padding: 30px 15px 85px 15px;
-        justify-content: flex-start;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-    }
-}
+        // Suporte para navegação por hash direta ao abrir o link
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash.replace('#', '');
+            if (hash && document.getElementById(hash)) {
+                showSection(hash);
+            }
+        });
+    </script>
+</body>
+</html>
