@@ -8,15 +8,14 @@
 }
 
 :root {
-    --header-height: 85px; /* Altura ideal e elegante para o header em PC */
+    --header-height: 85px;
     --footer-height: 45px;
     --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-    --gold-solid: #B38728;
 }
 
 html, body {
     height: 100vh;
-    overflow: hidden; /* Mantém a aplicação fixa e moldada */
+    overflow: hidden; /* Moldura fixa perfeita em desktop */
 }
 
 body {
@@ -28,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   1. HEADER FIXO (MOLDURA SUPERIOR)
+   1. HEADER FIXO E LOGÓTIPO COM BRILHO METÁLICO
    ================================---------- */
 header {
     background: #062618;
@@ -56,16 +55,43 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    position: relative;
+    overflow: hidden; /* Contém o efeito de brilho metálico */
 }
 
 .logo img {
     width: 100%;
-    /* Preparado para o logo mais horizontal/limpo com destaque imponente */
-    max-width: clamp(180px, 15vw, 240px);
+    /* Logótipo horizontal com grande destaque e proporção imponente */
+    max-width: clamp(200px, 18vw, 290px);
     height: auto;
-    max-height: 60px;
+    max-height: 58px;
     display: block;
     object-fit: contain;
+}
+
+/* Animação subtil de brilho metálico (Shimmer) no logótipo */
+.logo::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 252, 186, 0.25) 50%,
+        transparent 70%
+    );
+    transform: rotate(30deg) translateX(-100%);
+    animation: shimmer 6s infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(30deg) translateX(-100%); }
+    20% { transform: rotate(30deg) translateX(100%); }
+    100% { transform: rotate(30deg) translateX(100%); }
 }
 
 nav {
@@ -93,7 +119,7 @@ nav a.nav-link.active {
 }
 
 /* ==========================================
-   2. MAIN (ÁREA DE CONTEÚDO CENTRAL)
+   2. MAIN E CONTEÚDO CENTRAL
    ================================---------- */
 main {
     flex: 1;
@@ -114,10 +140,9 @@ main {
     top: 0;
     left: 0;
     background: #F4F7F5;
-    overflow-y: auto; /* Permite scroll no conteúdo se exceder a altura útil */
+    overflow-y: auto;
 }
 
-/* Centralização vertical no PC */
 .page-section.active {
     display: flex;
     flex-direction: column;
@@ -312,7 +337,7 @@ main {
 }
 
 /* ==========================================
-   3. RODAPÉ FIXO (MOLDURA INFERIOR)
+   3. RODAPÉ FIXO COM BARRINHA EM DEGRADÊ DOURADO
    ================================---------- */
 footer {
     background: #062618;
@@ -328,16 +353,32 @@ footer {
     bottom: 0;
     left: 0;
     z-index: 1000;
-    border-top: 3px solid var(--gold-solid);
+    border-top: none; /* Remove borda simples */
+    position: fixed;
+}
+
+/* Cria a barrinha superior do footer com o gradiente dourado exato */
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--gold-gradient);
 }
 
 /* ==========================================
    RESPONSIVIDADE AJUSTADA PARA TELEMÓVEL
    ================================---------- */
 @media (max-width: 768px) {
+    html, body {
+        overflow: auto; /* Permite scroll natural completo no telemóvel sem prender cartões */
+    }
+
     :root {
-        --header-height: 135px;
-        --footer-height: 45px;
+        --header-height: 130px;
+        --footer-height: 50px;
     }
 
     header {
@@ -352,8 +393,8 @@ footer {
     }
 
     .logo img {
-        max-width: 160px;
-        max-height: 50px;
+        max-width: 180px;
+        max-height: 48px;
     }
 
     nav {
@@ -363,17 +404,27 @@ footer {
 
     main {
         margin-top: var(--header-height);
-        height: calc(100vh - var(--header-height) - var(--footer-height));
+        height: auto;
+        min-height: calc(100vh - var(--header-height) - var(--footer-height));
     }
 
-    /* Adicionado padding-bottom extra para o scroll nunca tapar o 3º cartão com o footer fixo */
+    /* Padding inferior largo no telemóvel para o 3º cartão nunca ficar tapado pelo footer fixo */
     .page-section {
-        padding: 20px 15px 40px 15px;
+        position: relative;
+        height: auto;
+        min-height: 100%;
+        padding: 20px 15px 70px 15px;
         justify-content: flex-start;
     }
 
     .grid {
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 18px;
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
     }
 }
