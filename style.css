@@ -27,7 +27,7 @@ body {
 }
 
 /* ==========================================
-   1. HEADER FIXO E ANIMAÇÃO ZOOM SUAVE NO LOGÓTIPO
+   1. HEADER FIXO E ANIMAÇÃO ZOOM LENTO NO LOGÓTIPO
    ================================---------- */
 header {
     background: #062618;
@@ -62,7 +62,7 @@ header {
     overflow: visible;
 }
 
-/* IMAGEM DO LOGÓTIPO COM ZOOM SUAVE E MAJESTOSO */
+/* IMAGEM DO LOGÓTIPO COM RITMO LENTO E MAJESTOSO (12 SEGUNDOS) */
 .logo img {
     width: 100%;
     max-width: clamp(200px, 18vw, 320px);
@@ -72,8 +72,7 @@ header {
     object-fit: contain;
     transform-origin: left center;
     transition: transform 0.4s ease, filter 0.4s ease;
-    /* Ciclo mais longo (7 segundos) para um efeito relaxado e premium */
-    animation: logoZoomPulse 7s infinite ease-in-out;
+    animation: logoZoomPulse 12s infinite ease-in-out;
 }
 
 .logo img:hover {
@@ -81,15 +80,15 @@ header {
     filter: drop-shadow(0 0 16px rgba(253, 246, 186, 0.8));
 }
 
-/* Animação com transição lenta, elegante e sem cansar a vista */
+/* Animação com longas pausas de descanso e transição muito suave */
 @keyframes logoZoomPulse {
-    0%, 100% {
+    0%, 25%, 100% {
         transform: scale(1);
         filter: drop-shadow(0 0 0px transparent);
     }
     50% {
-        transform: scale(1.12); /* Crescimento moderado, imponente mas sem exageros */
-        filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.5)); /* Brilho dourado suave */
+        transform: scale(1.08); /* Zoom subtil e elegante */
+        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
     }
 }
 
@@ -393,7 +392,7 @@ footer::before {
         max-width: 165px;
         max-height: 48px;
         transform-origin: left center;
-        animation: logoZoomPulse 7s infinite ease-in-out;
+        animation: logoZoomPulse 12s infinite ease-in-out;
     }
 
     nav {
