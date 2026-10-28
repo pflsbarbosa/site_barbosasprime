@@ -17,23 +17,27 @@ body {
     min-height: 100vh;
 }
 
+/* HEADER COMPACTO E ELEGANTE */
 header {
     background: #062618;
-    padding: 15px 20px;
+    padding: 10px 20px; /* Reduzido o padding vertical */
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    height: 70px; /* Altura fixa controlada para o cabeçalho */
+    display: flex;
+    align-items: center;
 }
 
 .nav-container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap;
     gap: 15px;
 }
 
@@ -43,16 +47,16 @@ header {
 }
 
 .logo img {
-    width: 100%;
-    max-width: 180px;
-    height: auto;
+    width: auto;
+    max-width: 140px; /* Logo mais elegante e proporcional */
+    max-height: 45px;
     display: block;
 }
 
 nav {
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 20px;
 }
 
 nav a.nav-link {
@@ -61,9 +65,11 @@ nav a.nav-link {
     -webkit-text-fill-color: transparent;
     text-decoration: none;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 0.85rem; /* Texto do menu proporcional */
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.2px;
+    padding: 6px 12px;
+    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -76,32 +82,31 @@ nav a.nav-link.active {
 main {
     flex: 1;
     width: 100%;
-    margin-top: 90px; /* Compensa a altura do header fixo */
+    margin-top: 70px; /* Encaixe perfeito com a nova altura do header */
 }
 
-/* Oculta todas as secções por defeito */
+/* SECÇÕES E CONTEÚDO */
 .page-section {
     display: none;
     width: 100%;
-    min-height: calc(100vh - 90px);
-    padding: 50px 20px;
+    min-height: calc(100vh - 70px);
+    padding: 30px 20px 40px 20px;
     box-sizing: border-box;
     background: #F4F7F5;
 }
 
-/* Mostra apenas a secção ativa quando clicada */
 .page-section.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
-/* Secção Hero com fundo escuro e imagem bem esticada */
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
                 url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center !important;
     background-size: cover !important;
+    justify-content: center !important;
 }
 
 .white-bg {
@@ -111,15 +116,15 @@ main {
 .hero-container {
     text-align: center;
     width: 100%;
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
 }
 
 .hero-container h1 {
-    font-size: 2.3rem; /* Tamanho seguro para portáteis de 16'' e ecrãs grandes */
-    margin-bottom: 20px;
+    font-size: 2.1rem;
+    margin-bottom: 18px;
     font-weight: 700;
-    line-height: 1.25;
+    line-height: 1.3;
     color: #ffffff;
 }
 
@@ -131,9 +136,9 @@ main {
 }
 
 .hero-container p {
-    font-size: 1.15rem;
-    margin-bottom: 35px;
-    max-width: 800px;
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+    max-width: 750px;
     font-weight: 300;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.95);
@@ -143,13 +148,13 @@ main {
 
 .btn-hero {
     display: inline-block;
-    padding: 16px 35px;
+    padding: 14px 30px;
     background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
     color: #062618;
     border: none;
     text-transform: uppercase;
     font-weight: 750;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     letter-spacing: 1.5px;
     border-radius: 4px;
     text-decoration: none;
@@ -164,32 +169,33 @@ main {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
 }
 
+/* O NOSSO MODELO */
 .grid-container {
-    max-width: 1200px;
+    max-width: 1100px;
     width: 100%;
-    margin: 0 auto;
+    margin: 15px auto 0 auto;
     text-align: center;
 }
 
 .grid-container h2 {
-    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-size: 1.7rem;
     color: #0B3C26;
     text-transform: uppercase;
     font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 35px;
+    letter-spacing: 1.5px;
+    margin-bottom: 25px;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 20px;
     width: 100%;
 }
 
 .card {
     background: #fff;
-    padding: 30px 25px;
+    padding: 25px 20px;
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(11, 60, 38, 0.05);
     border-top: 4px solid #0B3C26;
@@ -203,40 +209,41 @@ main {
 }
 
 .card i {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: #B38728;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: inline-block;
 }
 
 .card h3 {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #0B3C26;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
 }
 
 .card p {
     font-weight: 300;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.5;
     color: #4A5550;
 }
 
+/* CONTACTOS */
 .contactos-container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1100px;
+    margin: 20px auto 0 auto;
     display: flex;
     justify-content: center;
 }
 
 .contactos-box {
-    max-width: 600px;
+    max-width: 550px;
     width: 100%;
     background: #062618;
     color: #fff;
-    padding: 45px 30px;
+    padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(6,38,24,0.15);
     text-align: center;
@@ -247,8 +254,8 @@ main {
     background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 30px;
-    font-size: 1.6rem;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700;
@@ -258,14 +265,14 @@ main {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    gap: 15px;
+    margin-bottom: 18px;
+    font-size: 1.05rem;
+    gap: 12px;
 }
 
 .info-item i {
     color: #B38728;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .info-item a {
@@ -280,6 +287,7 @@ main {
     text-decoration: underline;
 }
 
+/* FOOTER */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
@@ -290,21 +298,30 @@ footer {
     width: 100%;
 }
 
-@media (max-width: 992px) {
-    .grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-}
-
+/* TELEMÓVEL */
 @media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 12px 15px;
+    }
     .nav-container {
         flex-direction: column;
         text-align: center;
+        gap: 10px;
     }
-    
     nav {
         justify-content: center;
         gap: 15px;
+    }
+    main {
+        margin-top: 110px; 
+    }
+    .page-section {
+        min-height: calc(100vh - 110px);
+        padding-top: 20px;
+    }
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
     }
 }
