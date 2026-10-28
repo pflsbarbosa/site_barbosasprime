@@ -1,85 +1,101 @@
-<!DOCTYPE html>
-<html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barbosas Prime | Desenvolvimento e Estratégia Imobiliária</title>
-    <meta name="description" content="Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.">
-    
-    <!-- Ícones do FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css?v=11.0">
-</head>
-<body>
+/* ==========================================
+   LOGÓTIPO COM VARREDURA EXATA NO TEXTO E ESTRELA NA LETRA 'E'
+   ================================---------- */
+.logo {
+    display: flex;
+    align-items: center;
+}
 
-    <header id="site-header">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-wrapper">
-                    <img src="https://raw.githubusercontent.com/pflsbarbosa/site_barbosasprime/refs/heads/main/logo.png" alt="Barbosas Prime">
-                </div>
-            </div>
-            <nav>
-                <a href="#inicio" class="nav-link">Início</a>
-                <a href="#modelo" class="nav-link">O Modelo</a>
-                <a href="#contactos" class="nav-link">Contactos</a>
-            </nav>
-        </div>
-    </header>
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+}
 
-    <main>
-        <section id="inicio" class="page-section hero-bg active">
-            <div class="hero-container">
-                <h1>Idealizamos o Futuro do Espaço <span class="gold-gradient">Urbano</span></h1>
-                <p>Na Barbosas Prime, concebemos conceitos imobiliários únicos e lideramos parcerias estratégicas de excelência para os transformar em realidade.</p>
-                <a href="#contactos" class="btn-hero">Apresentar Oportunidade</a>
-            </div>
-        </section>
+.logo img {
+    width: 100%;
+    max-width: clamp(200px, 18vw, 290px);
+    height: auto;
+    max-height: 58px;
+    display: block;
+    object-fit: contain;
+}
 
-        <section id="modelo" class="page-section">
-            <div class="grid-container">
-                <h2>O Nosso Modelo</h2>
-                <div class="grid">
-                    <div class="card">
-                        <i class="fa-solid fa-lightbulb"></i>
-                        <h3>Ideação do Produto</h3>
-                        <p>Análise cirúrgica do mercado para conceber e desenhar conceitos residenciais e comerciais de alto padrão.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-users-gear"></i>
-                        <h3>Articulação e Parcerias</h3>
-                        <p>Coordenação com os melhores gabinetes de arquitetura e engenharia para materializar fielmente o produto idealizado.</p>
-                    </div>
-                    <div class="card">
-                        <i class="fa-solid fa-arrow-up-right-dots"></i>
-                        <h3>Supervisão Estratégica</h3>
-                        <p>Garantia de fidelidade ao conceito original durante a fase Bellas Artes de construção e ativação de canais de mediação premium.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+/* VARREDURA DE LUZ: Começa na letra B e termina na letra E */
+.logo-wrapper::before {
+    content: '';
+    position: absolute;
+    /* Alinhado verticalmente sobre a zona do texto inferior do logótipo */
+    bottom: 5px; 
+    left: -20%;
+    width: 35%;
+    height: 60%;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.7) 50%,
+        transparent 100%
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    animation: sweepTextGold 4.5s infinite ease-in-out;
+}
 
-        <section id="contactos" class="page-section white-bg">
-            <div class="contactos-container">
-                <div class="contactos-box">
-                    <h2>Parcerias Estratégicas</h2>
-                    <div class="info-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:geral@barbosasprime.com">geral@barbosasprime.com</a>
-                    </div>
-                    <div class="info-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Portugal</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+/* ESTRELA CINTILANTE: Posicionada exatamente sobre a letra 'E' da palavra Prime */
+.logo-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    right: 4px; /* Canto inferior direito, na ponta da letra E */
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #FCF6BA 20%, #BF953F 80%);
+    clip-path: polygon(50% 0%, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0% 50%, 38% 38%);
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+    pointer-events: none;
+    animation: starEndSparkle 4.5s infinite ease-in-out;
+}
 
-    <footer>
-        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
-    </footer>
+/* Animação do feixe a percorrer o texto da esquerda para a direita */
+@keyframes sweepTextGold {
+    0%, 10% {
+        left: -25%;
+        opacity: 0;
+    }
+    15% {
+        opacity: 1;
+    }
+    45% {
+        left: 85%; /* Termina exatamente na zona da letra E */
+        opacity: 1;
+    }
+    50% {
+        left: 90%;
+        opacity: 0;
+    }
+    100% {
+        left: 90%;
+        opacity: 0;
+    }
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+/* Animação da estrela a surgir no preciso momento em que a luz chega ao fim */
+@keyframes starEndSparkle {
+    0%, 42% {
+        opacity: 0;
+        transform: scale(0) rotate(0deg);
+    }
+    47% {
+        opacity: 1;
+        transform: scale(1.4) rotate(45deg);
+        filter: drop-shadow(0 0 5px #FCF6BA);
+    }
+    55% {
+        opacity: 0;
+        transform: scale(0) rotate(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(90deg);
+    }
+}
