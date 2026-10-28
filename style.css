@@ -10,7 +10,7 @@ html {
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #F4F7F5;
+    background: #062618; /* Fundo geral verde escuro para eliminar quaisquer faixas brancas */
     color: #2C3E35;
     display: flex;
     flex-direction: column;
@@ -72,15 +72,17 @@ nav a.nav-link.active {
 main {
     flex: 1;
     width: 100%;
-    margin-top: 90px; /* Compensa o espaço do header fixo */
+    margin-top: 90px; /* Compensa exatamente a altura do header fixo */
 }
 
-/* Secções visíveis geridas por clique */
+/* Secções geridas por clique com espaçamento interno para o título nunca ficar escondido */
 .page-section {
     display: none;
     width: 100%;
-    padding: 60px 20px;
+    min-height: calc(100vh - 90px - 60px); /* Ocupa o espaço restante do ecrã */
+    padding: 50px 20px;
     box-sizing: border-box;
+    background: #F4F7F5; /* Fundo padrão claro para as secções do meio */
 }
 
 .page-section.active {
@@ -88,17 +90,15 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 160px);
 }
 
 .hero-bg {
     background: linear-gradient(rgba(6, 38, 24, 0.85), rgba(11, 60, 38, 0.90)), 
-                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+                url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover !important;
 }
 
 .white-bg {
     background: #ffffff;
-    border-top: 1px solid rgba(11,60,38,0.05);
 }
 
 .hero-container {
@@ -272,15 +272,14 @@ main {
     text-decoration: underline;
 }
 
-/* Rodapé fixo ou estático com linha dourada em gradiente */
+/* Rodapé consistente com linha superior dourada sólida e uniforme */
 footer {
     background: #062618;
     color: rgba(255,255,255,0.7);
     text-align: center;
     padding: 15px 20px;
     font-size: 0.85rem;
-    border-top: 3px solid #B38728;
-    border-image: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%) 1;
+    border-top: 3px solid #BF953F;
     width: 100%;
 }
 
