@@ -1,0 +1,777 @@
+/* ==========================================================================
+   1. RESET E VARIÁVEIS GLOBAIS
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-green: #062618;
+    --primary-green-dark: #041a10;
+    --accent-gold: #c5a059;
+    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    --bg-card-white: #ffffff;
+    --text-dark: #2c3e35;
+    --text-muted: #555555;
+    --header-height: 90px;
+    --footer-height: 45px;
+    --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--primary-green);
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--primary-green);
+    color: #ffffff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. CABEÇALHO FIXO E LOGÓTIPO NÍTIDO
+   ========================================================================== */
+header {
+    background-color: var(--primary-green-dark);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.25);
+}
+
+.nav-container {
+    max-width: 1350px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.brand-logo-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.brand-logo-link:hover {
+    transform: scale(1.02);
+}
+
+.logo-icon {
+    height: 60px;
+    width: auto;
+    display: block;
+}
+
+.logo-text-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-name {
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.1;
+}
+
+.brand-sub {
+    font-size: 0.58rem;
+    color: #a0b0a8;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 28px;
+    align-items: center;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--accent-gold);
+}
+
+.vip-badge {
+    background: var(--gold-gradient);
+    color: var(--primary-green);
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* ==========================================================================
+   3. ESTRUTURA PRINCIPAL
+   ========================================================================== */
+main {
+    padding-top: var(--header-height);
+    padding-bottom: var(--footer-height);
+    background-color: var(--primary-green);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 75px 20px;
+    margin: 0;
+    width: 100%;
+    background-color: var(--primary-green);
+}
+
+footer {
+    background-color: var(--primary-green-dark);
+    color: #ffffff;
+    text-align: center;
+    height: var(--footer-height);
+    line-height: var(--footer-height);
+    font-size: 0.8rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    border-top: 1px solid rgba(197, 160, 89, 0.3);
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ==========================================================================
+   4. SECÇÃO HERO (INÍCIO)
+   ========================================================================== */
+.hero-section {
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 900px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    color: var(--accent-gold);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #dcdcdc;
+}
+
+/* ==========================================================================
+   5. O NOSSO MODELO
+   ========================================================================== */
+.modelo-section {
+    background-color: var(--primary-green);
+    border-top: 1px solid rgba(197, 160, 89, 0.2);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.modelo-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    max-width: 1250px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: var(--bg-card-white);
+    border-radius: 10px;
+    padding: 40px 30px;
+    flex: 1;
+    min-width: 300px;
+    max-width: 380px;
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.card-icon {
+    font-size: 2.8rem;
+    color: var(--accent-gold);
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.card h3 {
+    color: var(--primary-green);
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 18px;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+.card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ==========================================================================
+   6. VIZELA LIVING CENTER
+   ========================================================================== */
+.vlc-teaser-section {
+    background-color: var(--primary-green-dark);
+    text-align: center;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+}
+
+.vlc-container {
+    max-width: 1150px;
+    width: 100%;
+}
+
+.vlc-title {
+    font-size: 2.6rem;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.vlc-subtitle {
+    font-size: 1.15rem;
+    margin-bottom: 30px;
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+.vlc-manifesto {
+    background: var(--bg-card-white);
+    border-left: 6px solid var(--accent-gold);
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 45px;
+    text-align: justify;
+    box-shadow: var(--shadow-soft);
+}
+
+.vlc-manifesto h3 {
+    color: var(--primary-green);
+    font-size: 1.35rem;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.vlc-manifesto p {
+    color: var(--text-dark);
+    font-size: 1.02rem;
+    line-height: 1.8;
+}
+
+.vlc-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    margin-bottom: 45px;
+    text-align: left;
+}
+
+.vlc-feature-card {
+    background: var(--bg-card-white);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vlc-feature-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-gold);
+}
+
+.vlc-feature-card i {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 12px;
+    display: block;
+}
+
+.vlc-feature-card h4 {
+    color: var(--primary-green);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.vlc-feature-card p {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.vlc-location-box {
+    background: var(--bg-card-white);
+    border: 1px solid rgba(197, 160, 89, 0.35);
+    border-radius: 10px;
+    padding: 32px;
+    margin-bottom: 45px;
+    text-align: left;
+    box-shadow: var(--shadow-soft);
+}
+
+.gold-icon {
+    color: var(--accent-gold) !important;
+}
+
+.vlc-location-box h3 {
+    color: var(--primary-green);
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+}
+
+.vlc-location-box p {
+    color: var(--text-dark);
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.location-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.location-highlights li {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding-left: 20px;
+    position: relative;
+}
+
+.location-highlights li::before {
+    content: "•";
+    color: var(--accent-gold);
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+/* CARTÃO VIP COM CAMPOS DE PERFIL E TIPOLOGIA */
+.vlc-vip-card {
+    background: var(--bg-card-white);
+    border: 2px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 40px 35px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.vip-tag {
+    background: var(--gold-gradient);
+    color: var(--primary-green-dark);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.vlc-vip-card h3 {
+    color: var(--primary-green);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.vlc-vip-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.vip-form {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.vip-form label {
+    font-weight: 600;
+    color: var(--primary-green);
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.vip-form input,
+.vip-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #f9f9f9;
+    color: var(--text-dark);
+}
+
+.vip-form input:focus,
+.vip-form select:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(197, 160, 89, 0.3);
+}
+
+.btn-gold-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold-gradient);
+    color: var(--primary-green-dark);
+    font-weight: 800;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-gold-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+}
+
+/* ==========================================================================
+   7. CONTACTOS INSTITUCIONAIS (ISOLADOS E EM DESTAQUE)
+   ========================================================================== */
+.contactos-section {
+    background-color: var(--primary-green);
+    text-align: center;
+    /* Altura e padding generosos para isolar a secção perfeitamente no ecrã de 16'' */
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    padding: 120px 20px;
+}
+
+.contactos-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.contactos-section h2 {
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info-clean {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.info-item i {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+}
+
+.info-item span {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a0b0a8;
+}
+
+.info-item a, .info-item p {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-item a:hover {
+    color: var(--accent-gold);
+}
+/* ==========================================================================
+   ESTILOS DA ASSINATURA ARQUITETÓNICA (MOLDURA METÁLICA DOURADA 3D)
+   ========================================================================== */
+.project-author-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 45px;
+    text-align: left;
+    width: 100%;
+}
+
+.author-card {
+    background: var(--bg-card-white);
+    border: 1px solid rgba(197, 160, 89, 0.4);
+    border-radius: 10px;
+    padding: 35px;
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    max-width: 1150px;
+}
+
+.author-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.author-brand-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.author-logo-wrapper {
+    /* Fundo com degradé metálico dourado idêntico aos botões do site */
+    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    border: 1.5px solid #8c6d28;
+    border-radius: 8px;
+    padding: 3px; /* Deixa transparecer a moldura dourada à volta do logo */
+    box-shadow: 0 8px 22px rgba(197, 160, 89, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.author-logo-wrapper:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(197, 160, 89, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.8);
+}
+
+/* O fundo interior onde o logo assenta fica branco limpo para destacar o traço do logo */
+.author-logo-inner {
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.author-logo {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.author-card h3 {
+    color: var(--primary-green);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.author-link-external {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease;
+}
+
+.author-link-external:hover {
+    color: var(--accent-gold);
+}
+
+.author-card p {
+    color: var(--text-muted);
+    font-size: 0.98rem;
+    line-height: 1.7;
+    text-align: justify;
+}
+/* ==========================================================================
+   8. RESPONSIVIDADE TELEMÓVEL / MOBILE
+   ========================================================================== */
+@media (max-width: 768px) {
+    :root {
+        --header-height: auto;
+        --footer-height: 45px;
+    }
+
+    header {
+        position: fixed;
+        padding: 12px 0;
+    }
+
+    .nav-container {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .brand-name {
+        font-size: 1rem;
+    }
+
+    .brand-sub {
+        font-size: 0.48rem;
+    }
+
+    .logo-icon {
+        height: 48px;
+    }
+
+    nav ul {
+        gap: 14px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 0.78rem;
+    }
+
+    main {
+        padding-top: 130px;
+    }
+
+    section {
+        padding: 55px 15px;
+    }
+
+    .contactos-section {
+        min-height: auto;
+        padding: 80px 15px;
+    }
+
+    .hero-title, .vlc-title, .contactos-section h2, .modelo-section .section-title {
+        font-size: 1.8rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .vlc-features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .contact-info-clean {
+        gap: 40px;
+        flex-direction: column;
+    }
+
+    footer {
+        font-size: 0.72rem;
+    }
+}
