@@ -1,76 +1,114 @@
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // 1. LÓGICA DINÂMICA DO PERFIL (INVESTIDOR VS PARTICULAR)
-    const perfilSelect = document.getElementById('vip-perfil');
-    const optMultiplas = document.getElementById('opt-multiplas');
-    const tipologiaSelect = document.getElementById('vip-tipologia');
+/**
+ * Application Main Script
+ * Barbosas Prime Website - Clean JavaScript Standard
+ */
 
-    if (perfilSelect && optMultiplas) {
-        perfilSelect.addEventListener('change', function() {
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Smooth scrolling navigation setup
+    setupSmoothNavigation();
+
+    // 2. Dynamic user profile logic (Investor vs Particular)
+    setupVipFormLogic();
+});
+
+/**
+ * Handles smooth scrolling for all internal navigation links
+ */
+function setupSmoothNavigation() {
+    const navigationLinks = document.querySelectorAll('.main-nav a, .brand-logo-link');
+
+    navigationLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            const targetHref = link.getAttribute('href');
+            
+            if (targetHref && targetHref.startsWith('#')) {
+                event.preventDefault();
+                const targetElement = document.querySelector(targetHref);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+}
+
+/**
+ * Handles dynamic behavior for the VIP access form and dual mail client dispatch
+ */
+function setupVipFormLogic() {
+    const userProfileSelect = document.getElementById('vip-user-profile');
+    const multipleUnitsOption = document.getElementById('opt-multiple-units');
+    const propertyTypeSelect = document.getElementById('vip-property-type');
+    const submitButton = document.getElementById('vip-submit-btn');
+
+    // Toggle multiple units option based on profile selection
+    if (userProfileSelect && multipleUnitsOption) {
+        userProfileSelect.addEventListener('change', function() {
             if (this.value === 'investidor') {
-                optMultiplas.style.display = 'block';
+                multipleUnitsOption.classList.remove('hidden-option');
             } else {
-                optMultiplas.style.display = 'none';
-                if (tipologiaSelect.value === 'multiplas') {
-                    tipologiaSelect.value = '';
+                multipleUnitsOption.classList.add('hidden-option');
+                if (propertyTypeSelect && propertyTypeSelect.value === 'multiplas') {
+                    propertyTypeSelect.value = '';
                 }
             }
         });
     }
 
-    // 2. DISPARO DO FORMULÁRIO COM SUPORTE DUAL (APP NATIVA + GMAIL WEB)
-    const btnSubmit = document.getElementById('btn-vip-submit');
+    // Handle form submission and mail dispatch
+    if (submitButton) {
+        submitButton.addEventListener('click', function(event) {
+            event.preventDefault();
 
-    if (btnSubmit) {
-        btnSubmit.addEventListener('click', function(e) {
-            e.preventDefault();
+            const fullNameInput = document.getElementById('vip-full-name');
+            const emailAddressInput = document.getElementById('vip-email-address');
 
-            const nomeInput = document.getElementById('vip-nome');
-            const emailInput = document.getElementById('vip-email');
-
-            if (!nomeInput.value || !emailInput.value) {
+            if (!fullNameInput || !fullNameInput.value || !emailAddressInput || !emailAddressInput.value) {
                 alert('Por favor, preencha o seu Nome e E-mail.');
                 return;
             }
 
-            const nome = nomeInput.value;
-            const emailCliente = emailInput.value;
-            const telefone = document.getElementById('vip-telefone').value || 'Não indicado';
-            const perfil = perfilSelect ? perfilSelect.options[perfilSelect.selectedIndex].text : 'Particular';
-            const tipologia = tipologiaSelect ? tipologiaSelect.options[tipologiaSelect.selectedIndex].text : 'Não selecionada';
+            const clientName = fullNameInput.value;
+            const clientEmail = emailAddressInput.value;
+            const phoneNumber = document.getElementById('vip-phone-number').value || 'Não indicado';
+            const userProfile = userProfileSelect ? userProfileSelect.options[userProfileSelect.selectedIndex].text : 'Particular';
+            const propertyType = propertyTypeSelect ? propertyTypeSelect.options[propertyTypeSelect.selectedIndex].text : 'Não selecionada';
 
-            const emailDestino = "geral@barbosasprime.com";
-            const assunto = `[VIP ACCESS] Pedido de Acesso Antecipado - ${nome}`;
+            const recipientEmail = "geral@barbosasprime.com";
+            const emailSubject = `[VIP ACCESS] Pedido de Acesso Antecipado - ${clientName}`;
 
-            const corpo = 
+            const emailBody = 
                 `Olá Barbosas Prime,\n\n` +
                 `Gostaria de solicitar o Acesso Prioritário VIP ao Vizela Living Center.\n\n` +
                 `--- DADOS DO CONTACTO ---\n` +
-                `• Nome: ${nome}\n` +
-                `• E-mail: ${emailCliente}\n` +
-                `• Telefone: ${telefone}\n` +
-                `• Perfil de Interesse: ${perfil}\n` +
-                `• Tipologia Pretendida: ${tipologia}\n\n` +
+                `• Nome: ${clientName}\n` +
+                `• E-mail: ${clientEmail}\n` +
+                `• Telefone: ${phoneNumber}\n` +
+                `• Perfil de Interesse: ${userProfile}\n` +
+                `• Tipologia Pretendida: ${propertyType}\n\n` +
                 `Aguardo o envio das plantas e informações oficiais antes do lançamento público.\n\n` +
                 `Com os melhores cumprimentos,\n` +
-                `${nome}`;
+                `${clientName}`;
 
-            const mailtoUrl = `mailto:${emailDestino}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${emailDestino}&su=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+            const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-            // 1. Tenta abrir a aplicação do sistema (Outlook/Mail)
+            // 1. Tenta abrir a aplicação de e-mail nativa do sistema
             window.location.href = mailtoUrl;
 
-            // 2. Para quem não tem app instalada (ex: browser puro), cria/exibe uma mensagem de apoio imediatamente
-            let feedback = document.getElementById('vip-fallback-msg');
-            if (!feedback) {
-                feedback = document.createElement('p');
-                feedback.id = 'vip-fallback-msg';
-                feedback.style.cssText = 'margin-top: 12px; font-size: 0.85rem; color: #666; text-align: center;';
-                btnSubmit.parentNode.appendChild(feedback);
+            // 2. Fallback para webmail caso não abra nenhuma app
+            let feedbackElement = document.getElementById('vip-fallback-msg');
+            if (!feedbackElement) {
+                feedbackElement = document.createElement('p');
+                feedbackElement.id = 'vip-fallback-msg';
+                feedbackElement.style.cssText = 'margin-top: 12px; font-size: 0.85rem; color: #d0d0d0; text-align: center;';
+                submitButton.parentNode.appendChild(feedbackElement);
             }
 
-            feedback.innerHTML = `Não abriu a sua aplicação de e-mail? <a href="${gmailUrl}" target="_blank" style="color: #b8975e; text-decoration: underline; font-weight: bold;">Clique aqui para enviar via Gmail no browser</a>.`;
+            feedbackElement.innerHTML = `Não abriu a sua aplicação de e-mail? <a href="${gmailUrl}" target="_blank" style="color: var(--accent-gold); text-decoration: underline; font-weight: bold;">Clique aqui para enviar via Gmail no browser</a>.`;
         });
     }
-});
+}
