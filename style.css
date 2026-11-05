@@ -1,12 +1,6 @@
-/* ==========================================================================
-   1. RESET E VARIÁVEIS GLOBAIS
-   ========================================================================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* ==========================================
+   1. DESIGN TOKENS & CSS VARIABLES
+   ========================================== */
 :root {
     --primary-green: #062618;
     --primary-green-dark: #041a10;
@@ -18,6 +12,12 @@
     --header-height: 90px;
     --footer-height: 45px;
     --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -33,10 +33,10 @@ body {
     overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. CABEÇALHO FIXO E LOGÓTIPO NÍTIDO
-   ========================================================================== */
-header {
+/* ==========================================
+   2. SITE HEADER & NAVIGATION
+   ========================================== */
+.site-header {
     background-color: var(--primary-green-dark);
     position: fixed;
     top: 0;
@@ -102,14 +102,14 @@ header {
     font-weight: 600;
 }
 
-nav ul {
+.main-nav ul {
     display: flex;
     list-style: none;
     gap: 28px;
     align-items: center;
 }
 
-nav a {
+.main-nav a {
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
@@ -119,7 +119,7 @@ nav a {
     transition: color 0.3s ease;
 }
 
-nav a:hover {
+.main-nav a:hover {
     color: var(--accent-gold);
 }
 
@@ -134,16 +134,16 @@ nav a:hover {
     vertical-align: middle;
 }
 
-/* ==========================================================================
-   3. ESTRUTURA PRINCIPAL
-   ========================================================================== */
-main {
+/* ==========================================
+   3. MAIN STRUCTURE & FOOTER
+   ========================================== */
+.main-content {
     padding-top: var(--header-height);
     padding-bottom: var(--footer-height);
     background-color: var(--primary-green);
 }
 
-section {
+.content-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -154,7 +154,7 @@ section {
     background-color: var(--primary-green);
 }
 
-footer {
+.site-footer {
     background-color: var(--primary-green-dark);
     color: #ffffff;
     text-align: center;
@@ -166,23 +166,52 @@ footer {
     left: 0;
     width: 100%;
     z-index: 1000;
-    border-top: 1px solid rgba(197, 160, 89, 0.3);
+    border-top: none;
+    box-shadow: none;
 }
-
-footer p {
+    
+.site-footer p {
     margin: 0;
 }
 
-/* ==========================================================================
-   4. SECÇÃO HERO (INÍCIO)
-   ========================================================================== */
+/* ==========================================
+  4.HERO SECTION (#inicio) - OCUPAÇÃO 100% ECRÃ
+   ========================================== */
 .hero-section {
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    position: relative;
+    height: 100vh; /* Força a ocupação rigorosa de 100% do ecrã */
+    min-height: 600px; /* Garante que em ecrãs muito pequenos não esmaga o texto */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    padding: 0 20px;
+    overflow: hidden;
+    background-color: var(--primary-green-dark);
 }
 
+/* Imagem de Fundo Temática (Arquitetos Egípcios / Pirâmide) */
+.hero-bg-image {
+    position: absolute;
+    inset: 0;
+    /* Substitui 'images/egyptian-architects.jpg' pelo nome exato do teu ficheiro de imagem */
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(4, 26, 16, 0.70) 0%, 
+        rgba(4, 26, 16, 0.88) 100%
+    ), url('images/egyptian-architects.jpg');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+/* Conteúdo de Texto por cima da imagem */
 .hero-content {
-    max-width: 900px;
+    position: relative;
+    z-index: 1;
+    max-width: 950px;
 }
 
 .hero-title {
@@ -194,24 +223,35 @@ footer p {
     background: var(--gold-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .hero-subtitle {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #dcdcdc;
+    color: #e2e8f0;
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* ==========================================================================
-   5. O NOSSO MODELO
-   ========================================================================== */
-.modelo-section {
-    background-color: var(--primary-green);
-    border-top: 1px solid rgba(197, 160, 89, 0.2);
-    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+/* ==========================================
+   5. SECÇÃO O NOSSO MODELO (#modelo)
+   ========================================== */
+.model-section {
+    position: relative;
+    min-height: calc(100vh - var(--header-height)); /* Ocupa todo o ecrã visível abaixo do header */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente os cartões no ecrã */
+    align-items: center;
+    padding: 80px 20px;
+    background-color: var(--primary-green-dark);
+    box-sizing: border-box;
 }
 
-.modelo-section .section-title {
+.model-section .section-title {
     text-align: center;
     font-size: 2.5rem;
     font-weight: 800;
@@ -232,7 +272,7 @@ footer p {
     flex-wrap: wrap;
 }
 
-.card {
+.info-card {
     background: var(--bg-card-white);
     border-radius: 10px;
     padding: 40px 30px;
@@ -246,7 +286,7 @@ footer p {
     flex-direction: column;
 }
 
-.card:hover {
+.info-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
@@ -258,7 +298,7 @@ footer p {
     text-align: center;
 }
 
-.card h3 {
+.info-card h3 {
     color: var(--primary-green);
     font-size: 1.3rem;
     font-weight: 700;
@@ -267,16 +307,16 @@ footer p {
     letter-spacing: 0.5px;
 }
 
-.card p {
+.info-card p {
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.7;
     text-align: justify;
 }
 
-/* ==========================================================================
-   6. VIZELA LIVING CENTER
-   ========================================================================== */
+/* ==========================================
+   6. VIZELA LIVING CENTER SECTION (#vlc)
+   ========================================== */
 .vlc-teaser-section {
     background-color: var(--primary-green-dark);
     text-align: center;
@@ -315,14 +355,14 @@ footer p {
     box-shadow: var(--shadow-soft);
 }
 
-.vlc-manifesto h3 {
+.manifesto-title {
     color: var(--primary-green);
     font-size: 1.35rem;
     margin-bottom: 12px;
     font-weight: 700;
 }
 
-.vlc-manifesto p {
+.manifesto-text {
     color: var(--text-dark);
     font-size: 1.02rem;
     line-height: 1.8;
@@ -350,21 +390,21 @@ footer p {
     border-color: var(--accent-gold);
 }
 
-.vlc-feature-card i {
+.feature-icon {
     font-size: 2rem;
     color: var(--accent-gold);
     margin-bottom: 12px;
     display: block;
 }
 
-.vlc-feature-card h4 {
+.feature-title {
     color: var(--primary-green);
     font-size: 1.1rem;
     margin-bottom: 8px;
     font-weight: 700;
 }
 
-.vlc-feature-card p {
+.feature-text {
     color: var(--text-muted);
     font-size: 0.92rem;
     line-height: 1.6;
@@ -381,10 +421,10 @@ footer p {
 }
 
 .gold-icon {
-    color: var(--accent-gold) !important;
+    color: var(--accent-gold);
 }
 
-.vlc-location-box h3 {
+.location-title {
     color: var(--primary-green);
     font-size: 1.3rem;
     margin-bottom: 15px;
@@ -394,7 +434,7 @@ footer p {
     font-weight: 700;
 }
 
-.vlc-location-box p {
+.location-text {
     color: var(--text-dark);
     margin-bottom: 15px;
     font-size: 1rem;
@@ -423,176 +463,9 @@ footer p {
     top: -5px;
 }
 
-/* CARTÃO VIP COM CAMPOS DE PERFIL E TIPOLOGIA */
-.vlc-vip-card {
-    background: var(--bg-card-white);
-    border: 2px solid var(--accent-gold);
-    border-radius: 12px;
-    padding: 40px 35px;
-    margin-top: 30px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    position: relative;
-}
-
-.vip-tag {
-    background: var(--gold-gradient);
-    color: var(--primary-green-dark);
-    font-weight: 800;
-    font-size: 0.75rem;
-    letter-spacing: 1.5px;
-    padding: 6px 14px;
-    border-radius: 20px;
-    display: inline-block;
-    margin-bottom: 15px;
-}
-
-.vlc-vip-card h3 {
-    color: var(--primary-green);
-    font-size: 1.6rem;
-    font-weight: 800;
-    margin-bottom: 12px;
-}
-
-.vlc-vip-card p {
-    color: var(--text-muted);
-    font-size: 1rem;
-    max-width: 750px;
-    margin: 0 auto 30px auto;
-    line-height: 1.6;
-}
-
-.vip-form {
-    max-width: 650px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    text-align: left;
-}
-
-.form-row {
-    display: flex;
-    gap: 16px;
-}
-
-.form-row .form-group {
-    flex: 1;
-}
-
-.vip-form label {
-    font-weight: 600;
-    color: var(--primary-green);
-    font-size: 0.88rem;
-    margin-bottom: 6px;
-    display: block;
-}
-
-.vip-form input,
-.vip-form select {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 0.95rem;
-    background: #f9f9f9;
-    color: var(--text-dark);
-}
-
-.vip-form input:focus,
-.vip-form select:focus {
-    outline: none;
-    border-color: var(--accent-gold);
-    background: #ffffff;
-    box-shadow: 0 0 6px rgba(197, 160, 89, 0.3);
-}
-
-.btn-gold-submit {
-    width: 100%;
-    padding: 16px;
-    background: var(--gold-gradient);
-    color: var(--primary-green-dark);
-    font-weight: 800;
-    font-size: 0.95rem;
-    border: none;
-    border-radius: 6px;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 10px;
-}
-
-.btn-gold-submit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
-}
-
-/* ==========================================================================
-   7. CONTACTOS INSTITUCIONAIS (ISOLADOS E EM DESTAQUE)
-   ========================================================================== */
-.contactos-section {
-    background-color: var(--primary-green);
-    text-align: center;
-    /* Altura e padding generosos para isolar a secção perfeitamente no ecrã de 16'' */
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    padding: 120px 20px;
-}
-
-.contactos-container {
-    max-width: 800px;
-    width: 100%;
-}
-
-.contactos-section h2 {
-    font-size: 2.6rem;
-    margin-bottom: 50px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.contact-info-clean {
-    display: flex;
-    justify-content: center;
-    gap: 80px;
-    flex-wrap: wrap;
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-}
-
-.info-item i {
-    font-size: 2.5rem;
-    color: var(--accent-gold);
-}
-
-.info-item span {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #a0b0a8;
-}
-
-.info-item a, .info-item p {
-    font-size: 1.2rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.info-item a:hover {
-    color: var(--accent-gold);
-}
-/* ==========================================================================
-   ESTILOS DA ASSINATURA ARQUITETÓNICA (MOLDURA METÁLICA DOURADA 3D)
-   ========================================================================== */
+/* ==========================================
+   PROJECT AUTHOR (NIDUS ARS)
+   ========================================== */
 .project-author-container {
     display: flex;
     justify-content: center;
@@ -627,11 +500,10 @@ footer p {
 }
 
 .author-logo-wrapper {
-    /* Fundo com degradé metálico dourado idêntico aos botões do site */
-    background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+    background: var(--gold-gradient);
     border: 1.5px solid #8c6d28;
     border-radius: 8px;
-    padding: 3px; /* Deixa transparecer a moldura dourada à volta do logo */
+    padding: 3px;
     box-shadow: 0 8px 22px rgba(197, 160, 89, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
     display: flex;
     align-items: center;
@@ -644,7 +516,6 @@ footer p {
     box-shadow: 0 12px 28px rgba(197, 160, 89, 0.6), inset 0 2px 4px rgba(255, 255, 255, 0.8);
 }
 
-/* O fundo interior onde o logo assenta fica branco limpo para destacar o traço do logo */
 .author-logo-inner {
     background: #ffffff;
     border-radius: 6px;
@@ -661,7 +532,7 @@ footer p {
     display: block;
 }
 
-.author-card h3 {
+.author-title {
     color: var(--primary-green);
     font-size: 1.4rem;
     font-weight: 700;
@@ -683,22 +554,211 @@ footer p {
     color: var(--accent-gold);
 }
 
-.author-card p {
+.author-description {
     color: var(--text-muted);
     font-size: 0.98rem;
     line-height: 1.7;
     text-align: justify;
 }
-/* ==========================================================================
-   8. RESPONSIVIDADE TELEMÓVEL / MOBILE
-   ========================================================================== */
+
+/* ==========================================
+   VIP ACCESS CARD & FORM
+   ========================================== */
+.vlc-vip-card {
+    background: var(--bg-card-white);
+    border: 2px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: 40px 35px;
+    margin-top: 30px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+}
+
+.vip-tag {
+    background: var(--gold-gradient);
+    color: var(--primary-green-dark);
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.vip-card-title {
+    color: var(--primary-green);
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.vip-card-text {
+    color: var(--text-muted);
+    font-size: 1rem;
+    max-width: 750px;
+    margin: 0 auto 30px auto;
+    line-height: 1.6;
+}
+
+.vip-form {
+    max-width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.vip-form label {
+    font-weight: 600;
+    color: var(--primary-green);
+    font-size: 0.88rem;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.vip-form input,
+.vip-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #f9f9f9;
+    color: var(--text-dark);
+}
+
+.vip-form input:focus,
+.vip-form select:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    background: #ffffff;
+    box-shadow: 0 0 6px rgba(197, 160, 89, 0.3);
+}
+
+.vip-form select option {
+    background-color: var(--bg-card-white);
+    color: var(--text-dark);
+}
+
+.btn-gold-submit {
+    width: 100%;
+    padding: 16px;
+    background: var(--gold-gradient);
+    color: var(--primary-green-dark);
+    font-weight: 800;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: 6px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+.btn-gold-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(197, 160, 89, 0.5);
+}
+
+.hidden-option {
+    display: none;
+}
+
+/* ==========================================
+   7. CONTACTS SECTION (#contactos)
+   ========================================== */
+.contacts-section {
+    background-color: var(--primary-green);
+    text-align: center;
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
+    padding: 120px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contacts-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+.contacts-section .section-title {
+    font-size: 2.6rem;
+    margin-bottom: 50px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: var(--gold-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.contact-info-clean {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.contact-icon {
+    font-size: 2.5rem;
+    color: var(--accent-gold);
+}
+
+.info-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #a0b0a8;
+}
+
+.info-link,
+.info-text {
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.info-link:hover {
+    color: var(--accent-gold);
+}
+
+/* ==========================================
+   8. RESPONSIVE MEDIA QUERIES (MOBILE)
+   ========================================== */
 @media (max-width: 768px) {
     :root {
         --header-height: auto;
         --footer-height: 45px;
     }
 
-    header {
+    .site-header {
         position: fixed;
         padding: 12px 0;
     }
@@ -720,30 +780,33 @@ footer p {
         height: 48px;
     }
 
-    nav ul {
+    .main-nav ul {
         gap: 14px;
         flex-wrap: wrap;
         justify-content: center;
     }
 
-    nav a {
+    .main-nav a {
         font-size: 0.78rem;
     }
 
-    main {
+    .main-content {
         padding-top: 130px;
     }
 
-    section {
+    .content-section {
         padding: 55px 15px;
     }
 
-    .contactos-section {
+    .contacts-section {
         min-height: auto;
         padding: 80px 15px;
     }
 
-    .hero-title, .vlc-title, .contactos-section h2, .modelo-section .section-title {
+    .hero-title, 
+    .vlc-title, 
+    .contacts-section .section-title, 
+    .model-section .section-title {
         font-size: 1.8rem;
     }
 
@@ -761,7 +824,7 @@ footer p {
         align-items: center;
     }
 
-    .card {
+    .info-card {
         max-width: 100%;
         min-width: 100%;
     }
@@ -771,7 +834,7 @@ footer p {
         flex-direction: column;
     }
 
-    footer {
+    .site-footer {
         font-size: 0.72rem;
     }
 }
