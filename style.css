@@ -201,7 +201,7 @@ body {
         to bottom, 
         rgba(4, 26, 16, 0.70) 0%, 
         rgba(4, 26, 16, 0.88) 100%
-    ), url('images/egyptian-architects.jpg');
+    ), url('images/background-past-future.png');
     background-size: cover;
     background-position: center;
     z-index: 0;
