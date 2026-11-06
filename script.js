@@ -79,6 +79,14 @@ function setupVipFormLogic() {
     const multipleUnitsOption = document.getElementById('opt-multiple-units');
     const propertyTypeSelect = document.getElementById('vip-property-type');
     const submitButton = document.getElementById('vip-submit-btn');
+    const phoneInput = document.getElementById('vip-phone-number');
+
+    // FILTRAGEM DO TELEFONE: Impede a digitação de letras em tempo real no teclado
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9+\s()]/g, '');
+        });
+    }
 
     // Mostra/oculta a opção de "Múltiplas Frações" conforme o perfil selecionado
     if (userProfileSelect && multipleUnitsOption) {
@@ -109,7 +117,7 @@ function setupVipFormLogic() {
 
             const clientName = fullNameInput.value.trim();
             const clientEmail = emailAddressInput.value.trim();
-            const phoneNumber = document.getElementById('vip-phone-number').value.trim() || 'Não indicado';
+            const phoneNumber = phoneInput && phoneInput.value.trim() !== '' ? phoneInput.value.trim() : 'Não indicado';
             const userProfile = userProfileSelect && userProfileSelect.selectedIndex >= 0 
                 ? userProfileSelect.options[userProfileSelect.selectedIndex].text 
                 : 'Particular';
