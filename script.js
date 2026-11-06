@@ -4,15 +4,18 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Smooth scrolling navigation setup
+    // 1. Navegação com scroll suave para links internos
     setupSmoothNavigation();
 
-    // 2. Dynamic user profile logic (Investor vs Particular)
+    // 2. Lógica dinâmica do formulário VIP (Investidor vs. Particular)
     setupVipFormLogic();
+
+    // 3. Gestão do Pop-up / Modal do Manifesto do VLC
+    setupManifestoModal();
 });
 
 /**
- * Handles smooth scrolling for all internal navigation links
+ * Trata da navegação suave ao clicar nos links da barra de menu e do logo
  */
 function setupSmoothNavigation() {
     const navigationLinks = document.querySelectorAll('.main-nav a, .brand-logo-link');
@@ -36,7 +39,40 @@ function setupSmoothNavigation() {
 }
 
 /**
- * Handles dynamic behavior for the VIP access form and dual mail client dispatch
+ * Gere a abertura e fecho do Modal/Pop-up do Manifesto VLC
+ */
+function setupManifestoModal() {
+    const modal = document.getElementById('manifestoModal');
+    const openBtn = document.getElementById('openManifestoBtn');
+    const closeBtn = document.getElementById('closeManifestoBtn');
+
+    if (openBtn && modal && closeBtn) {
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Fecha se o utilizador clicar no fundo escuro fora da caixa
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Fecha com a tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                modal.classList.remove('active');
+            }
+        });
+    }
+}
+
+/**
+ * Lógica do formulário VIP: mostra/esconde opções dinâmicas e gere o disparo de e-mail
  */
 function setupVipFormLogic() {
     const userProfileSelect = document.getElementById('vip-user-profile');
@@ -44,7 +80,7 @@ function setupVipFormLogic() {
     const propertyTypeSelect = document.getElementById('vip-property-type');
     const submitButton = document.getElementById('vip-submit-btn');
 
-    // Toggle multiple units option based on profile selection
+    // Mostra/oculta a opção de "Múltiplas Frações" conforme o perfil selecionado
     if (userProfileSelect && multipleUnitsOption) {
         userProfileSelect.addEventListener('change', function() {
             if (this.value === 'investidor') {
@@ -58,7 +94,7 @@ function setupVipFormLogic() {
         });
     }
 
-    // Handle form submission and mail dispatch
+    // Submissão do formulário VIP e envio de e-mail
     if (submitButton) {
         submitButton.addEventListener('click', function(event) {
             event.preventDefault();
@@ -66,16 +102,20 @@ function setupVipFormLogic() {
             const fullNameInput = document.getElementById('vip-full-name');
             const emailAddressInput = document.getElementById('vip-email-address');
 
-            if (!fullNameInput || !fullNameInput.value || !emailAddressInput || !emailAddressInput.value) {
+            if (!fullNameInput || !fullNameInput.value.trim() || !emailAddressInput || !emailAddressInput.value.trim()) {
                 alert('Por favor, preencha o seu Nome e E-mail.');
                 return;
             }
 
-            const clientName = fullNameInput.value;
-            const clientEmail = emailAddressInput.value;
-            const phoneNumber = document.getElementById('vip-phone-number').value || 'Não indicado';
-            const userProfile = userProfileSelect ? userProfileSelect.options[userProfileSelect.selectedIndex].text : 'Particular';
-            const propertyType = propertyTypeSelect ? propertyTypeSelect.options[propertyTypeSelect.selectedIndex].text : 'Não selecionada';
+            const clientName = fullNameInput.value.trim();
+            const clientEmail = emailAddressInput.value.trim();
+            const phoneNumber = document.getElementById('vip-phone-number').value.trim() || 'Não indicado';
+            const userProfile = userProfileSelect && userProfileSelect.selectedIndex >= 0 
+                ? userProfileSelect.options[userProfileSelect.selectedIndex].text 
+                : 'Particular';
+            const propertyType = propertyTypeSelect && propertyTypeSelect.selectedIndex >= 0 
+                ? propertyTypeSelect.options[propertyTypeSelect.selectedIndex].text 
+                : 'Não selecionada';
 
             const recipientEmail = "geral@barbosasprime.com";
             const emailSubject = `[VIP ACCESS] Pedido de Acesso Antecipado - ${clientName}`;
@@ -96,15 +136,15 @@ function setupVipFormLogic() {
             const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
             const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-            // 1. Tenta abrir a aplicação de e-mail nativa do sistema
+            // 1. Tenta abrir o cliente de e-mail nativo
             window.location.href = mailtoUrl;
 
-            // 2. Fallback para webmail caso não abra nenhuma app
+            // 2. Feedback e fallback direto para o Gmail no browser
             let feedbackElement = document.getElementById('vip-fallback-msg');
             if (!feedbackElement) {
                 feedbackElement = document.createElement('p');
                 feedbackElement.id = 'vip-fallback-msg';
-                feedbackElement.style.cssText = 'margin-top: 12px; font-size: 0.85rem; color: #d0d0d0; text-align: center;';
+                feedbackElement.style.cssText = 'margin-top: 15px; font-size: 0.88rem; color: #555555; text-align: center; line-height: 1.4;';
                 submitButton.parentNode.appendChild(feedbackElement);
             }
 
