@@ -201,7 +201,14 @@
                                 <option value="multiplas" id="opt-multiple-units" class="hidden-option">Múltiplas Frações / Bloco de Investimento</option>
                             </select>
                         </div>
-                        <button type="submit" id="vip-submit-btn" class="btn-gold-submit">GARANTIR ACESSO ANTECIPADO</button>
+
+                        <!-- CONTENTOR DA AÇÃO (BOTÃO OU FALLBACK) -->
+                        <div class="vip-action-wrapper" id="vipActionWrapper">
+                            <button type="submit" id="vip-submit-btn" class="btn-gold-submit">GARANTIR ACESSO ANTECIPADO</button>
+                            <div class="vip-fallback-box" id="vipFallbackBox">
+                                Não abriu a sua aplicação de e-mail? <a href="#" id="fallbackGmailLink">Clique aqui para enviar via Gmail no browser.</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
