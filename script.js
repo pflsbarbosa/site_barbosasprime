@@ -80,6 +80,8 @@ function setupVipFormLogic() {
     const propertyTypeSelect = document.getElementById('vip-property-type');
     const submitButton = document.getElementById('vip-submit-btn');
     const phoneInput = document.getElementById('vip-phone-number');
+    const actionWrapper = document.getElementById('vipActionWrapper');
+    const fallbackGmailLink = document.getElementById('fallbackGmailLink');
 
     // FILTRAGEM DO TELEFONE: Impede a digitação de letras em tempo real no teclado
     if (phoneInput) {
@@ -147,16 +149,15 @@ function setupVipFormLogic() {
             // 1. Tenta abrir o cliente de e-mail nativo
             window.location.href = mailtoUrl;
 
-            // 2. Feedback e fallback direto para o Gmail no browser
-            let feedbackElement = document.getElementById('vip-fallback-msg');
-            if (!feedbackElement) {
-                feedbackElement = document.createElement('p');
-                feedbackElement.id = 'vip-fallback-msg';
-                feedbackElement.style.cssText = 'margin-top: 15px; font-size: 0.88rem; color: #555555; text-align: center; line-height: 1.4;';
-                submitButton.parentNode.appendChild(feedbackElement);
+            // 2. Ativa o estado de fallback no wrapper (esconde o botão e revela a mensagem no mesmo espaço)
+            if (actionWrapper) {
+                actionWrapper.classList.add('fallback-active');
             }
 
-            feedbackElement.innerHTML = `Não abriu a sua aplicação de e-mail? <a href="${gmailUrl}" target="_blank" style="color: var(--accent-gold); text-decoration: underline; font-weight: bold;">Clique aqui para enviar via Gmail no browser</a>.`;
+            if (fallbackGmailLink) {
+                fallbackGmailLink.href = gmailUrl;
+                fallbackGmailLink.target = '_blank';
+            }
         });
     }
 }
