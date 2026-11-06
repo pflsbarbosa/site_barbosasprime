@@ -23,741 +23,6 @@
 html {
     scroll-behavior: smooth;
     background-color: var(--primary-green);
-    scroll-padding-top: var(--header-height); /* Compensa automaticamente a altura exata do header no salto do scroll */
-}
-
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background-color: var(--primary-green);
-    color: #ffffff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-/* ==========================================
-   2. SITE HEADER & NAVIGATION
-   ========================================== */
-.site-header {
-    background-color: var(--primary-green-dark);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: var(--header-height);
-    z-index: 1000;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    border-bottom: 1px solid rgba(197, 160, 89, 0.25);
-}
-
-.nav-container {
-    max-width: 1350px;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-}
-
-.brand-logo-link {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    text-decoration: none;
-    transition: transform 0.3s ease;
-}
-
-.brand-logo-link:hover {
-    transform: scale(1.02);
-}
-
-.logo-icon {
-    height: 60px;
-    width: auto;
-    display: block;
-}
-
-.logo-text-group {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.brand-name {
-    font-size: 1.3rem;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.1;
-}
-
-.brand-sub {
-    font-size: 0.58rem;
-    color: #a0b0a8;
-    letter-spacing: 2.8px;
-    text-transform: uppercase;
-    margin-top: 4px;
-    font-weight: 600;
-}
-
-.main-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 28px;
-    align-items: center;
-}
-
-.main-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.88rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: var(--accent-gold);
-}
-
-.vip-badge {
-    background: var(--gold-gradient);
-    color: var(--primary-green);
-    font-size: 0.65rem;
-    font-weight: 800;
-    padding: 2px 7px;
-    border-radius: 4px;
-    margin-left: 5px;
-    vertical-align: middle;
-}
-
-/* ==========================================
-   3. MAIN STRUCTURE & FOOTER
-   ========================================== */
-.main-content {
-    padding-top: var(--header-height);
-    padding-bottom: var(--footer-height);
-    background-color: var(--primary-green);
-}
-
-.content-section {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 75px 20px;
-    margin: 0;
-    width: 100%;
-    background-color: var(--primary-green);
-}
-
-.site-footer {
-    background-color: var(--primary-green-dark);
-    color: #ffffff;
-    text-align: center;
-    height: var(--footer-height);
-    line-height: var(--footer-height);
-    font-size: 0.8rem;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    border-top: none;
-    box-shadow: none;
-}
-    
-.site-footer p {
-    margin: 0;
-}
-
-/* ==========================================
-   4. HERO SECTION (#inicio) - CLEAN TYPOGRAPHY & LIGHTING
-   ========================================== */
-.hero-section {
-    position: relative;
-    height: calc(100vh - var(--header-height));
-    min-height: 600px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 40px 20px;
-    overflow: hidden;
-    background-color: var(--primary-green-dark);
-}
-
-.hero-bg-image {
-    position: absolute;
-    inset: 0;
-    /* Overlay mais leve (0.45 / 0.65) para devolver luz à imagem sem perder leitura */
-    background-image: linear-gradient(
-        to bottom, 
-        rgba(4, 26, 16, 0.45) 0%, 
-        rgba(4, 26, 16, 0.65) 100%
-    ), url('images/background-past-future.png');
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Título Contínuo Premium em Dourado com Sombra de Contraste */
-.hero-title {
-    font-size: 2.8rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-    line-height: 1.35;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    
-    /* Gradiente dourado */
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    /*filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.85));
-
-   /* Contorno subtil em tom metálico/claro sem anular o gradiente */
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.7);
-    
-    /* Sombra exterior para separar a letra do fundo da imagem */
-    filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.95));
-}
-
-.hero-subtitle {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    color: #f0f4f1;
-    max-width: 850px;
-    margin: 0 auto;
-    padding: 0 15px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.85);
-}
-
-/* ==========================================
-   5. SECÇÃO O NOSSO MODELO (#modelo)
-   ========================================== */
-.model-section {
-    position: relative;
-    width: 100%;
-    height: calc(100vh - var(--header-height));
-    height: calc(100dvh - var(--header-height));
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    padding: clamp(10px, 2vh, 30px) 20px;
-    box-sizing: border-box;
-    overflow: hidden;
-}
-
-.model-section .section-title {
-    text-align: center;
-    font-size: clamp(1.8rem, 2.5vw, 2.5rem); /* Título fluido adaptável a ecrãs menores */
-    font-weight: 800;
-    margin-bottom: 0;        /* O space-evenly gere o espaçamento vertical */
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.cards-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch;
-    gap: clamp(12px, 2vw, 25px);
-    width: 100%;
-    max-width: 1250px;
-}
-
-.info-card {
-    flex: 1;
-    min-width: 0; /* Impede o flex-item de rebentar o container */
-    max-width: 380px;
-    background: var(--bg-card-white);
-    border-radius: 10px;
-    padding: clamp(12px, 2.2vh, 25px) clamp(12px, 1.5vw, 20px);
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    box-shadow: var(--shadow-soft);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    box-sizing: border-box;
-}
-
-.card-icon {
-    font-size: clamp(1.8rem, 3.5vh, 2.5rem);
-    color: var(--accent-gold);
-    margin-bottom: clamp(6px, 1vh, 12px);
-    text-align: center;
-}
-
-.info-card h3 {
-    color: var(--primary-green);
-    font-size: clamp(1rem, 1.1vw, 1.25rem);
-    font-weight: 700;
-    margin-bottom: clamp(6px, 1vh, 10px);
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-
-.info-card p {
-    color: var(--text-muted);
-    font-size: clamp(0.78rem, 0.85vw, 0.92rem);
-    line-height: 1.45;
-    text-align: justify;
-    margin: 0;
-}
-
-.info-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
-}
-/* ==========================================
-   6. VIZELA LIVING CENTER SECTION (#vlc) - ESTRUTURA LIMPA E ROBUSTA
-   ========================================== */
-
-/* Contentor principal da secção com isolamento e espaço inferior de respiro */
-.vlc-teaser-section {
-    position: relative;
-    background-color: var(--primary-green-dark);
-    background-image: radial-gradient(circle at 50% 20%, #083321 0%, var(--primary-green-dark) 80%);
-    text-align: center;
-    border-bottom: 2px solid rgba(197, 160, 89, 0.3);
-    padding: 80px 20px 100px 20px;
-    box-sizing: border-box;
-    width: 100%;
-}
-
-.vlc-container {
-    max-width: 1150px;
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-}
-
-.vlc-title {
-    font-size: 2.6rem;
-    margin-bottom: 5px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: var(--gold-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.6));
-}
-
-.vlc-subtitle {
-    font-size: 1.15rem;
-    margin-bottom: 30px;
-    color: var(--accent-gold);
-    font-weight: 600;
-}
-
-/* Manifesto */
-/* --- CARTÃO MANIFESTO (NA PÁGINA) --- */
-.vlc-manifesto {
-    background: var(--bg-card-white);
-    border: 1px solid rgba(197, 160, 89, 0.4) !important;
-    border-top: 3px solid transparent;
-    padding: clamp(14px, 2vh, 22px) clamp(16px, 2vw, 25px);
-    border-radius: 10px;
-    margin-bottom: clamp(15px, 2.5vh, 30px);
-    text-align: left;
-    box-shadow: var(--shadow-soft);
-    width: 100%;
-    max-width: 1150px;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-top-color 0.3s ease;
-}
-
-.vlc-manifesto:hover {
-    border-top-color: var(--accent-gold);
-}
-
-.manifesto-icon {
-    font-size: clamp(1.2rem, 1.8vh, 1.6rem);
-    color: var(--accent-gold);
-    margin-bottom: 6px;
-}
-
-.manifesto-title {
-    color: var(--primary-green);
-    font-size: clamp(0.95rem, 1.1vw, 1.2rem);
-    margin-bottom: 6px;
-    font-weight: 700;
-    line-height: 1.35;
-}
-
-.manifesto-text {
-    color: var(--text-dark);
-    font-size: clamp(0.75rem, 0.85vw, 0.92rem);
-    line-height: 1.45;
-    margin: 0 0 10px 0;
-}
-
-.btn-read-more {
-    background: transparent;
-    border: none;
-    color: var(--accent-gold);
-    font-weight: 700;
-    font-size: clamp(0.78rem, 0.85vw, 0.9rem);
-    cursor: pointer;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.btn-read-more:hover {
-    color: var(--primary-green);
-    transform: translateX(3px);
-}
-
-/* --- ESTRUTURA DO POP-UP / MODAL --- */
-.vlc-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(4, 26, 16, 0.8); /* Fundo escuro semi-transparente */
-    backdrop-filter: blur(4px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-.vlc-modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.vlc-modal-content {
-    background: var(--bg-card-white);
-    border: 2px solid var(--accent-gold);
-    border-radius: 12px;
-    padding: clamp(20px, 4vh, 35px);
-    max-width: 650px;
-    width: 100%;
-    max-height: 85vh;
-    overflow-y: auto;
-    position: relative;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    text-align: left;
-    transform: translateY(20px);
-    transition: transform 0.3s ease;
-}
-
-.vlc-modal-overlay.active .vlc-modal-content {
-    transform: translateY(0);
-}
-
-.vlc-modal-close {
-    position: absolute;
-    top: 12px;
-    right: 18px;
-    background: transparent;
-    border: none;
-    font-size: 1.8rem;
-    color: var(--primary-green);
-    cursor: pointer;
-    line-height: 1;
-    transition: color 0.2s ease;
-}
-
-.vlc-modal-close:hover {
-    color: var(--accent-gold);
-}
-
-.modal-manifesto-title {
-    color: var(--primary-green);
-    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
-    font-weight: 800;
-    margin-bottom: 15px;
-    line-height: 1.35;
-    padding-right: 25px;
-}
-
-.modal-manifesto-body p {
-    color: var(--text-dark);
-    font-size: clamp(0.85rem, 0.95vw, 1rem);
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Grelha de Características */
-.vlc-features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 22px;
-    margin-bottom: 45px;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.vlc-feature-card {
-    background: var(--bg-card-white);
-    border: 1px solid rgba(197, 160, 89, 0.35);
-    border-top: 3px solid transparent;
-    border-radius: 8px;
-    padding: 24px;
-    box-shadow: var(--shadow-soft);
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-color 0.3s ease, border-top-color 0.3s ease;
-}
-
-.vlc-feature-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-gold);
-    border-top-color: var(--accent-gold);
-}
-
-.feature-icon {
-    font-size: 2rem;
-    color: var(--accent-gold);
-    margin-bottom: 12px;
-    display: block;
-}
-
-.feature-title {
-    color: var(--primary-green);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-    font-weight: 700;
-}
-
-.feature-text {
-    color: var(--text-muted);
-    font-size: 0.92rem;
-    line-height: 1.6;
-}
-
-/* Caixa de Localização */
-.vlc-location-box {
-    background: var(--bg-card-white);
-    border: 1px solid rgba(197, 160, 89, 0.35);
-    border-top: 3px solid transparent;
-    border-radius: 10px;
-    padding: 32px;
-    margin-bottom: 45px;
-    text-align: left;
-    box-shadow: var(--shadow-soft);
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-top-color 0.3s ease;
-}
-
-.vlc-location-box:hover {
-    border-top-color: var(--accent-gold);
-}
-
-.gold-icon {
-    color: var(--accent-gold);
-}
-
-.location-title {
-    color: var(--primary-green);
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-weight: 700;
-}
-
-.location-text {
-    color: var(--text-dark);
-    margin-bottom: 15px;
-    font-size: 1rem;
-}
-
-.location-highlights {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 0;
-    margin: 0;
-}
-
-.location-highlights li {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    padding-left: 20px;
-    position: relative;
-}
-
-.location-highlights li::before {
-    content: "•";
-    color: var(--accent-gold);
-    font-size: 1.5rem;
-    position: absolute;
-    left: 0;
-    top: -5px;
-}
-
-/* Caixa do Arquiteto (Nidus Ars) */
-.project-author-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 45px;
-    text-align: left;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.author-card {
-    background: var(--bg-card-white);
-    border: 1px solid rgba(197, 160, 89, 0.4);
-    border-top: 3px solid transparent;
-    border-radius: 10px;
-    padding: 35px;
-    box-shadow: var(--shadow-soft);
-    width: 100%;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, border-top-color 0.3s ease;
-}
-
-.author-card:hover {
-    border-top-color: var(--accent-gold);
-}
-
-.author-top-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-.author-brand-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.author-logo-wrapper {
-    background: var(--gold-gradient);
-    border: 1.5px solid #8c6d28;
-    border-radius: 8px;
-    padding: 3px;
-    box-shadow: 0 8px 22px rgba(197, 160, 89, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.author-logo-inner {
-    background: #ffffff;
-    border-radius: 6px;
-    padding: 6px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.author-logo {
-    height: 65px;
-    width: auto;
-    object-fit: contain;
-    display: block;
-}
-
-.author-title {
-    color: var(--primary-green);
-    font-size: 1.4rem;
-    font-weight: 700;
-    margin: 0;
-}
-
-.author-link-external {
-    font-size: 0.88rem;
-    font-weight: 700;
-    color: var(--primary-green);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s ease;
-}
-
-.author-link-external:hover {
-    color: var(--accent-gold);
-}
-
-.author-description {
-    color: var(--text-muted);
-    font-size: 0.98rem;
-    line-height: 1.7;
-    text-align: justify;
-}
-
-/* Cartão e Formulário VIP (Isolado e com largura controlada) */
-.vlc-vip-card {
-    background: var(--bg-card-white);
-    border: 2px solid var(--accent-gold);
-    border-radius: 12px;
-    padding: 40px 35px;
-    margin: 0 auto;
-    max-width: 750px;
-    width: 100%;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    box-sizing: border-box;
-}
-/* ==========================================
-   1. DESIGN TOKENS & CSS VARIABLES
-   ========================================== */
-:root {
-    --primary-green: #062618;
-    --primary-green-dark: #041a10;
-    --accent-gold: #c5a059;
-    --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
-    --bg-card-white: #ffffff;
-    --text-dark: #2c3e35;
-    --text-muted: #555555;
-    --header-height: 90px;
-    --footer-height: 45px;
-    --shadow-soft: 0 15px 35px rgba(0, 0, 0, 0.25);
-}
-
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    background-color: var(--primary-green);
     scroll-padding-top: var(--header-height);
 }
 
@@ -769,7 +34,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Utilitário para o Formulário */
 .hidden-option {
     display: none !important;
 }
@@ -916,7 +180,7 @@ body {
 }
 
 /* ==========================================
-   4. HERO SECTION (#inicio) - MOBILE-FIRST ROBUST
+   4. HERO SECTION (#inicio) - MOBILE-FIRST
    ========================================== */
 .hero-section {
     position: relative;
@@ -956,7 +220,7 @@ body {
 }
 
 .hero-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
     font-weight: 800;
     letter-spacing: 2px;
     line-height: 1.35;
@@ -970,7 +234,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: 1rem;
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
     line-height: 1.6;
     color: #f0f4f1;
     max-width: 850px;
@@ -985,18 +249,16 @@ body {
 .model-section {
     position: relative;
     width: 100%;
-    /* Altura fluida proporcional ao viewport, com margem de segurança otimizada */
     min-height: calc(100vh - var(--header-height));
     min-height: calc(100dvh - var(--header-height));
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* Gap e paddings reduzidos verticalmente para evitar qualquer corte no rodapé */
     gap: clamp(10px, 2vh, 25px);
     padding: clamp(10px, 1.5vh, 20px) 20px;
     box-sizing: border-box;
-    background-color: var(--primary-dark);
+    background-color: var(--primary-green);
 }
 
 .model-section .section-title {
@@ -1027,7 +289,6 @@ body {
     max-width: 380px;
     background: var(--bg-card-white);
     border-radius: 10px;
-    /* Padding vertical mais compacto para o texto encaixar perfeitamente */
     padding: clamp(10px, 1.5vh, 20px) clamp(10px, 1.5vw, 20px);
     border: 1px solid rgba(197, 160, 89, 0.4);
     box-shadow: var(--shadow-soft);
@@ -1035,6 +296,7 @@ body {
     flex-direction: column;
     justify-content: center;
     box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-icon {
@@ -1065,8 +327,9 @@ body {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
 }
+
 /* ==========================================
-   6. VIZELA LIVING CENTER SECTION (#vlc) - FLUIDO UNIVERSAL
+   6. VIZELA LIVING CENTER SECTION (#vlc)
    ========================================== */
 .vlc-teaser-section {
     position: relative;
@@ -1074,7 +337,6 @@ body {
     background-image: radial-gradient(circle at 50% 20%, #083321 0%, var(--primary-green-dark) 80%);
     text-align: center;
     border-bottom: 2px solid rgba(197, 160, 89, 0.3);
-    /* Padding fluido e compacto verticalmente para portáteis e desktops */
     padding: clamp(40px, 6vh, 90px) 20px;
     box-sizing: border-box;
     width: 100%;
@@ -1108,6 +370,7 @@ body {
     font-weight: 600;
 }
 
+/* Cartão Manifesto */
 .vlc-manifesto {
     background: var(--bg-card-white);
     border-left: 6px solid var(--accent-gold);
@@ -1140,6 +403,105 @@ body {
     line-height: 1.6;
 }
 
+.btn-read-more {
+    background: transparent;
+    border: none;
+    color: var(--accent-gold);
+    font-weight: 700;
+    font-size: clamp(0.78rem, 0.85vw, 0.9rem);
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s ease, transform 0.2s ease;
+    margin-top: 8px;
+}
+
+.btn-read-more:hover {
+    color: var(--primary-green);
+    transform: translateX(3px);
+}
+
+/* Modal Manifesto */
+.vlc-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 26, 16, 0.8);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.vlc-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.vlc-modal-content {
+    background: var(--bg-card-white);
+    border: 2px solid var(--accent-gold);
+    border-radius: 12px;
+    padding: clamp(20px, 4vh, 35px);
+    max-width: 650px;
+    width: 100%;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.vlc-modal-overlay.active .vlc-modal-content {
+    transform: translateY(0);
+}
+
+.vlc-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: var(--primary-green);
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+
+.vlc-modal-close:hover {
+    color: var(--accent-gold);
+}
+
+.modal-manifesto-title {
+    color: var(--primary-green);
+    font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+    font-weight: 800;
+    margin-bottom: 15px;
+    line-height: 1.35;
+    padding-right: 25px;
+}
+
+.modal-manifesto-body p {
+    color: var(--text-dark);
+    font-size: clamp(0.85rem, 0.95vw, 1rem);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Features Grid */
 .vlc-features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -1187,6 +549,7 @@ body {
     line-height: 1.5;
 }
 
+/* Location Box */
 .vlc-location-box {
     background: var(--bg-card-white);
     border: 1px solid rgba(197, 160, 89, 0.35);
@@ -1250,6 +613,7 @@ body {
     top: -5px;
 }
 
+/* Project Author (Nidus Ars) */
 .project-author-container {
     display: flex;
     justify-content: center;
@@ -1346,17 +710,38 @@ body {
     text-align: justify;
 }
 
-/* Cartão e Formulário VIP */
+/* ==========================================================================
+   VIZELA LIVING CENTER: Cartão e Formulário VIP (Acesso Prioritário)
+   --------------------------------------------------------------------------
+   Arquitetura Mobile-First otimizada para portáteis e ecrãs de 16".
+   Controla a largura máxima para manter margens laterais consistentes
+   e comprime o espaçamento vertical para evitar overflow e corte no rodapé.
+   ========================================================================== */
+
+.vlc-teaser-section {
+    position: relative;
+    background-color: var(--primary-green-dark);
+    background-image: radial-gradient(circle at 50% 20%, #083321 0%, var(--primary-green-dark) 80%);
+    text-align: center;
+    border-bottom: 2px solid rgba(197, 160, 89, 0.3);
+    padding-top: calc(var(--header-height) + 20px);
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
 .vlc-vip-card {
     background: var(--bg-card-white);
     border: 2px solid var(--accent-gold);
-    border-radius: 12px;
-    padding: clamp(25px, 4vh, 40px) clamp(20px, 3vw, 35px);
+    border-radius: 10px;
+    padding: 14px 20px;
     margin: 0 auto;
-    max-width: 750px;
+    max-width: 650px;
     width: 100%;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
     box-sizing: border-box;
 }
 
@@ -1364,65 +749,65 @@ body {
     display: inline-block;
     background: var(--gold-gradient);
     color: var(--primary-green);
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     font-weight: 800;
-    padding: 4px 12px;
-    border-radius: 20px;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: 3px;
+    letter-spacing: 0.8px;
 }
 
 .vip-card-title {
     color: var(--primary-green);
-    font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+    font-size: 1.15rem;
     font-weight: 800;
-    margin-bottom: 10px;
+    margin-bottom: 2px;
 }
 
 .vip-card-text {
     color: var(--text-muted);
-    font-size: clamp(0.85rem, 0.95vw, 0.95rem);
-    margin-bottom: clamp(15px, 2.5vh, 25px);
-    line-height: 1.5;
+    font-size: 0.78rem;
+    margin-bottom: 8px;
+    line-height: 1.3;
 }
 
 .vip-form {
     display: flex;
     flex-direction: column;
-    gap: clamp(12px, 2vh, 20px);
+    gap: 6px; 
     text-align: left;
 }
 
 .form-row {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
 .form-group {
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 2px;
 }
 
 .form-group label {
-    font-size: 0.8rem;
+    font-size: 0.68rem;
     font-weight: 700;
     color: var(--primary-green);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.4px;
 }
 
 .form-group input,
 .form-group select {
-    padding: clamp(10px, 1.5vh, 12px) 15px;
+    padding: 5px 10px; 
     border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 0.9rem;
+    border-radius: 5px;
+    font-size: 0.82rem;
     font-family: inherit;
     color: var(--text-dark);
     background-color: #f9f9f9;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease;
     width: 100%;
     box-sizing: border-box;
 }
@@ -1431,30 +816,74 @@ body {
 .form-group select:focus {
     outline: none;
     border-color: var(--accent-gold);
-    box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
+    box-shadow: 0 0 0 2px rgba(197, 160, 89, 0.2);
     background-color: #fff;
 }
 
+/* ==========================================================================
+   CONTENTOR INTELIGENTE: BOTÃO E FALLBACK NO MESMO ESPAÇO
+   ========================================================================== */
+.vip-action-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* Botão de submissão */
 .btn-gold-submit {
     background: var(--gold-gradient);
     color: var(--primary-green);
     font-weight: 800;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    padding: clamp(12px, 2vh, 15px);
+    font-size: 0.82rem;
+    letter-spacing: 1.2px;
+    padding: 9px; 
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     cursor: pointer;
     text-transform: uppercase;
-    box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
-    margin-top: 5px;
+    box-sizing: border-box;
+    display: block;
 }
 
 .btn-gold-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.6);
+    box-shadow: 0 6px 18px rgba(197, 160, 89, 0.5);
+}
+
+/* Mensagem de Fallback: Invisível por defeito e sem ocupar altura no layout */
+.vip-fallback-box {
+    display: none;
+    width: 100%;
+    padding: 7px 10px;
+    background: #fdfaf3;
+    border: 1px dashed var(--accent-gold);
+    border-radius: 5px;
+    font-size: 0.68rem;
+    color: var(--primary-green);
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.vip-fallback-box a {
+    color: var(--primary-green);
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.vip-fallback-box a:hover {
+    color: var(--accent-gold);
+}
+
+/* ESTADO ATIVO: Quando a classe .fallback-active é adicionada ao wrapper no JS */
+.vip-action-wrapper.fallback-active .btn-gold-submit {
+    display: none;
+}
+
+.vip-action-wrapper.fallback-active .vip-fallback-box {
+    display: block;
 }
 
 /* ==========================================
@@ -1463,12 +892,14 @@ body {
 .contacts-section {
     background-color: var(--primary-green);
     text-align: center;
-    min-height: calc(100vh - var(--header-height) - var(--footer-height));
-    padding: 120px 20px;
+    width: 100%;
+    padding: clamp(80px, 10vh, 120px) 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .contacts-container {
@@ -1477,8 +908,8 @@ body {
 }
 
 .contacts-section .section-title {
-    font-size: 2.4rem;
-    margin-bottom: 50px;
+    font-size: clamp(2rem, 2.5vw, 2.4rem);
+    margin-bottom: clamp(30px, 5vh, 50px);
     letter-spacing: 2px;
     text-transform: uppercase;
     background: var(--gold-gradient);
@@ -1489,7 +920,7 @@ body {
 .contact-info-clean {
     display: flex;
     justify-content: center;
-    gap: 80px;
+    gap: clamp(40px, 6vw, 80px);
     flex-wrap: wrap;
 }
 
@@ -1501,7 +932,7 @@ body {
 }
 
 .contact-icon {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 3vh, 2.5rem);
     color: var(--accent-gold);
 }
 
@@ -1514,7 +945,7 @@ body {
 
 .info-link,
 .info-text {
-    font-size: 1.2rem;
+    font-size: clamp(1.1rem, 1.2vw, 1.2rem);
     color: #ffffff;
     text-decoration: none;
     font-weight: 600;
@@ -1525,10 +956,22 @@ body {
 }
 
 /* ==========================================
-   8. RESPONSIVE MEDIA QUERIES (DESKTOP ENHANCEMENTS)
+   8. RESPONSIVE MEDIA QUERIES (DESKTOP & MOBILE ENHANCEMENTS)
    ========================================== */
 
-/* Apenas atinge a geometria estanque de 100vh em ecrãs com espaço garantido */
+/* Ajuste específico para Monitores de 16" (1366px até 1600px) */
+@media (min-width: 1200px) and (max-width: 1600px) {
+    .vlc-vip-card {
+        max-width: 780px;
+        padding: 32px 30px;
+    }
+    .form-row {
+        flex-direction: row;
+        gap: 20px;
+    }
+}
+
+/* Ecrãs Desktop com altura garantida (>= 1024px) */
 @media (min-width: 1024px) and (min-height: 750px) {
     .hero-section {
         height: calc(100vh - var(--header-height));
@@ -1587,6 +1030,7 @@ body {
     }
 }
 
+/* Monitores Ultrawide / Resoluções Muito Grandes */
 @media (min-width: 1921px) {
     .hero-title {
         font-size: 3.5rem;
@@ -1596,9 +1040,13 @@ body {
         font-size: 1.2rem;
         line-height: 1.7;
     }
+
+    .vlc-vip-card {
+        max-width: 850px;
+    }
 }
 
-/* Dispositivos Móveis e Portáteis Curtos */
+/* Dispositivos Móveis */
 @media (max-width: 768px) {
     :root {
         --header-height: auto;
