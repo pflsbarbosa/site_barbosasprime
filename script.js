@@ -4,21 +4,25 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Navegação com scroll suave para links internos
+    // 1. Navegação com scroll suave (com desvio exato para a altura do header)
     setupSmoothNavigation();
 
-    // 2. Lógica dinâmica do formulário VIP (Investidor vs. Particular)
+    // 2. Gestão do Menu Móvel (Hambúrguer)
+    setupMobileMenu();
+
+    // 3. Lógica dinâmica do formulário VIP (Investidor vs. Particular)
     setupVipFormLogic();
 
-    // 3. Gestão do Pop-up / Modal do Manifesto do VLC
+    // 4. Gestão do Pop-up / Modal do Manifesto do VLC
     setupManifestoModal();
 });
 
 /**
- * Trata da navegação suave ao clicar nos links da barra de menu e do logo
+ * Trata da navegação suave descontando a altura exata do header fixo
  */
 function setupSmoothNavigation() {
     const navigationLinks = document.querySelectorAll('.main-nav a, .brand-logo-link');
+    const header = document.querySelector('.site-header');
 
     navigationLinks.forEach(link => {
         link.addEventListener('click', (event) => {
@@ -29,13 +33,54 @@ function setupSmoothNavigation() {
                 const targetElement = document.querySelector(targetHref);
                 
                 if (targetElement) {
-                    targetElement.scrollIntoView({
+                    const headerHeight = header ? header.offsetHeight : 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
                         behavior: 'smooth'
                     });
                 }
             }
         });
     });
+}
+
+/**
+ * Gere a abertura e fecho do Menu Mobile (Hambúrguer)
+ */
+function setupMobileMenu() {
+    const toggleBtn = document.getElementById('mobileMenuToggle');
+    const mainNav = document.getElementById('mainNav');
+    const navLinks = document.querySelectorAll('.main-nav a');
+
+    if (toggleBtn && mainNav) {
+        toggleBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) {
+                if (mainNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                const icon = toggleBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
 }
 
 /**
@@ -49,23 +94,25 @@ function setupManifestoModal() {
     if (openBtn && modal && closeBtn) {
         openBtn.addEventListener('click', () => {
             modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
-        closeBtn.addEventListener('click', () => {
+        const closeModal = () => {
             modal.classList.remove('active');
-        });
+            document.body.style.overflow = '';
+        };
 
-        // Fecha se o utilizador clicar no fundo escuro fora da caixa
+        closeBtn.addEventListener('click', closeModal);
+
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.classList.remove('active');
+                closeModal();
             }
         });
 
-        // Fecha com a tecla ESC
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
-                modal.classList.remove('active');
+                closeModal();
             }
         });
     }
@@ -83,14 +130,12 @@ function setupVipFormLogic() {
     const actionWrapper = document.getElementById('vipActionWrapper');
     const fallbackGmailLink = document.getElementById('fallbackGmailLink');
 
-    // FILTRAGEM DO TELEFONE: Impede a digitação de letras em tempo real no teclado
     if (phoneInput) {
         phoneInput.addEventListener('input', function() {
             this.value = this.value.replace(/[^0-9+\s()]/g, '');
         });
     }
 
-    // Mostra/oculta a opção de "Múltiplas Frações" conforme o perfil selecionado
     if (userProfileSelect && multipleUnitsOption) {
         userProfileSelect.addEventListener('change', function() {
             if (this.value === 'investidor') {
@@ -104,7 +149,6 @@ function setupVipFormLogic() {
         });
     }
 
-    // Submissão do formulário VIP e envio de e-mail
     if (submitButton) {
         submitButton.addEventListener('click', function(event) {
             event.preventDefault();
@@ -146,10 +190,8 @@ function setupVipFormLogic() {
             const mailtoUrl = `mailto:${recipientEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
             const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipientEmail}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
 
-            // 1. Tenta abrir o cliente de e-mail nativo
             window.location.href = mailtoUrl;
 
-            // 2. Ativa o estado de fallback no wrapper (esconde o botão e revela a mensagem no mesmo espaço)
             if (actionWrapper) {
                 actionWrapper.classList.add('fallback-active');
             }
