@@ -37,8 +37,8 @@
   --c-text-light: #e2e8f0;
   --c-muted-light: #b5c7bf;
 
-  --header-h: 70px;
-  --footer-h: 36px;
+  --header-h: 60px;
+  --footer-h: 32px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 16px;
@@ -56,6 +56,13 @@
   :root {
     --header-h: 80px;
     --footer-h: 38px;
+  }
+}
+
+@media screen and (min-width: 1500px) and (min-height: 880px) {
+  :root {
+    --header-h: 84px;
+    --footer-h: 40px;
   }
 }
 
@@ -200,7 +207,7 @@ select {
 }
 
 .logo-icon {
-  height: 42px;
+  height: clamp(30px, 3.8vh, 38px);
   width: auto;
   filter: drop-shadow(0 2px 10px rgba(197, 160, 89, 0.4));
   transition: transform 0.3s ease;
@@ -216,20 +223,20 @@ select {
 }
 
 .brand-name {
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   font-weight: 800;
-  letter-spacing: 2px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
   line-height: 1.15;
 }
 
 .brand-sub {
-  font-size: 0.58rem;
+  font-size: clamp(0.52rem, 0.7vw, 0.58rem);
   font-weight: 700;
-  letter-spacing: 2.2px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--c-muted-light);
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 /* Popover Interativo com ADN da Pirâmide (Desktop Hover + Mobile/Touch) */
@@ -403,20 +410,20 @@ select {
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: clamp(1rem, 1.5vw, 1.8rem);
   list-style: none;
 }
 
 .nav-link-item {
   color: var(--c-white);
-  font-size: 0.88rem;
+  font-size: clamp(0.78rem, 0.95vw, 0.85rem);
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  padding: 0.35rem 0.25rem;
+  gap: 0.35rem;
+  padding: 0.25rem 0.2rem;
   transition: color 0.2s ease;
 }
 
@@ -755,43 +762,43 @@ main {
   }
 
   .modelo-section .section-inner {
-    padding: clamp(1rem, 2.5vh, 2.2rem) 1.5rem;
+    padding: clamp(0.8rem, 2vh, 1.8rem) 1.5rem;
     width: 100%;
-    max-width: 1320px;
+    max-width: 1280px;
   }
 
   .modelo-section .section-title {
-    font-size: clamp(1.6rem, 2.2vw, 2.2rem);
-    margin-bottom: 0.35rem;
+    font-size: clamp(1.4rem, 2vw, 2rem);
+    margin-bottom: 0.25rem;
   }
 
   .modelo-section .section-subtitle {
-    margin-bottom: clamp(0.9rem, 1.8vh, 1.5rem);
-    font-size: clamp(0.85rem, 1vw, 0.95rem);
-    line-height: 1.45;
+    margin-bottom: clamp(0.7rem, 1.5vh, 1.2rem);
+    font-size: clamp(0.8rem, 0.9vw, 0.9rem);
+    line-height: 1.4;
   }
 
   .modelo-section .cards-grid-3 {
-    gap: clamp(1rem, 1.6vw, 1.5rem);
+    gap: clamp(0.8rem, 1.4vw, 1.2rem);
   }
 
   .modelo-section .feature-card {
-    padding: clamp(1.1rem, 1.8vh, 1.5rem) clamp(1rem, 1.3vw, 1.4rem);
+    padding: clamp(0.9rem, 1.5vh, 1.2rem) clamp(0.8rem, 1.1vw, 1.2rem);
   }
 
   .modelo-section .feature-icon-wrapper {
-    font-size: clamp(1.4rem, 1.8vw, 1.85rem);
-    margin-bottom: clamp(0.4rem, 0.8vh, 0.7rem);
+    font-size: clamp(1.2rem, 1.6vw, 1.6rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
   }
 
   .modelo-section .card-heading {
-    font-size: clamp(0.98rem, 1.15vw, 1.12rem);
-    margin-bottom: clamp(0.35rem, 0.7vh, 0.6rem);
+    font-size: clamp(0.9rem, 1vw, 1.05rem);
+    margin-bottom: clamp(0.3rem, 0.6vh, 0.5rem);
   }
 
   .modelo-section .card-desc {
-    font-size: clamp(0.8rem, 0.92vw, 0.86rem);
-    line-height: 1.5;
+    font-size: clamp(0.76rem, 0.85vw, 0.82rem);
+    line-height: 1.45;
   }
 }
 
@@ -810,7 +817,7 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: clamp(1rem, 2vh, 1.75rem);
   width: 100%;
 }
 
@@ -818,7 +825,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 1.15rem;
+  margin-bottom: clamp(0.5rem, 1vh, 0.85rem);
   transition: transform 0.3s ease;
 }
 
@@ -827,7 +834,7 @@ main {
 }
 
 .vlc-emblem-img {
-  height: clamp(80px, 11vw, 115px);
+  height: clamp(65px, 8vh, 100px);
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 22px rgba(197, 160, 89, 0.45));
@@ -835,13 +842,44 @@ main {
 
 .vlc-badge-tag {
   color: var(--c-gold);
-  font-size: 0.95rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   font-weight: 800;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-align: center;
-  margin-top: 0.35rem;
-  margin-bottom: 1.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: clamp(0.6rem, 1.2vh, 1.1rem);
+}
+
+/* Otimização para Ecrãs de Portátil (16'') e Desktops */
+@media screen and (min-width: 1024px) {
+  .vlc-section {
+    display: block;
+    width: 100%;
+  }
+
+  .vlc-section .section-inner {
+    padding: clamp(2rem, 4vh, 3.5rem) 1.5rem;
+    width: 100%;
+    max-width: 1320px;
+  }
+
+  .vlc-header-group {
+    margin-bottom: clamp(0.8rem, 1.5vh, 1.4rem);
+  }
+
+  .vlc-project-emblem {
+    margin-bottom: clamp(0.35rem, 0.7vh, 0.65rem);
+  }
+
+  .vlc-emblem-img {
+    height: clamp(65px, 8vh, 95px);
+  }
+
+  .vlc-badge-tag {
+    font-size: clamp(0.8rem, 0.95vw, 0.9rem);
+    margin-bottom: clamp(0.6rem, 1.1vh, 1rem);
+  }
 }
 
 /* Manifesto Summary Card (Teste com Fundo Verde Escuro Idêntico a Contactos) */
@@ -866,8 +904,18 @@ main {
 
 .manifesto-icon {
   font-size: 1.6rem;
-  color: var(--c-gold);
   margin-bottom: 0.5rem;
+}
+
+.manifesto-icon i,
+.feature-icon-wrapper i,
+.spec-icon i,
+.info-block-card h3 i {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(223, 165, 75, 0.55));
 }
 
 .manifesto-title {
@@ -885,17 +933,17 @@ main {
 }
 
 .manifesto-box .text-btn {
-  color: var(--c-gold);
+  color: var(--c-gold-light);
 }
 
 .manifesto-box .text-btn:hover {
-  color: var(--c-gold-light);
+  color: #ffffff;
 }
 
 .text-btn {
   background: none;
   border: none;
-  color: var(--c-gold-dark);
+  color: var(--c-gold-light);
   font-size: 0.9rem;
   font-weight: 800;
   cursor: pointer;
@@ -903,11 +951,22 @@ main {
   align-items: center;
   gap: 0.4rem;
   padding: 0.2rem 0;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, filter 0.2s ease, transform 0.2s ease;
+  filter: drop-shadow(0 2px 6px rgba(223, 165, 75, 0.45));
 }
 
 .text-btn:hover {
-  color: var(--c-green);
+  color: #ffffff;
+  filter: drop-shadow(0 2px 12px rgba(223, 165, 75, 0.85));
+  transform: translateX(3px);
+}
+
+.text-btn i {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 6px rgba(223, 165, 75, 0.5));
+  display: inline-block;
 }
 
 /* Grid de Especificações VLC (8 blocos) */
@@ -1045,7 +1104,7 @@ main {
   border: 3.5px solid transparent;
   border-radius: var(--radius-md);
   padding: 2rem;
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.75rem;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(223, 165, 75, 0.25);
@@ -1141,67 +1200,175 @@ main {
   color: var(--c-white);
 }
 
-/* Formulário VIP */
+/* Bloco Dedicado do Formulário VIP - Centrado na Janela */
+.vlc-vip-block {
+  width: 100%;
+  margin-top: clamp(2rem, 4vh, 3.5rem);
+  padding: 1rem 0;
+  scroll-margin-top: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (min-width: 1024px) {
+  .vlc-vip-block {
+    min-height: calc(100vh - var(--header-h) - var(--footer-h));
+    margin-top: 0;
+    padding: 0.5rem 0;
+  }
+}
+
+/* Otimização Exata para Portáteis de 16'' Full HD (1920x1080 com altura útil reduzida) */
+@media screen and (min-width: 1024px) and (max-width: 1920px) and (max-height: 1050px) {
+  :root {
+    --header-h: 74px;
+    --footer-h: 34px;
+  }
+
+  .vlc-vip-block {
+    min-height: calc(100vh - var(--header-h) - var(--footer-h));
+    margin-top: 0;
+    padding: 0.3rem 0;
+  }
+
+  .vip-form-container {
+    max-width: 520px !important;
+    padding: 0.8rem 1.2rem !important;
+    border-radius: 12px !important;
+  }
+
+  .vip-pill-tag {
+    font-size: 1.05rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .vip-form-title {
+    font-size: 0.82rem !important;
+    margin-bottom: 0.15rem !important;
+  }
+
+  .vip-form-lead {
+    font-size: 0.74rem !important;
+    margin-bottom: 0.5rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .vip-form {
+    gap: 0.4rem !important;
+  }
+
+  .form-row-2 {
+    gap: 0.4rem !important;
+  }
+
+  .form-group {
+    gap: 0.1rem !important;
+  }
+
+  .form-label {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.38rem 0.65rem !important;
+    font-size: 0.78rem !important;
+    border-radius: 6px !important;
+  }
+
+  .vip-submit-button {
+    padding: 0.52rem 1rem !important;
+    font-size: 0.8rem !important;
+    margin-top: 0.2rem !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+/* Formulário VIP - Proporcionalidade Científica baseada em vw (Escala Fluida Consistente) */
 .vip-form-container {
-  max-width: 720px;
+  max-width: min(680px, 82vw);
+  width: 100%;
   margin: 0 auto;
   background:
-    linear-gradient(rgba(4, 26, 16, 0.94), rgba(4, 26, 16, 0.94)) padding-box,
+    linear-gradient(rgba(4, 26, 16, 0.96), rgba(4, 26, 16, 0.96)) padding-box,
     var(--grad-gold) border-box;
   border: 3.5px solid transparent;
-  border-radius: var(--radius-lg);
-  padding: 2.25rem 2rem;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(223, 165, 75, 0.35);
+  border-radius: 16px;
+  padding: clamp(1.5rem, 2.5vw, 2.25rem) clamp(1.75rem, 3vw, 2.5rem);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 15px 38px rgba(0, 0, 0, 0.6), 0 0 25px rgba(223, 165, 75, 0.35);
   text-align: center;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .vip-form-container:hover {
-  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.7), 0 0 30px rgba(223, 165, 75, 0.5);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75), 0 0 32px rgba(223, 165, 75, 0.5);
 }
 
 .vip-pill-tag {
   background: var(--grad-gold);
-  color: var(--c-green-dark);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 900;
-  font-size: 0.72rem;
-  letter-spacing: 1.2px;
-  padding: 0.3rem 0.9rem;
-  border-radius: var(--radius-full);
-  display: inline-block;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.3rem, 1.8vw, 1.6rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 2px 8px rgba(223, 165, 75, 0.4));
+  padding: 0;
+  border-radius: 0;
+}
+
+.vip-pill-tag .gold-badge {
+  background: var(--grad-gold);
+  color: var(--c-green-dark);
+  -webkit-text-fill-color: var(--c-green-dark);
+  font-size: 0.68em;
+  padding: 2px 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  vertical-align: middle;
 }
 
 .vip-form-title {
-  color: var(--c-white);
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
-  font-weight: 900;
-  margin-bottom: 0.5rem;
+  color: #ffffff;
+  font-size: clamp(0.95rem, 1.3vw, 1.12rem);
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
 }
 
 .vip-form-lead {
   color: var(--c-text-light);
-  font-size: 0.88rem;
-  margin-bottom: 1.75rem;
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  margin-bottom: 1.1rem;
+  line-height: 1.45;
 }
 
 .vip-form-lead strong {
   color: var(--c-gold-light);
+  font-weight: 700;
 }
 
 .vip-form {
   text-align: left;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .form-feedback-alert {
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.85rem;
   border-radius: var(--radius-sm);
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   font-weight: 600;
   display: none;
 }
@@ -1223,7 +1390,7 @@ main {
 .form-row-2 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 @media screen and (min-width: 600px) {
@@ -1239,20 +1406,24 @@ main {
 }
 
 .form-label {
-  color: var(--c-gold-light);
-  font-size: 0.72rem;
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(0.72rem, 0.95vw, 0.8rem);
   font-weight: 800;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
   text-transform: uppercase;
+  display: inline-block;
+  filter: drop-shadow(0 1px 4px rgba(223, 165, 75, 0.35));
 }
 
 .form-input,
 .form-select {
-  padding: 0.65rem 0.8rem;
+  padding: clamp(0.55rem, 0.8vw, 0.7rem) clamp(0.85rem, 1.1vw, 1rem);
   background-color: #ffffff;
   border: 1.5px solid rgba(197, 160, 89, 0.4);
-  border-radius: var(--radius-sm);
-  font-size: 0.9rem;
+  border-radius: 6px;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
   color: #1e293b;
   transition:
     border-color 0.2s,
@@ -1268,39 +1439,41 @@ main {
 
 .vip-submit-button {
   width: 100%;
-  padding: 0.85rem;
+  padding: clamp(0.75rem, 1vw, 0.9rem) clamp(1.25rem, 1.8vw, 1.75rem);
   background: var(--grad-gold);
-  color: var(--c-green-dark);
-  font-size: 0.9rem;
+  color: #041a10;
+  font-size: clamp(0.9rem, 1.15vw, 1.02rem);
   font-weight: 900;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   border: none;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 15px rgba(223, 165, 75, 0.35);
   margin-top: 0.5rem;
   transition:
     filter 0.2s,
-    transform 0.2s;
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .vip-submit-button:hover {
   filter: brightness(1.08);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(223, 165, 75, 0.5);
 }
 
 .fallback-box {
   display: none;
-  padding: 1rem;
+  padding: 0.85rem 1rem;
   background-color: #fdfaf3;
   border: 1px dashed var(--c-gold);
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   font-size: 0.82rem;
   color: var(--c-green);
   text-align: center;
-  line-height: 1.5;
-  margin-top: 0.75rem;
+  line-height: 1.45;
+  margin-top: 0.6rem;
 }
 
 .fallback-box.visible {
@@ -1311,6 +1484,66 @@ main {
   color: var(--c-gold-dark);
   font-weight: 800;
   text-decoration: underline;
+}
+
+/* Otimização para Monitores Muito Grandes (>1500px) */
+@media screen and (min-width: 1500px) and (min-height: 850px) {
+  :root {
+    --header-h: 88px;
+    --footer-h: 42px;
+  }
+
+  .vip-form-container {
+    max-width: 740px;
+    padding: 2.2rem 2.8rem;
+    border-radius: 20px;
+  }
+
+  .vip-pill-tag {
+    font-size: 1.65rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .vip-form-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .vip-form-lead {
+    font-size: 0.98rem;
+    margin-bottom: 1.35rem;
+  }
+
+  .vip-form {
+    gap: 1.1rem;
+  }
+
+  .form-row-2 {
+    gap: 1.1rem;
+  }
+
+  .form-group {
+    gap: 0.4rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.9px;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.7rem 1.1rem;
+    font-size: 1.02rem;
+    border-radius: 8px;
+  }
+
+  .vip-submit-button {
+    padding: 0.95rem 1.8rem;
+    font-size: 1.05rem;
+    margin-top: 0.6rem;
+    letter-spacing: 1.8px;
+  }
 }
 
 /* ==========================================================================
@@ -1416,32 +1649,43 @@ main {
   width: 54px;
   height: 54px;
   border-radius: var(--radius-md);
-  background-color: rgba(197, 160, 89, 0.15);
-  border: 1px solid rgba(197, 160, 89, 0.4);
+  background:
+    linear-gradient(rgba(4, 26, 16, 0.94), rgba(4, 26, 16, 0.94)) padding-box,
+    var(--grad-gold) border-box;
+  border: 2px solid transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--c-gold);
   font-size: 1.4rem;
+  box-shadow: 0 0 15px rgba(223, 165, 75, 0.3);
+}
+
+.contact-icon-box i {
+  background: var(--grad-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 8px rgba(223, 165, 75, 0.55));
 }
 
 .contact-label {
-  font-size: 0.72rem;
+  color: var(--c-gold-light);
+  font-size: 0.76rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-  color: var(--c-muted-light);
+  display: inline-block;
 }
 
 .contact-value {
   font-size: 1.05rem;
   font-weight: 800;
-  color: var(--c-white);
-  transition: color 0.2s;
+  color: #ffffff;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .contact-value:hover {
-  color: var(--c-gold);
+  color: var(--c-gold-light);
+  text-shadow: 0 0 12px rgba(223, 165, 75, 0.5);
 }
 
 /* Otimização de Ecrã 16'' e Desktops: Contactos Cabe a 100% no Ecrã */
@@ -1553,27 +1797,25 @@ main {
 
 .modal-dialog {
   background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(rgba(4, 26, 16, 0.96), rgba(4, 26, 16, 0.96)) padding-box,
     var(--grad-gold) border-box;
   border: 3.5px solid transparent;
   border-radius: var(--radius-lg);
   padding: 2.25rem 2rem;
-  max-width: 640px;
+  max-width: 680px;
   width: 100%;
   max-height: 85vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(223, 165, 75, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 30px rgba(223, 165, 75, 0.35);
   transform: scale(0.95);
   transition: transform 0.25s ease;
-  color: var(--c-text-dark);
+  color: var(--c-text-light);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .modal-dialog.dark-modal {
-  background:
-    linear-gradient(var(--c-green-dark), var(--c-green-dark)) padding-box,
-    var(--grad-gold) border-box;
-  color: var(--c-text-light);
   max-width: 780px;
 }
 
@@ -1588,7 +1830,7 @@ main {
   background: none;
   border: none;
   font-size: 1.6rem;
-  color: inherit;
+  color: var(--c-gold-light);
   cursor: pointer;
   line-height: 1;
   padding: 0.4rem;
@@ -1599,13 +1841,9 @@ main {
 }
 
 .modal-close-btn:hover {
-  color: #ef4444;
-  background-color: rgba(0, 0, 0, 0.06);
-}
-
-.dark-modal .modal-close-btn:hover {
   color: #ffffff;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(197, 160, 89, 0.25);
+  box-shadow: 0 0 10px rgba(197, 160, 89, 0.3);
 }
 
 .pyramid-modal-header {
