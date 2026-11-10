@@ -1,267 +1,790 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Barbosas Prime | Promotora Imobiliária</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Barbosas Prime Promotora Imobiliária - Projetamos o futuro com a experiência do passado. Conheça o Vizela Living Center e garanta o seu Acesso VIP."
+    />
 
-    <!-- SITE HEADER -->
+    <!-- OpenGraph / Social Cards -->
+    <meta
+      property="og:title"
+      content="Barbosas Prime | Promotora Imobiliária"
+    />
+    <meta
+      property="og:description"
+      content="Projetamos o futuro com a experiência do passado. Conheça o Vizela Living Center."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Favicon com Pirâmide Dourada -->
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="images/logos/barbosas-logo-icon.svg"
+    />
+
+    <!-- Font Awesome Icons para Ícones de Alta Fidelidade -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Folha de Estilos Oficial (Ficheiro 1 de 3) -->
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- =========================================================================
+       1. HEADER & NAVEGAÇÃO SUPERIOR
+       ========================================================================= -->
     <header class="site-header">
-        <div class="nav-container">
-            <div class="logo-wrapper">
-                <a href="#inicio" class="brand-logo-link">
-                    <img src="images/logos/barbosas-logo-icon.png" alt="Barbosas Prime Icon" class="logo-icon">
-                    <div class="logo-text-group">
-                        <span class="brand-name">BARBOSAS PRIME</span>
-                        <span class="brand-sub">PROMOTORA IMOBILIÁRIA</span>
-                    </div>
-                </a>
+      <div class="nav-container">
+        <!-- Logótipo da Marca com Popover Interativo de ADN (Hover no Desktop, Toque no Mobile) -->
+        <div class="logo-wrapper">
+          <button
+            type="button"
+            class="brand-logo-btn"
+            id="brandLogoBtn"
+            aria-label="Barbosas Prime - Conhecer o simbolismo de Porquê a Pirâmide"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+          >
+            <div class="logo-icon-box">
+              <img
+                src="images/logos/company-logo-icon.png"
+                alt="Barbosas Prime - Pirâmide Dourada de Rigor Matemático"
+                class="logo-icon"
+                width="44"
+                height="44"
+              />
             </div>
+            <div class="logo-text-group">
+              <span class="brand-name gold-gradient-text">BARBOSAS PRIME</span>
+              <span class="brand-sub">PROMOTORA IMOBILIÁRIA</span>
+            </div>
+          </button>
 
-            <!-- BOTÃO HAMBURGUER (Apenas no Mobile) -->
-            <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Abrir Menu">
-                <i class="fas fa-bars"></i>
+          <!-- Popover Informativo: O ADN da Marca (Hover no Desktop e Toque no Mobile) -->
+          <div class="logo-popover" id="logoPopover" role="dialog" aria-labelledby="popoverHeading" aria-modal="false">
+            <div class="popover-header">
+              <img
+                src="images/logos/company-logo-icon.png"
+                alt="Pirâmide Dourada"
+                width="36"
+                height="36"
+              />
+              <div>
+                <h4 class="popover-heading" id="popoverHeading">Porquê a pirâmide</h4>
+              </div>
+              <button
+                type="button"
+                class="popover-close-btn"
+                id="popoverCloseBtn"
+                aria-label="Fechar caixa de informação"
+              >
+                &times;
+              </button>
+            </div>
+            <p class="popover-body">
+              Escolhemos o nosso logótipo em homenagem deliberada aos mestres
+              construtores e matemáticos do Antigo Egito. As pirâmides
+              permanecem intactas há mais de quatro milénios porque foram
+              erguidas sob uma premissa imutável: o rigor absoluto do cálculo
+              geométrico e a arte do bem fazer.
+            </p>
+            <button
+              type="button"
+              class="popover-action-btn"
+              data-modal-target="pyramidStoryModal"
+            >
+              <span>A Nobreza do bem fazer</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </button>
-
-            <!-- NAVEGAÇÃO -->
-            <nav class="main-nav" id="mainNav">
-                <ul>
-                    <li><a href="#inicio" class="nav-link-item">Início</a></li>
-                    <li><a href="#modelo" class="nav-link-item">O Modelo</a></li>
-                    <li><a href="#vlc" class="nav-link-item">Vizela Living Center <span class="vip-badge">VIP</span></a></li>
-                    <li><a href="#contactos" class="nav-link-item">Contactos</a></li>
-                </ul>
-            </nav>
+          </div>
         </div>
+
+        <!-- Fundo de sobreposição para toque no telemóvel -->
+        <div class="popover-backdrop" id="popoverBackdrop" aria-hidden="true"></div>
+
+        <!-- Navegação Principal Desktop -->
+        <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
+          <ul>
+            <li><a href="#inicio" class="nav-link-item">Início</a></li>
+            <li><a href="#modelo" class="nav-link-item">O Modelo</a></li>
+            <li>
+              <a href="#vlc" class="nav-link-item">
+                Vizela Living Center
+                <span class="gold-badge">VIP</span>
+              </a>
+            </li>
+            <li><a href="#contactos" class="nav-link-item">Contactos</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão Menu Hamburguer (Mobile) -->
+        <button
+          type="button"
+          class="mobile-menu-toggle"
+          id="mobileMenuToggle"
+          aria-label="Abrir Menu"
+          aria-expanded="false"
+          aria-controls="mobileNavDrawer"
+        >
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Gaveta de Navegação Mobile -->
+      <div
+        class="mobile-nav-drawer"
+        id="mobileNavDrawer"
+        aria-label="Navegação Móvel"
+      >
+        <ul>
+          <li><a href="#inicio" class="mobile-nav-link">Início</a></li>
+          <li>
+            <button
+              type="button"
+              class="mobile-nav-link"
+              id="mobileMenuPyramidBtn"
+            >
+              <i class="fas fa-shapes" style="color: var(--c-gold)"></i> Porquê a Pirâmide
+            </button>
+          </li>
+          <li>
+            <button
+              type="button"
+              class="mobile-nav-link"
+              data-modal-target="pyramidStoryModal"
+            >
+              <i class="fas fa-gem" style="color: var(--c-gold)"></i> A Nobreza
+              do "Bem Fazer"
+            </button>
+          </li>
+          <li><a href="#modelo" class="mobile-nav-link">O Modelo</a></li>
+          <li>
+            <a href="#vlc" class="mobile-nav-link">
+              Vizela Living Center <span class="gold-badge">VIP</span>
+            </a>
+          </li>
+          <li><a href="#contactos" class="mobile-nav-link">Contactos</a></li>
+        </ul>
+      </div>
     </header>
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-        <!-- HERO SECTION -->
-        <section id="inicio" class="hero-section">
-            <div class="hero-bg-image"></div>
-            <div class="hero-content">
-                <h1 class="hero-title">
-                    PROJETAMOS O FUTURO COM A<br>EXPERIÊNCIA DO PASSADO
-                </h1>
-                <p class="hero-subtitle">Na Barbosas Prime, unimos a nossa experiência na mediação e na reabilitação para idealizar conceitos únicos, selecionando gabinetes de referência para os transformar em realidade.</p>
+    <!-- =========================================================================
+       2. CONTEÚDO PRINCIPAL
+       ========================================================================= -->
+    <main>
+      <!-- SECÇÃO 1: HERO -->
+      <section id="inicio" class="content-section hero-section">
+        <div class="hero-bg-media" aria-hidden="true"></div>
+
+        <div class="hero-content">
+          <h1 class="hero-title gold-gradient-text">
+            PROJETAMOS O FUTURO COM A<br />EXPERIÊNCIA DO PASSADO
+          </h1>
+
+          <p class="hero-lead">
+            Na Barbosas Prime, unimos a nossa experiência na mediação e na
+            reabilitação para idealizar conceitos únicos, selecionando gabinetes
+            de referência para os transformar em realidade.
+          </p>
+
+          <a href="#vlc" class="cta-gold-btn nav-link-item">
+            <span>Conhecer Vizela Living Center</span>
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </section>
+
+      <!-- SECÇÃO 2: O MODELO -->
+      <section id="modelo" class="content-section modelo-section">
+        <div class="section-inner">
+          <div class="section-header-center">
+            <h2 class="section-title gold-gradient-text">O NOSSO MODELO</h2>
+            <p class="section-subtitle">
+              Inspirados na perenidade das grandes construções do passado,
+              aplicamos um rigor absoluto em cada etapa construtiva no presente.
+            </p>
+          </div>
+
+          <div class="cards-grid-3">
+            <!-- Card 1 -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="fas fa-lightbulb" aria-hidden="true"></i>
+              </div>
+              <h3 class="card-heading">Concepção para o Utilizador</h3>
+              <p class="card-desc">
+                Aproveitamos a nossa experiência em mediação e reabilitação para
+                desenhar plantas modernas e funcionais. Priorizamos o conforto
+                real (como WC privativo por quarto e garagens fechadas),
+                adaptando cada metro quadrado ao que o mercado de qualidade
+                procura.
+              </p>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="fas fa-gem" aria-hidden="true"></i>
+              </div>
+              <h3 class="card-heading">Visão de Futuro e Prestígio</h3>
+              <p class="card-desc">
+                Não construímos para o lucro rápido. Exigimos dos gabinetes de
+                arquitetura soluções que garantam a máxima privacidade e
+                bem-estar, com o objetivo de construir uma marca de referência
+                onde cada cliente sinta orgulho em viver num imóvel Barbosas
+                Prime.
+              </p>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="feature-card">
+              <div class="feature-icon-wrapper">
+                <i class="fas fa-hard-hat" aria-hidden="true"></i>
+              </div>
+              <h3 class="card-heading">Fiscalização e Comercialização</h3>
+              <p class="card-desc">
+                Garantimos o rigor da obra através de uma fiscalização externa
+                independente liderada por um engenheiro veterano. Para a
+                comercialização, alinhamos numa relação de confiança com agentes
+                experientes do mercado local, cuja forte notoriedade garante a
+                execução correta das vendas.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECÇÃO 3: VIZELA LIVING CENTER & VIP ACCESS -->
+      <section id="vlc" class="content-section vlc-section">
+        <div class="section-inner">
+          <div class="vlc-header-group">
+            <div class="vlc-project-emblem">
+              <img
+                src="images/logos/project-logo.png"
+                alt="Vizela Living Center Logótipo Oficial"
+                class="vlc-emblem-img"
+                width="85"
+                height="115"
+              />
             </div>
-        </section>
+            <h2 class="section-title gold-gradient-text">
+              VIZELA LIVING CENTER
+            </h2>
+            <div class="vlc-badge-tag">Brevemente em Vizela</div>
+          </div>
 
-        <!-- MODEL SECTION -->
-        <section id="modelo" class="content-section model-section">
-            <h2 class="section-title">O NOSSO MODELO</h2>
-            <div class="cards-container">
-                <div class="info-card">
-                    <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Concepção para o Utilizador</h3>
-                    <p>Aproveitamos a nossa experiência em mediação e reabilitação, para desenhar plantas modernas e funcionais. Priorizamos o conforto real (como WC privativo por quarto e garagens fechadas), adaptando cada metro quadrado ao que o mercado de qualidade procura.</p>
-                </div>
-                <div class="info-card">
-                    <div class="card-icon"><i class="fas fa-gem"></i></div>
-                    <h3>Visão de Futuro e Prestígio</h3>
-                    <p>Não construímos para o lucro rápido. Exigimos dos gabinetes de arquitetura soluções que garantam a máxima privacidade e bem-estar, com o objetivo de construir uma marca de referência onde cada cliente sinta orgulho em viver num imóvel Barbosas Prime.</p>
-                </div>
-                <div class="info-card">
-                    <div class="card-icon"><i class="fas fa-hard-hat"></i></div>
-                    <h3>Fiscalização e Comercialização</h3>
-                    <p>Garantimos o rigor da obra através de uma fiscalização externa independente liderada por um engenheiro veterano. Para a comercialização, alinhamos numa relação de confiança com agentes experientes do mercado local, cuja forte notoriedade garante a execução correta das vendas.</p>
-                </div>
+          <!-- Manifesto Card -->
+          <div class="manifesto-box">
+            <div class="manifesto-icon">
+              <i class="fas fa-gem" aria-hidden="true"></i>
             </div>
-        </section>
+            <h3 class="manifesto-title">
+              Apartamentos diferenciados para quem exige mais com ADN de moradia
+            </h3>
+            <p class="manifesto-text">
+              Desenvolvido para quem reconhece que a verdadeira qualidade se
+              paga acima da média e recusa o convencional...
+            </p>
+            <button
+              type="button"
+              class="text-btn"
+              data-modal-target="manifestoModal"
+              aria-haspopup="dialog"
+            >
+              Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </button>
+          </div>
 
-        <!-- VIZELA LIVING CENTER SECTION -->
-        <section id="vlc" class="content-section vlc-teaser-section">
-            <div class="vlc-container">
-                <h2 class="vlc-title">VIZELA LIVING CENTER</h2>
-                <p class="vlc-subtitle">Brevemente em Vizela</p>
-                
-                <!-- CARTÃO DO MANIFESTO (RESUMO NA PÁGINA) -->
-                <div class="vlc-manifesto">
-                    <div class="manifesto-icon">
-                        <i class="fas fa-gem gold-icon"></i>
-                    </div>
-                    <h3 class="manifesto-title">Apartamentos diferenciados para quem exige mais com ADN de moradia</h3>
-                    <p class="manifesto-text">
-                        Desenvolvido para quem reconhece que a verdadeira qualidade se paga acima da média e recusa o convencional...
-                    </p>
-                    <button type="button" class="btn-read-more" id="openManifestoBtn">
-                        Ler mais <i class="fas fa-arrow-right"></i>
-                    </button>
+          <!-- 8 Especificações do Edifício -->
+          <div class="specs-grid">
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-layer-group" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Tipologias T1, T2 e T3</h4>
+              <p class="spec-desc">
+                Tipologias desenhadas a rigor, mantendo uma perfeita separação
+                entre as zonas íntimas e as zonas sociais.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-store" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Lojas</h4>
+              <p class="spec-desc">
+                Espaços comerciais amplos, ideais para serviços, escritórios ou
+                retalho de prestígio no R/C.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-compass" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Duas Frentes Opostas/Paralelas</h4>
+              <p class="spec-desc">
+                Frações com pelo menos 2 frentes, garantindo excelente exposição
+                solar e luminosidade natural em todas as divisões.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-bed" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">100% Suites</h4>
+              <p class="spec-desc">
+                Todos os quartos são suites, assegurando privacidade total para
+                toda a família.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-restroom" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">WC Visitas</h4>
+              <p class="spec-desc">
+                WC de serviço, essencial para manter a privacidade e a separação
+                absoluta entre o espaço social e a zona íntima.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-umbrella-beach" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Varandas e Terraços</h4>
+              <p class="spec-desc">
+                Presentes nas duas frentes e pensados para prolongar o espaço de
+                habitação de forma fluida para o exterior.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-hot-tub-person" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Pré-Instalação SPA</h4>
+              <p class="spec-desc">
+                Pré-instalação de SPA, ideal para momentos de lazer e bem-estar
+                no seu lar.
+              </p>
+            </div>
+            <div class="spec-item-card">
+              <div class="spec-icon">
+                <i class="fas fa-car-rear" aria-hidden="true"></i>
+              </div>
+              <h4 class="spec-title">Box de Garagem</h4>
+              <p class="spec-desc">
+                Box para garantir máxima segurança ao seu carro e espaço
+                autónomo para arrumação.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bloco de Localização -->
+          <div class="info-block-card">
+            <h3>
+              <i
+                class="fas fa-map-location-dot"
+                style="color: var(--c-gold)"
+              ></i>
+              Localização Central e Conectividade Excecional
+            </h3>
+            <p>
+              Vizela está no centro de tudo, posicionada estrategicamente a
+              cerca de
+              <strong
+                >10 km de distâncias-chave de cidades envolventes como Guimarães
+                e Felgueiras</strong
+              >, com excelentes acessos.
+            </p>
+            <ul class="custom-bullet-list">
+              <li>
+                <strong>À porta de casa:</strong> Paragem de autocarro existente
+                de ambos os lados da estrada.
+              </li>
+              <li>
+                <strong>Sugestão de Lazer Pedonal:</strong> Acesso rápido a pé
+                aos passadiços e ao campo de futebol de Santa Eulália.
+              </li>
+              <li>
+                <strong>Sugestão de Deslocação de Carro:</strong> Poucos minutos
+                até às superfícies comerciais de referência, ao Parque da Cidade
+                e às Termas no centro de Vizela.
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bloco Nidus Ars Arquitetura -->
+          <div class="author-box-card">
+            <div class="author-header">
+              <div class="author-brand-group">
+                <div class="author-logo-wrapper">
+                  <div class="author-logo-inner">
+                    <img
+                      src="images/logos/nidus-logo.png"
+                      alt="Nidus Ars Logótipo"
+                      class="author-logo"
+                    />
+                  </div>
+                </div>
+                <h3 class="author-title">
+                  Arquitetura &amp; Rigor por Nidus Ars
+                </h3>
+              </div>
+              <a
+                href="https://nidusars.pt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="author-link-btn"
+              >
+                Ver Site
+                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+              </a>
+            </div>
+            <p class="author-desc">
+              Assinado pelo prestigiado gabinete <strong>Nidus Ars</strong> —
+              sob a direção técnica e supervisão do arquiteto vizelense
+              <strong>Filipe Costa</strong> — o projeto traz a garantia de uma
+              assinatura de autor com mais de 20 anos de provas dadas acumuladas
+              pelo gabinete e pela sua equipa de colaboradores. A solidez e o
+              prestígio deste gabinete refletem-se em intervenções urbanas de
+              referência na cidade, destacando-se a conceção do grande projeto
+              de requalificação da emblemática Praça da República e Jardim
+              Manuel Faria, desenvolvido em articulação com a Câmara Municipal
+              de Vizela.
+            </p>
+          </div>
+
+          <!-- CARTÃO DO FORMULÁRIO VIP -->
+          <div class="vip-form-container">
+            <span class="vip-pill-tag">ACESSO PRIORITÁRIO VIP</span>
+            <h3 class="vip-form-title">
+              Assegure a sua Prioridade na Escolha de Fração
+            </h3>
+            <p class="vip-form-lead">
+              O acesso VIP dá-lhe a vantagem competitiva de obter o
+              <strong
+                >acesso antecipado à 1ª informação oficial sobre as
+                plantas</strong
+              >
+              antes do lançamento público.
+            </p>
+
+            <form id="vip-access-form" class="vip-form" novalidate>
+              <!-- Banner de Alerta / Mensagem Inline Acessível -->
+              <div
+                id="formFeedback"
+                role="alert"
+                aria-live="polite"
+                class="form-feedback-alert"
+              ></div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="vip-full-name" class="form-label"
+                    >Nome Completo *</label
+                  >
+                  <input
+                    type="text"
+                    id="vip-full-name"
+                    name="name"
+                    class="form-input"
+                    placeholder="O seu nome"
+                    required
+                    autocomplete="name"
+                  />
                 </div>
 
-                <div class="vlc-features-grid">
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-layer-group feature-icon"></i>
-                        <h4 class="feature-title">Tipologias T1, T2 e T3</h4>
-                        <p class="feature-text">Tipologias desenhadas a rigor, mantendo uma perfeita separação entre as zonas íntimas e as zonas sociais.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-store feature-icon"></i>
-                        <h4 class="feature-title">Lojas</h4>
-                        <p class="feature-text">Espaços comerciais amplos, ideais para serviços, escritórios ou retalho de prestígio no R/C.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-compass feature-icon"></i>
-                        <h4 class="feature-title">Duas Frentes Opostas/Paralelas</h4>
-                        <p class="feature-text">Frações com pelo menos 2 frentes, garantindo excelente exposição solar e luminosidade natural em todas as divisões.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-bed feature-icon"></i>
-                        <h4 class="feature-title">100% Suites</h4>
-                        <p class="feature-text">Todos os quartos são suites, assegurando privacidade total para toda a família.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-restroom feature-icon"></i>
-                        <h4 class="feature-title">WC Visitas</h4>
-                        <p class="feature-text">WC de serviço, essencial para manter a privacidade e a separação absoluta entre o espaço social e a zona íntima.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-umbrella-beach feature-icon"></i>
-                        <h4 class="feature-title">Varandas e Terraços</h4>
-                        <p class="feature-text">Presentes nas duas frentes e pensados para prolongar o espaço de habitação de forma fluida para o exterior.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-hot-tub-person feature-icon"></i>
-                        <h4 class="feature-title">Pré-Instalação SPA</h4>
-                        <p class="feature-text">Pré-instalação de SPA, ideal para momentos de lazer e bem-estar.</p>
-                    </div>
-                    <div class="vlc-feature-card">
-                        <i class="fas fa-car-rear feature-icon"></i>
-                        <h4 class="feature-title">Box de Garagem</h4>
-                        <p class="feature-text">Box para garantir segurança ao seu carro e espaço autónomo de arrumação.</p>
-                    </div>
+                <div class="form-group">
+                  <label for="vip-email-address" class="form-label"
+                    >E-mail *</label
+                  >
+                  <input
+                    type="email"
+                    id="vip-email-address"
+                    name="email"
+                    class="form-input"
+                    placeholder="nome@exemplo.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="vip-phone-number" class="form-label"
+                    >Contacto Telefónico</label
+                  >
+                  <input
+                    type="tel"
+                    id="vip-phone-number"
+                    name="phone"
+                    class="form-input"
+                    placeholder="O seu telefone"
+                    autocomplete="tel"
+                  />
                 </div>
 
-                <!-- LOCATION BOX -->
-                <div class="vlc-location-box">
-                    <h3 class="location-title"><i class="fas fa-map-location-dot gold-icon"></i> Localização Central e Conectividade Excecional</h3>
-                    <p class="location-text">Vizela está no centro de tudo, posicionada estrategicamente a cerca de <strong>10 km de distâncias-chave de cidades envolventes como Guimarães e Felgueiras</strong>, com excelentes acessos.</p>
-                    <ul class="location-highlights">
-                        <li><strong>À porta de casa:</strong> Paragem de autocarro existente de ambos os lados da estrada.</li>
-                        <li><strong>Sugestão de Lazer Pedonal:</strong> Acesso rápido a pé aos passadiços e ao campo de futebol de Santa Eulália.</li>
-                        <li><strong>Sugestão de Deslocação de Carro:</strong> Poucos minutos até às superfícies comerciais de referência, ao Parque da Cidade e às Termas no centro de Vizela.</li>
-                    </ul>
+                <div class="form-group">
+                  <label for="vip-user-profile" class="form-label"
+                    >Perfil de Interesses *</label
+                  >
+                  <select
+                    id="vip-user-profile"
+                    name="profile"
+                    class="form-select"
+                    required
+                  >
+                    <option value="" disabled selected>
+                      Selecione o seu perfil
+                    </option>
+                    <option value="particular">
+                      Particular / Consumidor Final
+                    </option>
+                    <option value="investidor">Investidor / Empresário</option>
+                  </select>
                 </div>
+              </div>
 
-                <!-- ARCHITECTURE AUTHOR BOX -->
-                <div class="project-author-container">
-                    <div class="author-card">
-                        <div class="author-top-row">
-                            <div class="author-brand-group">
-                                <div class="author-logo-wrapper">
-                                    <div class="author-logo-inner">
-                                        <img src="images/logos/nidus-logo.png" alt="Nidus Ars Logo" class="author-logo">
-                                    </div>
-                                </div>
-                                <h3 class="author-title">Arquitetura & Rigor por Nidus Ars</h3>
-                            </div>
-                            <a href="https://nidusars.pt/" target="_blank" rel="noopener noreferrer" class="author-link-external">Ver Site <i class="fas fa-external-link-alt"></i></a>
-                        </div>
-                        <p class="author-description">Assinado pelo prestigiado gabinete <strong>Nidus Ars</strong> — sob a direção técnica e supervisão do arquiteto vizelense <strong>Filipe Costa</strong> — o projeto traz a garantia de uma assinatura de autor com mais de 20 anos de provas dadas acumuladas pelo gabinete e pela sua equipa de colaboradores. A solidez e o prestígio deste gabinete refletem-se em intervenções urbanas de referência na cidade, destacando-se a conceção do grande projeto de requalificação da emblemática Praça da República e Jardim Manuel Faria, desenvolvido em articulação com a Câmara Municipal de Vizela.</p>
-                    </div>
+              <div class="form-group">
+                <label for="vip-property-type" class="form-label"
+                  >Tipologia / Imóvel Pretendido *</label
+                >
+                <select
+                  id="vip-property-type"
+                  name="property_type"
+                  class="form-select"
+                  required
+                >
+                  <option value="" disabled selected>Selecione a opção</option>
+                  <option value="t1">Habitação T1</option>
+                  <option value="t2">Habitação T2</option>
+                  <option value="t3">Habitação T3</option>
+                  <option value="loja">
+                    Loja / Espaço Comercial (≥ 100 m²)
+                  </option>
+                  <option
+                    value="multiplas"
+                    id="opt-multiple-units"
+                    hidden
+                    disabled
+                  >
+                    Múltiplas Frações / Bloco de Investimento
+                  </option>
+                </select>
+              </div>
+
+              <div id="vipActionWrapper">
+                <button
+                  type="submit"
+                  id="vip-submit-btn"
+                  class="vip-submit-button"
+                >
+                  GARANTIR ACESSO ANTECIPADO
+                </button>
+
+                <div id="vipFallbackBox" class="fallback-box">
+                  <p>
+                    <strong>Abertura do cliente de e-mail iniciada.</strong>
+                  </p>
+                  Não abriu a sua aplicação de e-mail?
+                  <a
+                    href="#"
+                    id="fallbackGmailLink"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="fallback-link"
+                  >
+                    Clique aqui para enviar via Gmail no browser.
+                  </a>
                 </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
-                <!-- VIP ACCESS CARD -->
-                <div class="vlc-vip-card">
-                    <span class="vip-tag">ACESSO PRIORITÁRIO VIP</span>
-                    <h3 class="vip-card-title">Assegure a sua Prioridade na Escolha de Fração</h3>
-                    <p class="vip-card-text">O acesso VIP dá-lhe a vantagem competitiva de obter o <strong>acesso antecipado à 1ª informação oficial sobre as plantas</strong> antes do lançamento público.</p>
-                    
-                    <form id="vip-access-form" class="vip-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="vip-full-name">Nome Completo</label>
-                                <input type="text" id="vip-full-name" placeholder="O seu nome" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="vip-email-address">E-mail</label>
-                                <input type="email" id="vip-email-address" placeholder="nome@exemplo.com" required>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="vip-phone-number">Contacto Telefónico</label>
-                                <input type="tel" id="vip-phone-number" placeholder="O seu telefone">
-                            </div>
-                            <div class="form-group">
-                                <label for="vip-user-profile">Perfil de Interesses</label>
-                                <select id="vip-user-profile" required>
-                                    <option value="" disabled selected>Selecione o seu perfil</option>
-                                    <option value="particular">Particular / Consumidor Final</option>
-                                    <option value="investidor">Investidor / Empresário</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="vip-property-type">Tipologia / Imóvel Pretendido</label>
-                            <select id="vip-property-type" required>
-                                <option value="" disabled selected>Selecione a opção</option>
-                                <option value="t1">Habitação T1</option>
-                                <option value="t2">Habitação T2</option>
-                                <option value="t3">Habitação T3</option>
-                                <option value="loja">Loja / Espaço Comercial (&ge; 100 m²)</option>
-                                <option value="multiplas" id="opt-multiple-units" class="hidden-option">Múltiplas Frações / Bloco de Investimento</option>
-                            </select>
-                        </div>
+      <!-- SECÇÃO 4: CONTACTOS -->
+      <section id="contactos" class="content-section contactos-section">
+        <div class="contactos-watermark" aria-hidden="true">
+          <img src="images/logos/company-logo-icon.png" alt="" />
+        </div>
 
-                        <!-- CONTENTOR DA AÇÃO (BOTÃO OU FALLBACK) -->
-                        <div class="vip-action-wrapper" id="vipActionWrapper">
-                            <button type="submit" id="vip-submit-btn" class="btn-gold-submit">GARANTIR ACESSO ANTECIPADO</button>
-                            <div class="vip-fallback-box" id="vipFallbackBox">
-                                Não abriu a sua aplicação de e-mail? <a href="#" id="fallbackGmailLink">Clique aqui para enviar via Gmail no browser.</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="contactos-inner">
+          <h2 class="section-title gold-gradient-text">CONTACTOS</h2>
+          <p class="section-subtitle">
+            Estamos ao seu dispor para apresentar os detalhes dos nossos
+            projetos, esclarecer dúvidas e apresentar oportunidades exclusivas
+            de investimento.
+          </p>
+
+          <div class="contacts-cards-row">
+            <!-- Card E-mail -->
+            <div class="contact-card">
+              <div class="contact-icon-box">
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+              </div>
+              <span class="contact-label">E-mail Geral</span>
+              <a href="mailto:geral@barbosasprime.com" class="contact-value">
+                geral@barbosasprime.com
+              </a>
             </div>
 
-            <!-- POP-UP / MODAL (TEXTO COMPLETO DO MANIFESTO) -->
-            <div class="vlc-modal-overlay" id="manifestoModal">
-                <div class="vlc-modal-content">
-                    <button type="button" class="vlc-modal-close" id="closeManifestoBtn">&times;</button>
-                    <div class="manifesto-icon">
-                        <i class="fas fa-gem gold-icon"></i>
-                    </div>
-                    <h3 class="modal-manifesto-title">Apartamentos diferenciados para quem exige mais - com ADN de moradia - num estilo prático e seguro</h3>
-                    <div class="modal-manifesto-body">
-                        <p>
-                            Desenvolvido para quem reconhece que a verdadeira qualidade se paga acima da média e recusa o convencional. O Vizela Living Center nasce para preencher uma lacuna no mercado imobiliário: imóveis de prestígio para quem exige excelência construtiva, conforto absoluto e valorização a longo prazo, apostando numa relação preço-qualidade incomparável para quem tem liquidez e não encontra produto à altura das suas exigências.
-                        </p>
-                    </div>
-                </div>
+            <!-- Card Localização -->
+            <div class="contact-card">
+              <div class="contact-icon-box">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+              </div>
+              <span class="contact-label">Localização</span>
+              <span class="contact-value">Vizela, Portugal</span>
             </div>
-        </section>
-
-        <!-- CONTACTS SECTION -->
-        <section id="contactos" class="contacts-section">
-            <div class="contacts-container">
-                <h2 class="section-title">CONTACTOS</h2>
-                <div class="contact-info-clean">
-                    <div class="info-item">
-                        <i class="fas fa-envelope contact-icon"></i>
-                        <span class="info-label">E-mail Geral</span>
-                        <a href="mailto:geral@barbosasprime.com" class="info-link">geral@barbosasprime.com</a>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt contact-icon"></i>
-                        <span class="info-label">Localização</span>
-                        <p class="info-text">Vizela, Portugal</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- SITE FOOTER -->
+    <!-- =========================================================================
+       3. RODAPÉ (FOOTER)
+       ========================================================================= -->
     <footer class="site-footer">
-        <p>&copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos reservados.</p>
+      <p>
+        &copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos
+        reservados.
+      </p>
     </footer>
 
-    <script src="script.js"></script>
-</body>
+    <!-- =========================================================================
+       4. MODAIS ACESSÍVEIS (WCAG 2.1)
+       ========================================================================= -->
+
+    <!-- Modal 1: Manifesto VLC -->
+    <div
+      id="manifestoModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalManifestoTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <button
+          type="button"
+          class="modal-close-btn"
+          data-modal-close
+          aria-label="Fechar Modal"
+        >
+          &times;
+        </button>
+        <div class="manifesto-icon">
+          <i class="fas fa-gem" aria-hidden="true"></i>
+        </div>
+        <h3
+          id="modalManifestoTitle"
+          class="manifesto-title"
+          style="font-size: 1.25rem; margin-bottom: 1rem"
+        >
+          Apartamentos diferenciados para quem exige mais - com ADN de moradia -
+          num estilo prático e seguro
+        </h3>
+        <p
+          style="
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--c-text-dark);
+          "
+        >
+          Desenvolvido para quem reconhece que a verdadeira qualidade se paga
+          acima da média e recusa o convencional. O Vizela Living Center nasce
+          para preencher uma lacuna no mercado imobiliário: imóveis de prestígio
+          para quem exige excelência construtiva, conforto absoluto e
+          valorização a longo prazo, apostando numa relação preço-qualidade
+          incomparável para quem tem liquidez e não encontra produto à altura
+          das suas exigências.
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal 2: A Nobreza do "Bem Fazer" -->
+    <div
+      id="pyramidStoryModal"
+      class="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalPyramidTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog dark-modal">
+        <button
+          type="button"
+          class="modal-close-btn"
+          data-modal-close
+          aria-label="Fechar Modal"
+        >
+          &times;
+        </button>
+
+        <div class="pyramid-modal-header">
+          <div class="pyramid-logo-frame">
+            <img
+              src="images/logos/company-logo-icon.png"
+              alt="Pirâmide Barbosas Prime"
+              width="80"
+              height="80"
+            />
+          </div>
+          <h3
+            id="modalPyramidTitle"
+            class="gold-gradient-text"
+            style="
+              font-size: 1.7rem;
+              font-weight: 900;
+              line-height: 1.2;
+              text-align: center;
+              width: 100%;
+              margin: 0 auto;
+            "
+          >
+            A Nobreza do "Bem Fazer"
+          </h3>
+        </div>
+
+        <div class="pyramid-modal-body">
+          <p class="pyramid-modal-text">
+            O "bem fazer" é uma decisão ética. É recusar soluções construtivas
+            baratas ou temporárias. Assim como os arquitetos da antiguidade
+            escolhiam a pedra calcária e o granito para atravessar eras, a
+            Barbosas Prime foca-se nas melhores soluções contemporâneas: 100%
+            quartos em suite, WC Visitas, Box de garagem, Varandas e Terraços,
+            Pré-instalação SPA, sem esquecer os acabamentos de qualidade.
+          </p>
+        </div>
+
+        <div style="text-align: right; margin-top: 1.5rem">
+          <button
+            type="button"
+            class="cta-gold-btn"
+            data-modal-close
+            style="padding: 0.6rem 1.5rem; font-size: 0.78rem"
+          >
+            Entendido
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script Modular Oficial (compatível com duplo clique local e GitHub) -->
+    <script src="./script.js" defer></script>
+  </body>
 </html>
