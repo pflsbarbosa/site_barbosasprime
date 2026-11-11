@@ -10,6 +10,13 @@
       content="Barbosas Prime Promotora Imobiliária - Projetamos o futuro com a experiência do passado. Conheça o Vizela Living Center e garanta o seu Acesso VIP."
     />
 
+    <!-- SEO & hreflang Alternates para Multilinguismo no GitHub Pages -->
+    <link rel="alternate" hreflang="pt" href="?lang=pt" />
+    <link rel="alternate" hreflang="en" href="?lang=en" />
+    <link rel="alternate" hreflang="fr" href="?lang=fr" />
+    <link rel="alternate" hreflang="es" href="?lang=es" />
+    <link rel="alternate" hreflang="x-default" href="?lang=pt" />
+
     <!-- OpenGraph / Social Cards -->
     <meta
       property="og:title"
@@ -25,11 +32,11 @@
     <!-- Favicon com Pirâmide Dourada -->
     <link
       rel="icon"
-      type="image/svg+xml"
-      href="images/logos/barbosas-logo-icon.svg"
+      type="image/png"
+      href="images/logos/company-logo-icon.png"
     />
 
-    <!-- Font Awesome Icons para Ícones de Alta Fidelidade -->
+    <!-- Font Awesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -40,14 +47,14 @@
 
     <!-- Folha de Estilos Oficial (Ficheiro 1 de 3) -->
     <link rel="stylesheet" href="./style.css" />
-  </head>
+  <script src="/_aistudio-iframe.js?v=1f94f900"></script></head>
   <body>
     <!-- =========================================================================
        1. HEADER & NAVEGAÇÃO SUPERIOR
        ========================================================================= -->
     <header class="site-header">
       <div class="nav-container">
-        <!-- Logótipo da Marca com Popover Interativo de ADN (Hover no Desktop, Toque no Mobile) -->
+        <!-- Logótipo da Marca com Popover Interativo de ADN -->
         <div class="logo-wrapper">
           <button
             type="button"
@@ -72,7 +79,7 @@
             </div>
           </button>
 
-          <!-- Popover Informativo: O ADN da Marca (Hover no Desktop e Toque no Mobile) -->
+          <!-- Popover Informativo: O ADN da Marca -->
           <div class="logo-popover" id="logoPopover" role="dialog" aria-labelledby="popoverHeading" aria-modal="false">
             <div class="popover-header">
               <img
@@ -82,7 +89,7 @@
                 height="36"
               />
               <div>
-                <h4 class="popover-heading" id="popoverHeading">Porquê a pirâmide</h4>
+                <h4 class="popover-heading" id="popoverHeading" data-i18n="popover.heading">Porquê a pirâmide</h4>
               </div>
               <button
                 type="button"
@@ -93,7 +100,7 @@
                 &times;
               </button>
             </div>
-            <p class="popover-body">
+            <p class="popover-body" data-i18n="popover.body">
               Escolhemos o nosso logótipo em homenagem deliberada aos mestres
               construtores e matemáticos do Antigo Egito. As pirâmides
               permanecem intactas há mais de quatro milénios porque foram
@@ -105,7 +112,7 @@
               class="popover-action-btn"
               data-modal-target="pyramidStoryModal"
             >
-              <span>A Nobreza do bem fazer</span>
+              <span data-i18n="popover.action">A Nobreza do bem fazer</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </button>
           </div>
@@ -114,32 +121,90 @@
         <!-- Fundo de sobreposição para toque no telemóvel -->
         <div class="popover-backdrop" id="popoverBackdrop" aria-hidden="true"></div>
 
-        <!-- Navegação Principal Desktop -->
-        <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
-          <ul>
-            <li><a href="#inicio" class="nav-link-item">Início</a></li>
-            <li><a href="#modelo" class="nav-link-item">O Modelo</a></li>
-            <li>
-              <a href="#vlc" class="nav-link-item">
-                Vizela Living Center
-                <span class="gold-badge">VIP</span>
-              </a>
-            </li>
-            <li><a href="#contactos" class="nav-link-item">Contactos</a></li>
-          </ul>
-        </nav>
+        <!-- Grupo Direito (Navegação Desktop + Seletor de Idiomas Dourado) -->
+        <div class="nav-right-group">
+          <!-- Navegação Principal Desktop -->
+          <nav class="main-nav" id="mainNav" aria-label="Navegação Principal">
+            <ul>
+              <li><a href="#inicio" class="nav-link-item" data-i18n="nav.inicio">Início</a></li>
+              <li><a href="#modelo" class="nav-link-item" data-i18n="nav.modelo">O Modelo</a></li>
+              <li>
+                <a href="#vlc" class="nav-link-item">
+                  <span data-i18n="nav.vlc">Vizela Living Center</span>
+                  <span class="gold-badge">VIP</span>
+                </a>
+              </li>
+              <li><a href="#contactos" class="nav-link-item" data-i18n="nav.contactos">Contactos</a></li>
+            </ul>
+          </nav>
 
-        <!-- Botão Menu Hamburguer (Mobile) -->
-        <button
-          type="button"
-          class="mobile-menu-toggle"
-          id="mobileMenuToggle"
-          aria-label="Abrir Menu"
-          aria-expanded="false"
-          aria-controls="mobileNavDrawer"
-        >
-          <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
+          <!-- SELETOR DE IDIOMAS DOURADO (DESKTOP) -->
+          <div class="lang-selector-box" id="langSelectorBox">
+            <button
+              type="button"
+              class="lang-toggle-btn"
+              id="langToggleBtn"
+              aria-label="Selecionar Idioma"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <span class="lang-flag-current">🇵🇹</span>
+              <span class="lang-code-current">PT</span>
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </button>
+
+            <ul class="lang-dropdown" id="langDropdown" role="menu">
+              <li>
+                <button type="button" class="lang-option-btn active" data-lang="pt" role="menuitem">
+                  <span class="opt-left">
+                    <span class="opt-flag">🇵🇹</span>
+                    <span>Português</span>
+                  </span>
+                  <span class="opt-code">PT</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="lang-option-btn" data-lang="en" role="menuitem">
+                  <span class="opt-left">
+                    <span class="opt-flag">🇬🇧</span>
+                    <span>English</span>
+                  </span>
+                  <span class="opt-code">EN</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="lang-option-btn" data-lang="fr" role="menuitem">
+                  <span class="opt-left">
+                    <span class="opt-flag">🇫🇷</span>
+                    <span>Français</span>
+                  </span>
+                  <span class="opt-code">FR</span>
+                </button>
+              </li>
+              <li>
+                <button type="button" class="lang-option-btn" data-lang="es" role="menuitem">
+                  <span class="opt-left">
+                    <span class="opt-flag">🇪🇸</span>
+                    <span>Español</span>
+                  </span>
+                  <span class="opt-code">ES</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Botão Menu Hamburguer (Mobile) -->
+          <button
+            type="button"
+            class="mobile-menu-toggle"
+            id="mobileMenuToggle"
+            aria-label="Abrir Menu"
+            aria-expanded="false"
+            aria-controls="mobileNavDrawer"
+          >
+            <i class="fas fa-bars" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Gaveta de Navegação Mobile -->
@@ -148,15 +213,32 @@
         id="mobileNavDrawer"
         aria-label="Navegação Móvel"
       >
+        <!-- Barra de Seleção de Idioma no Menu Mobile -->
+        <div class="mobile-lang-bar">
+          <button type="button" class="mobile-lang-btn active" data-lang="pt">
+            <span>🇵🇹</span> PT
+          </button>
+          <button type="button" class="mobile-lang-btn" data-lang="en">
+            <span>🇬🇧</span> EN
+          </button>
+          <button type="button" class="mobile-lang-btn" data-lang="fr">
+            <span>🇫🇷</span> FR
+          </button>
+          <button type="button" class="mobile-lang-btn" data-lang="es">
+            <span>🇪🇸</span> ES
+          </button>
+        </div>
+
         <ul>
-          <li><a href="#inicio" class="mobile-nav-link">Início</a></li>
+          <li><a href="#inicio" class="mobile-nav-link" data-i18n="nav.inicio">Início</a></li>
           <li>
             <button
               type="button"
               class="mobile-nav-link"
               id="mobileMenuPyramidBtn"
             >
-              <i class="fas fa-shapes" style="color: var(--c-gold)"></i> Porquê a Pirâmide
+              <i class="fas fa-shapes" style="color: var(--c-gold)"></i>
+              <span data-i18n="nav.pyramid">Porquê a Pirâmide</span>
             </button>
           </li>
           <li>
@@ -165,17 +247,18 @@
               class="mobile-nav-link"
               data-modal-target="pyramidStoryModal"
             >
-              <i class="fas fa-gem" style="color: var(--c-gold)"></i> A Nobreza
-              do "Bem Fazer"
+              <i class="fas fa-gem" style="color: var(--c-gold)"></i>
+              <span data-i18n="nav.pyramidStory">A Nobreza do "Bem Fazer"</span>
             </button>
           </li>
-          <li><a href="#modelo" class="mobile-nav-link">O Modelo</a></li>
+          <li><a href="#modelo" class="mobile-nav-link" data-i18n="nav.modelo">O Modelo</a></li>
           <li>
             <a href="#vlc" class="mobile-nav-link">
-              Vizela Living Center <span class="gold-badge">VIP</span>
+              <span data-i18n="nav.vlc">Vizela Living Center</span>
+              <span class="gold-badge">VIP</span>
             </a>
           </li>
-          <li><a href="#contactos" class="mobile-nav-link">Contactos</a></li>
+          <li><a href="#contactos" class="mobile-nav-link" data-i18n="nav.contactos">Contactos</a></li>
         </ul>
       </div>
     </header>
@@ -189,18 +272,18 @@
         <div class="hero-bg-media" aria-hidden="true"></div>
 
         <div class="hero-content">
-          <h1 class="hero-title gold-gradient-text">
+          <h1 class="hero-title gold-gradient-text" data-i18n="hero.title">
             PROJETAMOS O FUTURO COM A<br />EXPERIÊNCIA DO PASSADO
           </h1>
 
-          <p class="hero-lead">
+          <p class="hero-lead" data-i18n="hero.lead">
             Na Barbosas Prime, unimos a nossa experiência na mediação e na
             reabilitação para idealizar conceitos únicos, selecionando gabinetes
             de referência para os transformar em realidade.
           </p>
 
           <a href="#vlc" class="cta-gold-btn nav-link-item">
-            <span>Conhecer Vizela Living Center</span>
+            <span data-i18n="hero.cta">Conhecer Vizela Living Center</span>
             <i class="fas fa-arrow-right" aria-hidden="true"></i>
           </a>
         </div>
@@ -210,8 +293,8 @@
       <section id="modelo" class="content-section modelo-section">
         <div class="section-inner">
           <div class="section-header-center">
-            <h2 class="section-title gold-gradient-text">O NOSSO MODELO</h2>
-            <p class="section-subtitle">
+            <h2 class="section-title gold-gradient-text" data-i18n="modelo.title">O NOSSO MODELO</h2>
+            <p class="section-subtitle" data-i18n="modelo.subtitle">
               Inspirados na perenidade das grandes construções do passado,
               aplicamos um rigor absoluto em cada etapa construtiva no presente.
             </p>
@@ -223,8 +306,8 @@
               <div class="feature-icon-wrapper">
                 <i class="fas fa-lightbulb" aria-hidden="true"></i>
               </div>
-              <h3 class="card-heading">Concepção para o Utilizador</h3>
-              <p class="card-desc">
+              <h3 class="card-heading" data-i18n="modelo.card1.title">Concepção para o Utilizador</h3>
+              <p class="card-desc" data-i18n="modelo.card1.desc">
                 Aproveitamos a nossa experiência em mediação e reabilitação para
                 desenhar plantas modernas e funcionais. Priorizamos o conforto
                 real (como WC privativo por quarto e garagens fechadas),
@@ -238,8 +321,8 @@
               <div class="feature-icon-wrapper">
                 <i class="fas fa-gem" aria-hidden="true"></i>
               </div>
-              <h3 class="card-heading">Visão de Futuro e Prestígio</h3>
-              <p class="card-desc">
+              <h3 class="card-heading" data-i18n="modelo.card2.title">Visão de Futuro e Prestígio</h3>
+              <p class="card-desc" data-i18n="modelo.card2.desc">
                 Não construímos para o lucro rápido. Exigimos dos gabinetes de
                 arquitetura soluções que garantam a máxima privacidade e
                 bem-estar, com o objetivo de construir uma marca de referência
@@ -253,8 +336,8 @@
               <div class="feature-icon-wrapper">
                 <i class="fas fa-hard-hat" aria-hidden="true"></i>
               </div>
-              <h3 class="card-heading">Fiscalização e Comercialização</h3>
-              <p class="card-desc">
+              <h3 class="card-heading" data-i18n="modelo.card3.title">Fiscalização e Comercialização</h3>
+              <p class="card-desc" data-i18n="modelo.card3.desc">
                 Garantimos o rigor da obra através de uma fiscalização externa
                 independente liderada por um engenheiro veterano. Para a
                 comercialização, alinhamos numa relação de confiança com agentes
@@ -282,7 +365,7 @@
             <h2 class="section-title gold-gradient-text">
               VIZELA LIVING CENTER
             </h2>
-            <div class="vlc-badge-tag">Brevemente em Vizela</div>
+            <div class="vlc-badge-tag" data-i18n="vlc.badge">Brevemente em Vizela</div>
           </div>
 
           <!-- Manifesto Card -->
@@ -290,10 +373,10 @@
             <div class="manifesto-icon">
               <i class="fas fa-gem" aria-hidden="true"></i>
             </div>
-            <h3 class="manifesto-title">
+            <h3 class="manifesto-title" data-i18n="vlc.manifesto.title">
               Apartamentos diferenciados para quem exige mais com ADN de moradia
             </h3>
-            <p class="manifesto-text">
+            <p class="manifesto-text" data-i18n="vlc.manifesto.lead">
               Desenvolvido para quem reconhece que a verdadeira qualidade se
               paga acima da média e recusa o convencional...
             </p>
@@ -303,7 +386,8 @@
               data-modal-target="manifestoModal"
               aria-haspopup="dialog"
             >
-              Ler mais <i class="fas fa-arrow-right" aria-hidden="true"></i>
+              <span data-i18n="vlc.manifesto.readMore">Ler mais</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </button>
           </div>
 
@@ -313,8 +397,8 @@
               <div class="spec-icon">
                 <i class="fas fa-layer-group" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Tipologias T1, T2 e T3</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec1.title">Tipologias T1, T2 e T3</h4>
+              <p class="spec-desc" data-i18n="vlc.spec1.desc">
                 Tipologias desenhadas a rigor, mantendo uma perfeita separação
                 entre as zonas íntimas e as zonas sociais.
               </p>
@@ -323,8 +407,8 @@
               <div class="spec-icon">
                 <i class="fas fa-store" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Lojas</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec2.title">Lojas</h4>
+              <p class="spec-desc" data-i18n="vlc.spec2.desc">
                 Espaços comerciais amplos, ideais para serviços, escritórios ou
                 retalho de prestígio no R/C.
               </p>
@@ -333,8 +417,8 @@
               <div class="spec-icon">
                 <i class="fas fa-compass" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Duas Frentes Opostas/Paralelas</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec3.title">Duas Frentes Opostas/Paralelas</h4>
+              <p class="spec-desc" data-i18n="vlc.spec3.desc">
                 Frações com pelo menos 2 frentes, garantindo excelente exposição
                 solar e luminosidade natural em todas as divisões.
               </p>
@@ -343,8 +427,8 @@
               <div class="spec-icon">
                 <i class="fas fa-bed" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">100% Suites</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec4.title">100% Suites</h4>
+              <p class="spec-desc" data-i18n="vlc.spec4.desc">
                 Todos os quartos são suites, assegurando privacidade total para
                 toda a família.
               </p>
@@ -353,8 +437,8 @@
               <div class="spec-icon">
                 <i class="fas fa-restroom" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">WC Visitas</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec5.title">WC Visitas</h4>
+              <p class="spec-desc" data-i18n="vlc.spec5.desc">
                 WC de serviço, essencial para manter a privacidade e a separação
                 absoluta entre o espaço social e a zona íntima.
               </p>
@@ -363,8 +447,8 @@
               <div class="spec-icon">
                 <i class="fas fa-umbrella-beach" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Varandas e Terraços</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec6.title">Varandas e Terraços</h4>
+              <p class="spec-desc" data-i18n="vlc.spec6.desc">
                 Presentes nas duas frentes e pensados para prolongar o espaço de
                 habitação de forma fluida para o exterior.
               </p>
@@ -373,8 +457,8 @@
               <div class="spec-icon">
                 <i class="fas fa-hot-tub-person" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Pré-Instalação SPA</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec7.title">Pré-Instalação SPA</h4>
+              <p class="spec-desc" data-i18n="vlc.spec7.desc">
                 Pré-instalação de SPA, ideal para momentos de lazer e bem-estar
                 no seu lar.
               </p>
@@ -383,8 +467,8 @@
               <div class="spec-icon">
                 <i class="fas fa-car-rear" aria-hidden="true"></i>
               </div>
-              <h4 class="spec-title">Box de Garagem</h4>
-              <p class="spec-desc">
+              <h4 class="spec-title" data-i18n="vlc.spec8.title">Box de Garagem</h4>
+              <p class="spec-desc" data-i18n="vlc.spec8.desc">
                 Box para garantir máxima segurança ao seu carro e espaço
                 autónomo para arrumação.
               </p>
@@ -398,9 +482,9 @@
                 class="fas fa-map-location-dot"
                 style="color: var(--c-gold)"
               ></i>
-              Localização Central e Conectividade Excecional
+              <span data-i18n="vlc.loc.title">Localização Central e Conectividade Excecional</span>
             </h3>
-            <p>
+            <p data-i18n="vlc.loc.text">
               Vizela está no centro de tudo, posicionada estrategicamente a
               cerca de
               <strong
@@ -409,15 +493,15 @@
               >, com excelentes acessos.
             </p>
             <ul class="custom-bullet-list">
-              <li>
+              <li data-i18n="vlc.loc.b1">
                 <strong>À porta de casa:</strong> Paragem de autocarro existente
                 de ambos os lados da estrada.
               </li>
-              <li>
+              <li data-i18n="vlc.loc.b2">
                 <strong>Sugestão de Lazer Pedonal:</strong> Acesso rápido a pé
                 aos passadiços e ao campo de futebol de Santa Eulália.
               </li>
-              <li>
+              <li data-i18n="vlc.loc.b3">
                 <strong>Sugestão de Deslocação de Carro:</strong> Poucos minutos
                 até às superfícies comerciais de referência, ao Parque da Cidade
                 e às Termas no centro de Vizela.
@@ -438,7 +522,7 @@
                     />
                   </div>
                 </div>
-                <h3 class="author-title">
+                <h3 class="author-title" data-i18n="vlc.author.title">
                   Arquitetura &amp; Rigor por Nidus Ars
                 </h3>
               </div>
@@ -448,11 +532,11 @@
                 rel="noopener noreferrer"
                 class="author-link-btn"
               >
-                Ver Site
+                <span data-i18n="vlc.author.btn">Ver Site</span>
                 <i class="fas fa-external-link-alt" aria-hidden="true"></i>
               </a>
             </div>
-            <p class="author-desc">
+            <p class="author-desc" data-i18n="vlc.author.desc">
               Assinado pelo prestigiado gabinete <strong>Nidus Ars</strong> —
               sob a direção técnica e supervisão do arquiteto vizelense
               <strong>Filipe Costa</strong> — o projeto traz a garantia de uma
@@ -469,11 +553,14 @@
           <!-- CARTÃO DO FORMULÁRIO VIP -->
           <div class="vlc-vip-block" id="vlc-vip-form">
             <div class="vip-form-container">
-            <span class="vip-pill-tag">ACESSO PRIORITÁRIO <span class="gold-badge">VIP</span></span>
-            <h3 class="vip-form-title">
+            <span class="vip-pill-tag">
+              <span data-i18n="vip.pill">ACESSO PRIORITÁRIO</span>
+              <span class="gold-badge">VIP</span>
+            </span>
+            <h3 class="vip-form-title" data-i18n="vip.formTitle">
               Assegure a sua Prioridade na Escolha de Fração
             </h3>
-            <p class="vip-form-lead">
+            <p class="vip-form-lead" data-i18n="vip.formLead">
               O acesso VIP dá-lhe a vantagem competitiva de obter o
               <strong
                 >acesso antecipado à 1ª informação oficial sobre as
@@ -493,30 +580,28 @@
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="vip-full-name" class="form-label"
-                    >Nome Completo *</label
-                  >
+                  <label for="vip-full-name" class="form-label" data-i18n="vip.field.name">Nome Completo *</label>
                   <input
                     type="text"
                     id="vip-full-name"
                     name="name"
                     class="form-input"
                     placeholder="O seu nome"
+                    data-i18n-placeholder="vip.field.namePlaceholder"
                     required
                     autocomplete="name"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="vip-email-address" class="form-label"
-                    >E-mail *</label
-                  >
+                  <label for="vip-email-address" class="form-label" data-i18n="vip.field.email">E-mail *</label>
                   <input
                     type="email"
                     id="vip-email-address"
                     name="email"
                     class="form-input"
                     placeholder="nome@exemplo.com"
+                    data-i18n-placeholder="vip.field.emailPlaceholder"
                     required
                     autocomplete="email"
                   />
@@ -525,60 +610,60 @@
 
               <div class="form-row-2">
                 <div class="form-group">
-                  <label for="vip-phone-number" class="form-label"
-                    >Contacto Telefónico</label
-                  >
+                  <label for="vip-phone-number" class="form-label" data-i18n="vip.field.phone">Contacto Telefónico</label>
                   <input
                     type="tel"
                     id="vip-phone-number"
                     name="phone"
                     class="form-input"
                     placeholder="O seu telefone"
+                    data-i18n-placeholder="vip.field.phonePlaceholder"
                     autocomplete="tel"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="vip-user-profile" class="form-label"
-                    >Perfil de Interesses *</label
-                  >
+                  <label for="vip-user-profile" class="form-label" data-i18n="vip.field.profile">Perfil de Interesses *</label>
                   <select
                     id="vip-user-profile"
                     name="profile"
                     class="form-select"
                     required
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled selected data-i18n="vip.field.profilePlaceholder">
                       Selecione o seu perfil
                     </option>
-                    <option value="particular">
+                    <option value="particular" data-i18n="vip.field.profilePart">
                       Particular / Consumidor Final
                     </option>
-                    <option value="investidor">Investidor / Empresário</option>
+                    <option value="investidor" data-i18n="vip.field.profileInv">
+                      Investidor / Empresário
+                    </option>
                   </select>
                 </div>
               </div>
 
               <div class="form-group">
-                <label for="vip-property-type" class="form-label"
-                  >Tipologia / Imóvel Pretendido *</label
-                >
+                <label for="vip-property-type" class="form-label" data-i18n="vip.field.type">Tipologia / Imóvel Pretendido *</label>
                 <select
                   id="vip-property-type"
                   name="property_type"
                   class="form-select"
                   required
                 >
-                  <option value="" disabled selected>Selecione a opção</option>
-                  <option value="t1">Habitação T1</option>
-                  <option value="t2">Habitação T2</option>
-                  <option value="t3">Habitação T3</option>
-                  <option value="loja">
+                  <option value="" disabled selected data-i18n="vip.field.typePlaceholder">
+                    Selecione a opção
+                  </option>
+                  <option value="t1" data-i18n="vip.field.typeT1">Habitação T1</option>
+                  <option value="t2" data-i18n="vip.field.typeT2">Habitação T2</option>
+                  <option value="t3" data-i18n="vip.field.typeT3">Habitação T3</option>
+                  <option value="loja" data-i18n="vip.field.typeLoja">
                     Loja / Espaço Comercial (≥ 100 m²)
                   </option>
                   <option
                     value="multiplas"
                     id="opt-multiple-units"
+                    data-i18n="vip.field.typeMulti"
                     hidden
                     disabled
                   >
@@ -592,21 +677,23 @@
                   type="submit"
                   id="vip-submit-btn"
                   class="vip-submit-button"
+                  data-i18n="vip.btn"
                 >
                   GARANTIR ACESSO ANTECIPADO
                 </button>
 
                 <div id="vipFallbackBox" class="fallback-box">
                   <p>
-                    <strong>Abertura do cliente de e-mail iniciada.</strong>
+                    <strong data-i18n="vip.fallback.text">Abertura do cliente de e-mail iniciada.</strong>
                   </p>
-                  Não abriu a sua aplicação de e-mail?
+                  <span data-i18n="vip.fallback.noApp">Não abriu a sua aplicação de e-mail?</span>
                   <a
                     href="#"
                     id="fallbackGmailLink"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="fallback-link"
+                    data-i18n="vip.fallback.link"
                   >
                     Clique aqui para enviar via Gmail no browser.
                   </a>
@@ -625,8 +712,8 @@
         </div>
 
         <div class="contactos-inner">
-          <h2 class="section-title gold-gradient-text">CONTACTOS</h2>
-          <p class="section-subtitle">
+          <h2 class="section-title gold-gradient-text" data-i18n="contacts.title">CONTACTOS</h2>
+          <p class="section-subtitle" data-i18n="contacts.subtitle">
             Estamos ao seu dispor para apresentar os detalhes dos nossos
             projetos, esclarecer dúvidas e apresentar oportunidades exclusivas
             de investimento.
@@ -638,7 +725,7 @@
               <div class="contact-icon-box">
                 <i class="fas fa-envelope" aria-hidden="true"></i>
               </div>
-              <span class="contact-label">E-mail Geral</span>
+              <span class="contact-label" data-i18n="contacts.emailLabel">E-mail Geral</span>
               <a href="mailto:geral@barbosasprime.com" class="contact-value">
                 geral@barbosasprime.com
               </a>
@@ -649,8 +736,8 @@
               <div class="contact-icon-box">
                 <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
               </div>
-              <span class="contact-label">Localização</span>
-              <span class="contact-value">Vizela, Portugal</span>
+              <span class="contact-label" data-i18n="contacts.locLabel">Localização</span>
+              <span class="contact-value" data-i18n="contacts.locValue">Vizela, Portugal</span>
             </div>
           </div>
         </div>
@@ -661,7 +748,7 @@
        3. RODAPÉ (FOOTER)
        ========================================================================= -->
     <footer class="site-footer">
-      <p>
+      <p data-i18n="footer.copyright">
         &copy; 2026 Barbosas Prime Promotora Imobiliária Lda. Todos os direitos
         reservados.
       </p>
@@ -695,12 +782,14 @@
         <h3
           id="modalManifestoTitle"
           class="manifesto-title"
+          data-i18n="modal.manifesto.title"
           style="font-size: 1.35rem; margin-bottom: 1rem; color: var(--c-white);"
         >
           Apartamentos diferenciados para quem exige mais - com ADN de moradia -
           num estilo prático e seguro
         </h3>
         <p
+          data-i18n="modal.manifesto.body"
           style="
             font-size: 0.95rem;
             line-height: 1.65;
@@ -749,6 +838,7 @@
           <h3
             id="modalPyramidTitle"
             class="gold-gradient-text"
+            data-i18n="modal.pyramid.title"
             style="
               font-size: 1.7rem;
               font-weight: 900;
@@ -763,7 +853,7 @@
         </div>
 
         <div class="pyramid-modal-body">
-          <p class="pyramid-modal-text">
+          <p class="pyramid-modal-text" data-i18n="modal.pyramid.body">
             O "bem fazer" é uma decisão ética. É recusar soluções construtivas
             baratas ou temporárias. Assim como os arquitetos da antiguidade
             escolhiam a pedra calcária e o granito para atravessar eras, a
@@ -778,6 +868,7 @@
             type="button"
             class="cta-gold-btn"
             data-modal-close
+            data-i18n="modal.understood"
             style="padding: 0.6rem 1.5rem; font-size: 0.78rem"
           >
             Entendido
@@ -786,7 +877,7 @@
       </div>
     </div>
 
-    <!-- Script Modular Oficial (compatível com duplo clique local e GitHub) -->
+    <!-- Script Modular Oficial (compatível com duplo clique local e GitHub Pages) -->
     <script src="./script.js" defer></script>
   </body>
 </html>
